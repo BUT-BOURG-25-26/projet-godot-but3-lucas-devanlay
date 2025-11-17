@@ -3,6 +3,7 @@ extends Node
 
 @export var worldScene : PackedScene
 var distanceTraveled : float =0
+var externalScore : float = 0
 var gameHasStarted : bool = false
 var gameHasEnded : bool = false
 
@@ -63,11 +64,14 @@ func gameOver():
 	gameSpeed = 0
 	player.gameIsOngoing = false
 	resetWorld()
-	gameOverMenue.updateAndShow(distanceTraveled)
+	gameOverMenue.updateAndShow(distanceTraveled + externalScore)
 
 func increaseDistanceTraveled():
 	distanceTraveled +=gameSpeed
-	distanceLable.text = "score : "+str(int(distanceTraveled))
+	distanceLable.text = "score : "+str(int(distanceTraveled + externalScore))
+	
+func addToExternalScore(additionScore : float):
+	externalScore += additionScore
 
 func updateGameSpeed() -> bool:
 	if(nextTarget<=distanceTraveled):
@@ -89,6 +93,7 @@ func start():
 	preparePlayer()
 	menue.hide()
 	distanceTraveled = 0
+	externalScore = 0
 	
 func restart():
 	gameOverMenue.hide()
@@ -96,12 +101,13 @@ func restart():
 	player.resetPlayer()
 	worldElem.resetWorld()
 	worldElem.restart()
-	menue.updateAndShow(distanceTraveled)
+	menue.updateAndShow(distanceTraveled + externalScore)
 	resetAttributes()
 	print("restarted")
 	
 func resetAttributes():
 	distanceTraveled = 0
+	externalScore = 0
 	gameHasStarted = false
 	gameSpeed = 1
 	gameHasEnded= false

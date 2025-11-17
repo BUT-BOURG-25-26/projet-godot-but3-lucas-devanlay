@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bui44bws5ufjk" path="res://player/player.tscn" id="1_iwpey"]
 [ext_resource type="Script" uid="uid://d0cmhkikeqc6c" path="res://gameManager/gamerManager.gd" id="2_g4qto"]
-[ext_resource type="PackedScene" uid="uid://bkw0ocrujijuk" path="res://Menues/menue.tscn" id="3_hr5et"]
+[ext_resource type="PackedScene" uid="uid://v2e6edh5tl2g" path="res://Menues/menue.tscn" id="3_hr5et"]
 [ext_resource type="PackedScene" uid="uid://dgse65bexnbc4" path="res://Menues/gameOverMenue/gameOver.tscn" id="4_6mfv6"]
 [ext_resource type="PackedScene" uid="uid://0jhci6oqaxfb" path="res://worldElement/WorldElement.tscn" id="4_61od6"]
 
@@ -21,7 +21,7 @@ tonemap_mode = 2
 [node name="MainScene" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.821149, 0.570714, 0, -0.570714, 0.821149, 0.0647998, 11.4755, 14.2648)
+transform = Transform3D(1, 0, 0, 0, 0.7026, 0.711585, 0, -0.711585, 0.7026, 0.0647998, 14.9003, 22.2571)
 keep_aspect = 0
 
 [node name="player" parent="." instance=ExtResource("1_iwpey")]
@@ -51,10 +51,10 @@ shape = SubResource("WorldBoundaryShape3D_61od6")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="MainMenue" parent="UI" instance=ExtResource("3_hr5et")]
+
 [node name="GameOverMenue" parent="UI" instance=ExtResource("4_6mfv6")]
 visible = false
-
-[node name="MainMenue" parent="UI" instance=ExtResource("3_hr5et")]
 
 [node name="Score" type="Label" parent="UI"]
 anchors_preset = -1

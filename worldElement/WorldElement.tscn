@@ -1,10 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://0jhci6oqaxfb"]
+[gd_scene load_steps=5 format=3 uid="uid://0jhci6oqaxfb"]
 
 [ext_resource type="Script" uid="uid://c5chyokl55n84" path="res://worldElement/WorldElement.gd" id="1_iit2x"]
 [ext_resource type="PackedScene" uid="uid://brur4bcgca3ya" path="res://worldElement/groundTiles/ground.tscn" id="2_4cbjq"]
 [ext_resource type="PackedScene" uid="uid://bphngn78xk3k" path="res://worldElement/boxes/dirtBox.tscn" id="3_1xntr"]
+[ext_resource type="PackedScene" uid="uid://dhe1j5vo150ls" path="res://worldElement/collectibles/strawberry.tscn" id="4_a2qwj"]
 
 [node name="WorldElement" type="Node3D"]
 script = ExtResource("1_iit2x")
 groundTileScene = ExtResource("2_4cbjq")
 dirtBoxScene = ExtResource("3_1xntr")
+strawberryScene = ExtResource("4_a2qwj")
+
+[node name="Ground" parent="." instance=ExtResource("2_4cbjq")]
+
+[node name="strawberry" parent="." instance=ExtResource("4_a2qwj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.72264, 5.61976, 9.62615)
+
+[node name="DirtBox" parent="." instance=ExtResource("3_1xntr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5751, 2.59691, 5.78753)
+
+[node name="DirtBox2" parent="." instance=ExtResource("3_1xntr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7987, 2.57922, -2.63795)
+
+[node name="DirtBox3" parent="." instance=ExtResource("3_1xntr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3986, 3.55231, 13.4572)
+gravity_scale = 8.0
+
+[node name="DirtBox4" parent="." instance=ExtResource("3_1xntr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6588, 2.98747, 6.27866)
