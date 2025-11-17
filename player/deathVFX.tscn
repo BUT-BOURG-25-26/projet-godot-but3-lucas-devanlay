@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=3 uid="uid://dwty00g5f63fw"]
+
+[ext_resource type="Script" uid="uid://oeabo2vkc8rl" path="res://player/deathVfx.gd" id="1_nj6im"]
+[ext_resource type="Material" uid="uid://ewk4uvif0qia" path="res://ressources/Materials/redHaire.tres" id="2_3os2u"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_x8yux"]
+
+[sub_resource type="Curve" id="Curve_1c7oq"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.893333, 0.977528), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_w70d7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_kgf3s"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_hecmc"]
+curve_x = SubResource("Curve_1c7oq")
+curve_y = SubResource("Curve_w70d7")
+curve_z = SubResource("Curve_kgf3s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x8yux"]
+inherit_velocity_ratio = 0.045
+angular_velocity_min = -68.94
+angular_velocity_max = 8.25998
+directional_velocity_min = -1.60933e-05
+directional_velocity_max = 60.0
+directional_velocity_curve = SubResource("CurveXYZTexture_hecmc")
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 0.149
+gravity = Vector3(0, 0, 0)
+color = Color(1, 0.286275, 0.196078, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8rgr8"]
+
+[sub_resource type="Skin" id="Skin_nj6im"]
+
+[node name="DeathVfx" type="Area3D"]
+script = ExtResource("1_nj6im")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_x8yux")
+
+[node name="deathparticles" type="GPUParticles3D" parent="."]
+material_override = ExtResource("2_3os2u")
+emitting = false
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_x8yux")
+draw_pass_1 = SubResource("SphereMesh_8rgr8")
+draw_skin = SubResource("Skin_nj6im")

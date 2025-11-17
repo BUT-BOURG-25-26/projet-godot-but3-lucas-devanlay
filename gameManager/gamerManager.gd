@@ -75,7 +75,7 @@ func gameOver():
 	get_tree().get_first_node_in_group("scoreList").addScore(distanceTraveled)
 	distanceTraveled = 0
 	menue.show()
-	Engine.time_scale=0.0
+	Engine.time_scale=1
 
 func increaseDistanceTraveled():
 	distanceTraveled +=gameSpeed
@@ -93,6 +93,7 @@ func updateGameSpeed() -> bool:
 	return false
 	
 func restart():
+	player.model.show()
 	gameHasEnded= false
 	player.global_position.z = 0
 	player.global_position.x = 0
@@ -101,7 +102,6 @@ func restart():
 	worldElem.restart()
 	gameHasStarted = false
 	gameSpeed = 1
-	Engine.time_scale=1.0
 	print("restarted")
 
 func quite():

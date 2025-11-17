@@ -1,12 +1,16 @@
 class_name Player
 extends CharacterBody3D
 
-var gameIsOngoing = false
+var gameIsOngoing : bool = false
 var turningAround : bool =false	
 var gameManager : GameManager
+var deathVFX : Area3D
+var model : Node3D
 
 func _ready() -> void:
 	gameManager = get_tree().get_first_node_in_group("gameManager")
+	deathVFX = $DeathVfx
+	model = $playerModel
 	
 func _physics_process(delta: float) -> void:
 	if(gameIsOngoing):
@@ -16,10 +20,17 @@ func _physics_process(delta: float) -> void:
 			velocity.y +=  Input.get_action_strength("ui_up")*40
 		velocity.x = (-Input.get_action_strength("ui_left") + Input.get_action_strength("ui_right") )*20
 		move_and_slide()
-		if(global_position.z>0):
+		if(global_position.z>1):
 			print("game over")
+			deathVFX.emit()
+			model.hide() 
 			gameManager.gameOver()
 			global_position.z = 0
+			
+		elif(global_position.z>0):
+			velocity.z = -0.01
+		elif(global_position.z<0):
+			velocity.z = 0.1
 
 func _process(delta: float) -> void:
 	if(turningAround):
