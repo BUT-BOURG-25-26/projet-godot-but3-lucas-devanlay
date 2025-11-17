@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://wqymescm5b5k"]
+
+[ext_resource type="PackedScene" uid="uid://bui44bws5ufjk" path="res://player/player.tscn" id="1_iwpey"]
+[ext_resource type="Script" uid="uid://d0cmhkikeqc6c" path="res://gameManager/gamerManager.gd" id="2_g4qto"]
+[ext_resource type="PackedScene" uid="uid://cn28nruh4g53a" path="res://Menues/menue.tscn" id="3_hr5et"]
+[ext_resource type="PackedScene" uid="uid://0jhci6oqaxfb" path="res://worldElement/WorldElement.tscn" id="4_61od6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iwpey"]
+
+[sub_resource type="Sky" id="Sky_iwpey"]
+sky_material = SubResource("ProceduralSkyMaterial_iwpey")
+
+[sub_resource type="Environment" id="Environment_g4qto"]
+background_mode = 2
+sky = SubResource("Sky_iwpey")
+tonemap_mode = 2
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_61od6"]
+
+[node name="MainScene" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.821149, 0.570714, 0, -0.570714, 0.821149, 0.0647998, 11.4755, 14.2648)
+keep_aspect = 0
+
+[node name="player" parent="." instance=ExtResource("1_iwpey")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_g4qto")
+
+[node name="GamerManager" type="Node" parent="." groups=["gameManager"]]
+script = ExtResource("2_g4qto")
+worldScene = ExtResource("4_61od6")
+
+[node name="walls" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="walls"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 14, 10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_61od6")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="walls"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -14, 10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/StaticBody3D2"]
+shape = SubResource("WorldBoundaryShape3D_61od6")
+
+[node name="WorldElement" parent="." instance=ExtResource("4_61od6")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MainMenue" parent="UI" instance=ExtResource("3_hr5et")]
+
+[node name="Label" type="Label" parent="UI"]
+anchors_preset = -1
+anchor_right = 0.201
+anchor_bottom = 0.159
+offset_right = -0.552002
+offset_bottom = -0.0320053
+theme_override_font_sizes/font_size = 30
+text = "score : 0"

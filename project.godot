@@ -10,9 +10,21 @@ config_version=5
 
 [application]
 
-config/name="Moteur3D-Projet-Template"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/name="CelesteRunner"
+run/main_scene="uid://wqymescm5b5k"
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=900
+
+[global_group]
+
+player=""
+gameManager=""
+scoreList=""
 
 [rendering]
 

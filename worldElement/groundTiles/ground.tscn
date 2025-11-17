@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://brur4bcgca3ya"]
+
+[ext_resource type="Material" uid="uid://vfvviwn3lmb" path="res://ressources/Materials/ground.tres" id="1_cr4sx"]
+[ext_resource type="Script" uid="uid://iro5hcobgug2" path="res://worldElement/groundTiles/ground.gd" id="1_pcd0v"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_7tbfk"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pcd0v"]
+material = ExtResource("1_cr4sx")
+
+[sub_resource type="Skin" id="Skin_cxqsp"]
+bind_count = 1
+bind/0/name = &""
+bind/0/bone = -1
+bind/0/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Ground" type="StaticBody3D"]
+script = ExtResource("1_pcd0v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_7tbfk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+mesh = SubResource("PlaneMesh_pcd0v")
+skin = SubResource("Skin_cxqsp")
+skeleton = NodePath("")

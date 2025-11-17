@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://cceujylhlyecd"]
+
+[ext_resource type="PackedScene" uid="uid://cuu0rm1xoxb8s" path="res://ressources/Models/player.glb" id="1_uyire"]
+[ext_resource type="Script" uid="uid://uqsojnp7scnj" path="res://player/playerModel.gd" id="2_6olgr"]
+[ext_resource type="Material" uid="uid://ewk4uvif0qia" path="res://ressources/Materials/redHaire.tres" id="2_ct271"]
+[ext_resource type="Script" uid="uid://bhis4xte3qwpm" path="res://player/animation_player.gd" id="2_ldwlr"]
+
+[node name="playerModel" instance=ExtResource("1_uyire")]
+script = ExtResource("2_6olgr")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/5/rotation = Quaternion(0.0710793, -0.0393209, -0.916653, 0.391343)
+bones/6/rotation = Quaternion(0.0336596, 0.0133487, -0.120997, 0.991992)
+bones/7/rotation = Quaternion(2.35196e-07, 1.62179e-07, 0.901141, 0.433526)
+bones/8/rotation = Quaternion(-1.78664e-07, -9.0964e-08, 0.159493, 0.987199)
+bones/9/position = Vector3(0.325827, -0.485859, 0.454291)
+bones/9/rotation = Quaternion(0.991714, 0.0813209, 0.00351261, 0.0993851)
+bones/9/scale = Vector3(0.999997, 1, 0.999996)
+bones/10/rotation = Quaternion(0.103983, 0.0168458, 0.0109357, 0.994376)
+bones/10/scale = Vector3(1, 1, 1)
+bones/12/position = Vector3(0.377513, -0.791991, 1.03024)
+bones/12/rotation = Quaternion(0.705559, 0.0467546, 0.0467547, 0.705559)
+bones/13/position = Vector3(-0.325827, -0.485859, 0.454291)
+bones/13/rotation = Quaternion(0.991714, -0.0813209, -0.00351264, 0.0993851)
+bones/13/scale = Vector3(0.999997, 1, 0.999996)
+bones/14/rotation = Quaternion(0.103983, -0.0168458, -0.0109356, 0.994376)
+bones/14/scale = Vector3(1, 1, 1)
+bones/16/position = Vector3(-0.377513, -0.791991, 1.03024)
+bones/16/rotation = Quaternion(0.705559, -0.0467546, -0.0467547, 0.705559)
+
+[node name="Cube_001" parent="Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("2_ct271")
+
+[node name="Cube_006" parent="Armature/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("2_ct271")
+
+[node name="Cube_007" parent="Armature/Skeleton3D" index="5"]
+surface_material_override/0 = ExtResource("2_ct271")
+
+[node name="Cube_008" parent="Armature/Skeleton3D" index="6"]
+surface_material_override/0 = ExtResource("2_ct271")
+
+[node name="Cube_009" parent="Armature/Skeleton3D" index="7"]
+surface_material_override/0 = ExtResource("2_ct271")
+
+[node name="Cube_010" parent="Armature/Skeleton3D" index="8"]
+surface_material_override/0 = ExtResource("2_ct271")
+
+[node name="Cube_011" parent="Armature/Skeleton3D" index="9"]
+surface_material_override/0 = ExtResource("2_ct271")
+
+[node name="BezierCircle" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67078, 0)
+
+[node name="AnimationPlayer" parent="." index="2"]
+script = ExtResource("2_ldwlr")
