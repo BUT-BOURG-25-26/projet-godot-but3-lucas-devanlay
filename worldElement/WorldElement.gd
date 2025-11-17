@@ -9,18 +9,19 @@ var boxList : Array[BaseBox]
 @export var dirtBoxScene : PackedScene 
 
 var gameSpeed : float = 1
-var distanceUntilNextTile = 60
-const tileSize = 60
+var distanceUntilNextTile : int
+const tileSize : int = 60
 @export var pregeneratedTileNumber : int = 50
 
 func _ready() -> void:
 	distanceUntilNextTile= tileSize
 	preGenerateTerraine()
 
+#Moves the entire map backward by the set speed
 func _physics_process(delta: float) -> void:
 	if(gameIsOngoing):
 		global_position.z+=gameSpeed
-		distanceUntilNextTile -=gameSpeed
+		distanceUntilNextTile -= gameSpeed
 
 func _process(delta: float) -> void:
 	if(distanceUntilNextTile<=0 and gameIsOngoing):
@@ -41,7 +42,7 @@ func preGenerateTerraine():
 func addObstacles(placement : int =0) ->void:
 	var limit : int = randi_range(0,gameSpeed)
 	for i in range(limit):
-		addBoxTile(placement)
+		addBoxes(placement)
 
 func addGroundTile(placement : int =0):
 	var tile : GroundTile = groundTileScene.instantiate() 
@@ -50,8 +51,8 @@ func addGroundTile(placement : int =0):
 	await tile.ready
 	tile.global_position.y = 0
 	tile.global_position.z = -placement*tileSize
-		
-func addBoxTile(placement : int =0):
+
+func addBoxes(placement : int =0):
 	var box : BaseBox = dirtBoxScene.instantiate()
 	boxList.append(box)
 	add_child.call_deferred(box)
@@ -71,7 +72,7 @@ func deleteElementsOutideView():
 		if(boxList[0].global_position.z>tileSize or boxList[0].global_position.y<-4):
 			boxList[0].queue_free()
 			boxList.pop_front()
-		
+
 func clearAll():
 	for i in range(len(groundTiles)):
 		groundTiles[i].queue_free()
@@ -84,5 +85,3 @@ func restart():
 	clearAll()
 	distanceUntilNextTile= tileSize
 	preGenerateTerraine()
-
-	

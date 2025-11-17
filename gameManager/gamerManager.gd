@@ -18,18 +18,14 @@ func _ready() -> void:
 	player = $"../player"
 	menue = $"../UI/MainMenue"
 	worldElem = $"../WorldElement"
-	distanceLable = $"../UI/Label"
+	distanceLable = $"../UI/Score"
 	mainScene = $".."
 	
 func _process(delta: float) -> void:
 	if(!gameHasStarted):
 		print("hasn't started")
 		if(listenForInputs()):
-			gameHasStarted= true
-			prepareWorld()
-			preparePlayer()
-			menue.hide()	
-			distanceTraveled = 0
+			start()
 	elif(gameHasEnded):
 		print("ended")
 		if(listenForInputs()):
@@ -39,7 +35,6 @@ func _process(delta: float) -> void:
 		if(updateGameSpeed()):
 			player.speedUpRunning()
 		worldElem.gameSpeed = gameSpeed
-		distanceLable.text = "score : "+str(int(distanceTraveled))
 
 func preparePlayer()->void:
 	player.turningAround = true
@@ -49,11 +44,11 @@ func prepareWorld()->void:
 	worldElem.gameIsOngoing = true
 	worldElem.gameSpeed = gameSpeed
 	
-func endPlayer()->void:
+func resetPlayer()->void:
 	player.gameIsOngoing = false
 	player.turningAround = true
 	
-func endWorld()->void:
+func resetWorld()->void:
 	worldElem.gameIsOngoing = false
 	worldElem.gameSpeed = 0
 
@@ -70,20 +65,23 @@ func listenForInputs():
 func gameOver():
 	gameHasEnded = true
 	gameSpeed = 0
-	endPlayer()
-	endWorld()
+	resetPlayer()
+	resetWorld()
 	get_tree().get_first_node_in_group("scoreList").addScore(distanceTraveled)
 	distanceTraveled = 0
-	menue.show()
+	menue.updateAndShow()
 	Engine.time_scale=1
 
 func increaseDistanceTraveled():
 	distanceTraveled +=gameSpeed
+	distanceLable.text = "score : "+str(int(distanceTraveled))
 
 func updateGameSpeed() -> bool:
 	if(nextTarget<=distanceTraveled):
 		gameSpeed+=0.5
-		if(gameSpeed>20):
+		if(gameSpeed >= 20 ):
+			return true
+		if(gameSpeed>15):
 			nextTarget=nextTarget*5
 		elif(gameSpeed>10):
 			nextTarget=nextTarget*4
@@ -91,6 +89,13 @@ func updateGameSpeed() -> bool:
 			nextTarget=nextTarget*3
 		return true
 	return false
+	
+func start():
+	gameHasStarted= true
+	prepareWorld()
+	preparePlayer()
+	menue.hide()
+	distanceTraveled = 0
 	
 func restart():
 	player.model.show()
