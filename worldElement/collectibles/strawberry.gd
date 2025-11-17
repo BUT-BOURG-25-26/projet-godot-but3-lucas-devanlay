@@ -3,6 +3,10 @@ extends Node3D
 
 var value : float = 500
 
+func _ready() -> void:
+	var animationPlayer = $AnimationPlayer
+	animationPlayer.play("rotation")
+
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if(body is Player):
 		var gameManager = get_tree().get_first_node_in_group("gameManager")

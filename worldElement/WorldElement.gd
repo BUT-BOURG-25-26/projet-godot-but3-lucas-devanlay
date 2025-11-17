@@ -93,7 +93,6 @@ func addStrawberry(placement : int =0):
 	berry.global_position.z = -placement*tileSize+limitZ
 	berry.global_position.x = limitX
 	
-		
 func deleteElementsOutideView():
 	if(groundTiles!=[] ):
 		if(groundTiles[0].global_position.z>tileSize):
