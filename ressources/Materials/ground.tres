@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://vfvviwn3lmb"]
+
+[ext_resource type="Texture2D" uid="uid://ca12ddv3pvgo0" path="res://ressources/Textures/road1.png" id="1_7q6ux"]
+
+[resource]
+albedo_texture = ExtResource("1_7q6ux")
+metallic = 1.0
+metallic_texture = ExtResource("1_7q6ux")
+roughness_texture = ExtResource("1_7q6ux")
