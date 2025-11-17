@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dgse65bexnbc4"]
 
-[ext_resource type="Script" uid="uid://ckbw7wjndx1jw" path="res://Menues/gameOverMenue/gameOverMenue.gd" id="1_nrq57"]
+[ext_resource type="Script" path="res://Menues/gameOverMenue/gameOverMenue.gd" id="1_nrq57"]
 [ext_resource type="FontFile" uid="uid://w04gwi0drdjr" path="res://ressources/Fonts/Renogare.otf" id="2_8hgs6"]
 
 [node name="GameOver" type="Control"]
