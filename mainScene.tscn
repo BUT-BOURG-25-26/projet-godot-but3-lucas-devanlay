@@ -34,16 +34,16 @@ worldScene = ExtResource("4_61od6")
 
 [node name="walls" type="Node3D" parent="."]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="walls"]
+[node name="wall1" type="StaticBody3D" parent="walls"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 14, 10, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall1"]
 shape = SubResource("WorldBoundaryShape3D_61od6")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="walls"]
+[node name="wall2" type="StaticBody3D" parent="walls"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -14, 10, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/StaticBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall2"]
 shape = SubResource("WorldBoundaryShape3D_61od6")
 
 [node name="WorldElement" parent="." instance=ExtResource("4_61od6")]
