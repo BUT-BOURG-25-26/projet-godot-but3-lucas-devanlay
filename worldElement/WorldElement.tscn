@@ -23,8 +23,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5751, 2.59691, 5.78753)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7987, 2.57922, -2.63795)
 
 [node name="DirtBox3" parent="." instance=ExtResource("3_1xntr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3986, 3.55231, 13.4572)
-gravity_scale = 8.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3986, 2.95617, 13.4572)
 
 [node name="DirtBox4" parent="." instance=ExtResource("3_1xntr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6588, 2.98747, 6.27866)
+
+[node name="DirtBox5" parent="." instance=ExtResource("3_1xntr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3986, 7.41517, 5.53355)
+
+[connection signal="body_entered" from="DirtBox" to="DirtBox" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="DirtBox" to="DirtBox" method="_on_body_shape_entered"]
+[connection signal="body_entered" from="DirtBox2" to="DirtBox2" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="DirtBox2" to="DirtBox2" method="_on_body_shape_entered"]
+[connection signal="body_entered" from="DirtBox3" to="DirtBox3" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="DirtBox3" to="DirtBox3" method="_on_body_shape_entered"]
+[connection signal="body_entered" from="DirtBox4" to="DirtBox4" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="DirtBox4" to="DirtBox4" method="_on_body_shape_entered"]
+[connection signal="body_entered" from="DirtBox5" to="DirtBox5" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="DirtBox5" to="DirtBox5" method="_on_body_shape_entered"]
