@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://wqymescm5b5k"]
+[gd_scene load_steps=10 format=3 uid="uid://bt2vkmrpam56u"]
 
 [ext_resource type="PackedScene" uid="uid://bui44bws5ufjk" path="res://player/player.tscn" id="1_iwpey"]
 [ext_resource type="Script" uid="uid://d0cmhkikeqc6c" path="res://gameManager/gamerManager.gd" id="2_g4qto"]
-[ext_resource type="PackedScene" uid="uid://cn28nruh4g53a" path="res://Menues/menue.tscn" id="3_hr5et"]
+[ext_resource type="PackedScene" uid="uid://bkw0ocrujijuk" path="res://Menues/menue.tscn" id="3_hr5et"]
+[ext_resource type="PackedScene" uid="uid://dgse65bexnbc4" path="res://Menues/gameOverMenue/gameOver.tscn" id="4_6mfv6"]
 [ext_resource type="PackedScene" uid="uid://0jhci6oqaxfb" path="res://worldElement/WorldElement.tscn" id="4_61od6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iwpey"]
@@ -49,6 +50,9 @@ shape = SubResource("WorldBoundaryShape3D_61od6")
 [node name="WorldElement" parent="." instance=ExtResource("4_61od6")]
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GameOverMenue" parent="UI" instance=ExtResource("4_6mfv6")]
+visible = false
 
 [node name="MainMenue" parent="UI" instance=ExtResource("3_hr5et")]
 

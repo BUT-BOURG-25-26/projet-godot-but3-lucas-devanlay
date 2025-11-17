@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn28nruh4g53a"]
+[gd_scene load_steps=5 format=3 uid="uid://bkw0ocrujijuk"]
 
 [ext_resource type="Script" uid="uid://c4pto6n8qehr3" path="res://Menues/mainMenue.gd" id="1_afckf"]
 [ext_resource type="FontFile" uid="uid://w04gwi0drdjr" path="res://ressources/Fonts/Renogare.otf" id="1_utcse"]
-[ext_resource type="Script" uid="uid://bmwgkasswpysc" path="res://Menues/scoreList.gd" id="1_viy6b"]
+[ext_resource type="Script" path="res://Menues/scoreList.gd" id="1_viy6b"]
 [ext_resource type="Script" uid="uid://dsw78j024470" path="res://Menues/closeButton.gd" id="3_dfnn4"]
 
 [node name="Menue" type="CanvasLayer"]

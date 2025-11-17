@@ -85,3 +85,8 @@ func restart():
 	clearAll()
 	distanceUntilNextTile= tileSize
 	preGenerateTerraine()
+	
+func resetWorld():
+	global_position = Vector3(0,0,0)
+	gameIsOngoing = 0
+	gameSpeed = 1

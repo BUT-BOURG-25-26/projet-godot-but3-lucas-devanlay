@@ -44,3 +44,8 @@ func speedUpRunning():
 	var model = $playerModel
 	model.speedUpRun()
 	
+func resetPlayer():
+	global_position = Vector3(0,0,0)
+	global_rotation.y=0
+	turningAround =false
+	gameIsOngoing = false
