@@ -1,9 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn28nruh4g53a"]
+[gd_scene load_steps=4 format=3 uid="uid://cn28nruh4g53a"]
 
+[ext_resource type="FontFile" uid="uid://w04gwi0drdjr" path="res://ressources/Fonts/Renogare.otf" id="1_utcse"]
 [ext_resource type="Script" uid="uid://bmwgkasswpysc" path="res://Menues/scoreList.gd" id="1_viy6b"]
-
-[sub_resource type="Theme" id="Theme_8g48j"]
-default_font_size = 80
+[ext_resource type="Script" uid="uid://dsw78j024470" path="res://Menues/closeButton.gd" id="3_dfnn4"]
 
 [node name="Menue" type="CanvasLayer"]
 
@@ -16,7 +15,8 @@ offset_left = 2.0
 offset_top = 0.299999
 offset_right = 1.0
 offset_bottom = 0.399994
-theme = SubResource("Theme_8g48j")
+theme_override_fonts/font = ExtResource("1_utcse")
+theme_override_font_sizes/font_size = 64
 text = "CELEST RUNNER"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -30,9 +30,11 @@ anchor_bottom = 0.941
 offset_left = 0.119995
 offset_right = -1.79999
 offset_bottom = 0.0999756
+theme_override_fonts/font = ExtResource("1_utcse")
+theme_override_font_sizes/font_size = 24
 script = ExtResource("1_viy6b")
 
-[node name="ScoreLable" type="Label" parent="."]
+[node name="ScoreBoardLable" type="Label" parent="."]
 anchors_preset = -1
 anchor_left = 0.161
 anchor_top = 0.286
@@ -42,7 +44,23 @@ offset_left = 0.0799866
 offset_top = -0.400024
 offset_right = -0.200012
 offset_bottom = -0.399994
+theme_override_fonts/font = ExtResource("1_utcse")
 theme_override_font_sizes/font_size = 30
 text = "TOP SCORES"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.879
+anchor_right = 1.0
+anchor_bottom = 0.107
+offset_left = 0.119934
+offset_bottom = -12.3
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_utcse")
+theme_override_font_sizes/font_size = 64
+text = "X"
+script = ExtResource("3_dfnn4")
+
+[connection signal="pressed" from="CloseButton" to="CloseButton" method="_on_pressed"]
