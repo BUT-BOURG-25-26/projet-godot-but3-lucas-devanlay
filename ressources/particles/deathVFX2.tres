@@ -5,7 +5,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_3xl4m"]
-_limits = [-1.0, 1.0, 0.0, 1.0]
+_limits = [-1.0, 0.0786517, 0.0, 1.0]
 _data = [Vector2(0, 0.0786517), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -14,8 +14,6 @@ curve_x = SubResource("Curve_fxbeb")
 curve_z = SubResource("Curve_3xl4m")
 
 [resource]
-angular_velocity_min = -68.94
-angular_velocity_max = 8.25998
 directional_velocity_min = -1.60933e-05
 directional_velocity_max = 60.0
 directional_velocity_curve = SubResource("CurveXYZTexture_ve8bx")

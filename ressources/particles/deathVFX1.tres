@@ -13,8 +13,6 @@ curve_x = SubResource("Curve_1c7oq")
 curve_z = SubResource("Curve_fxbeb")
 
 [resource]
-angular_velocity_min = -68.94
-angular_velocity_max = 8.25998
 directional_velocity_min = -1.60933e-05
 directional_velocity_max = 60.0
 directional_velocity_curve = SubResource("CurveXYZTexture_8yea6")
