@@ -98,21 +98,32 @@ func addSpikeBall(placement : int =0):
 func addBoxes(placement : int =0,double : bool =false):
 	var lowerLimit : int =gameSpeed-5
 	var multiply : int
+	var hasSpikes : bool = false
 	if(lowerLimit<0):
 		multiply = randi_range(0,gameSpeed/4)
 	else:
 		multiply= randi_range(lowerLimit,gameSpeed/4)
+		hasSpikes = randi_range(gameSpeed,100)>0
+	var limitX : float = randf_range(-16,16)
+	var limitZ : float = randf_range(0,60)
+	var box : BaseBox
 	for i in range(0,multiply+1):
-		var box : BaseBox = dirtBoxScene.instantiate()
+		box = dirtBoxScene.instantiate()
 		boxList.append(box)
 		add_child.call_deferred(box)
 		await box.ready
-		var limitX : float = randf_range(-16,16)
-		var limitZ : float = randf_range(0,60)
-		box.global_position.y = 3.5*(i+1)
+		box.global_position.y = 3*(i+1)
 		box.global_position.z = -placement*tileSize+limitZ
 		box.global_position.x = limitX
-		print(global_position)
+		if(hasSpikes):
+			var spike : Spike = singleSpikeScene.instantiate()
+			spikeList.append(spike)
+			box.add_child.call_deferred(spike)
+			await spike.ready
+			spike.global_position.y = 3*(i+1)
+			spike.global_position.z = -placement*tileSize+limitZ+2
+			spike.global_position.x = limitX
+			spike.rotate_x(PI/2)
 	
 func addCollectibles(placement : int =0):
 	var success : int = randi_range(gameSpeed,100)
