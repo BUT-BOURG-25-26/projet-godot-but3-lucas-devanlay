@@ -5,11 +5,13 @@ var gameIsOngoing : bool = false
 var groundTiles : Array[GroundTile]
 var boxList : Array[BaseBox]
 var strawberryList : Array[Strawberry]
+var spikeList : Array[Spike]
 
 @export var groundTileScene : PackedScene
 @export var dirtBoxScene : PackedScene 
 @export var strawberryScene : PackedScene 
-
+@export var singleSpikeScene : PackedScene
+@export var spikebaleScene : PackedScene
 @export var strawberrySpawnChance : int = 90
 
 var gameSpeed : float = 1
@@ -56,8 +58,9 @@ func preGenerateTerraine():
 func addObstacles(placement : int =0) ->void:
 	var limit : int
 	var double : bool = false
-	if(gameSpeed<2):
-		limit  = randi_range(0,1)
+	var isSpike : bool
+	if(gameSpeed<3):
+		limit  = randi_range(0,2)
 	elif(gameSpeed<4):
 		limit  = randi_range(0,2)
 		double = randi_range(0,15)>=15
@@ -74,7 +77,11 @@ func addObstacles(placement : int =0) ->void:
 		limit  = randi_range(5,8)
 		double = randi_range(0,1)
 	for i in range(limit):
-		addBoxes(placement, double)
+		isSpike = randi_range(0,1)
+		if(isSpike):
+			addSpikeBall(placement)
+		else:
+			addBoxes(placement, double)
 
 func addGroundTile(placement : int =0):
 	var tile : GroundTile = groundTileScene.instantiate() 
@@ -83,7 +90,18 @@ func addGroundTile(placement : int =0):
 	await tile.ready
 	tile.global_position.y = 0
 	tile.global_position.z = -placement*tileSize
-
+	
+func addSpikeBall(placement : int =0):
+	var spike : Spike = spikebaleScene.instantiate()
+	spikeList.append(spike)
+	add_child.call_deferred(spike)
+	await spike.ready
+	var limitX : float = randf_range(-16,16)
+	var limitZ : float = randf_range(0,60)
+	spike.global_position.y = 4
+	spike.global_position.z = -placement*tileSize+limitZ
+	spike.global_position.x = limitX
+	
 func addBoxes(placement : int =0,double : bool =false):
 	var box : BaseBox = dirtBoxScene.instantiate()
 	var box2 : BaseBox
@@ -143,9 +161,12 @@ func clearAll():
 		boxList[i].queue_free()
 	for i in range(len(strawberryList)):
 		strawberryList[i].queue_free()
+	for i in range(len(spikeList)):
+		spikeList[i].queue_free()	
 	groundTiles.clear()	
 	boxList.clear()
 	strawberryList.clear()
+	spikeList.clear()
 	
 func restart():
 	clearAll()

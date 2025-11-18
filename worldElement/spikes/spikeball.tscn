@@ -1,13 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://tlsclga6abf2"]
+[gd_scene load_steps=4 format=3 uid="uid://tlsclga6abf2"]
 
-[ext_resource type="PackedScene" uid="uid://bdgy4pdlmc8dl" path="res://ressources/Models/spike_ball.glb" id="1_ikfyc"]
+[ext_resource type="Script" uid="uid://bgt8hpni4pj28" path="res://worldElement/spikes/spike.gd" id="1_t25su"]
+[ext_resource type="PackedScene" uid="uid://bdgy4pdlmc8dl" path="res://ressources/Models/spike_ball.glb" id="2_3emxx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ikfyc"]
 
 [node name="Spikeball" type="Area3D"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+script = ExtResource("1_t25su")
 
-[node name="spike_ball" parent="." instance=ExtResource("1_ikfyc")]
+[node name="spike_ball" parent="." instance=ExtResource("2_3emxx")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("SphereShape3D_ikfyc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

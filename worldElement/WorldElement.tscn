@@ -1,15 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://0jhci6oqaxfb"]
+[gd_scene load_steps=7 format=3 uid="uid://0jhci6oqaxfb"]
 
 [ext_resource type="Script" uid="uid://c5chyokl55n84" path="res://worldElement/WorldElement.gd" id="1_iit2x"]
 [ext_resource type="PackedScene" uid="uid://brur4bcgca3ya" path="res://worldElement/groundTiles/ground.tscn" id="2_4cbjq"]
 [ext_resource type="PackedScene" uid="uid://bphngn78xk3k" path="res://worldElement/boxes/dirtBox.tscn" id="3_1xntr"]
 [ext_resource type="PackedScene" uid="uid://dhe1j5vo150ls" path="res://worldElement/collectibles/strawberry.tscn" id="4_a2qwj"]
+[ext_resource type="PackedScene" uid="uid://bhd0qaaj4gj4q" path="res://worldElement/spikes/singleSpike.tscn" id="5_hbkv8"]
+[ext_resource type="PackedScene" uid="uid://tlsclga6abf2" path="res://worldElement/spikes/spikeBall.tscn" id="6_qs2m5"]
 
 [node name="WorldElement" type="Node3D"]
 script = ExtResource("1_iit2x")
 groundTileScene = ExtResource("2_4cbjq")
 dirtBoxScene = ExtResource("3_1xntr")
 strawberryScene = ExtResource("4_a2qwj")
+singleSpikeScene = ExtResource("5_hbkv8")
+spikebaleScene = ExtResource("6_qs2m5")
 
 [node name="Ground" parent="." instance=ExtResource("2_4cbjq")]
 
