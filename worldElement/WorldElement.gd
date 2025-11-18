@@ -8,13 +8,14 @@ var strawberryList : Array[Strawberry]
 var spikeList : Array[Spike]
 
 @export var groundTileScene : PackedScene
-@export var dirtBoxScene : PackedScene 
+@export var dirtBoxScene : PackedScene
+@export var concreteBoxScene : PackedScene 
 @export var strawberryScene : PackedScene 
 @export var singleSpikeScene : PackedScene
 @export var spikeBaleScene : PackedScene
 @export var strawberrySpawnChance : int = 87
 
-var gameSpeed : float = 1
+var gameSpeed : float = 5
 var distanceUntilNextTile : int
 const tileSize : int = 60
 @export var pregeneratedTileNumber : int = 10
@@ -108,7 +109,10 @@ func addBoxes(placement : int =0,double : bool =false):
 	var limitZ : float = randf_range(0,60)
 	var box : BaseBox
 	for i in range(0,multiply+1):
-		box = dirtBoxScene.instantiate()
+		if(hasSpikes):
+			box = concreteBoxScene.instantiate()
+		else:
+			box = dirtBoxScene.instantiate()
 		boxList.append(box)
 		add_child.call_deferred(box)
 		await box.ready
