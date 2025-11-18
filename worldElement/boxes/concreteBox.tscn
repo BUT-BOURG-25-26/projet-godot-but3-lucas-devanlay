@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxmog028ahjg2"]
+
+[ext_resource type="PackedScene" uid="uid://b5vjlu8vqlssn" path="res://worldElement/boxes/basebox.tscn" id="1_rv346"]
+[ext_resource type="Texture2D" uid="uid://c8jyjq3hdgbq4" path="res://ressources/Textures/concrete_wall.png" id="2_8sxrr"]
+
+[node name="concreteBox" instance=ExtResource("1_rv346")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 0, 0, 0)
+
+[node name="Sprite3D3" type="Sprite3D" parent="." index="1"]
+transform = Transform3D(-6.55671e-07, 0, 15, 0, 15, 0, -15, 0, -6.55671e-07, 9.5, 0, 0)
+double_sided = false
+texture = ExtResource("2_8sxrr")
+
+[node name="Sprite3D2" type="Sprite3D" parent="." index="2"]
+transform = Transform3D(15, 0, 0, 0, -15, 1.31134e-06, 0, -1.31134e-06, -15, 0, 0, -9.5)
+double_sided = false
+texture = ExtResource("2_8sxrr")
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="3"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 9.5)
+double_sided = false
+texture = ExtResource("2_8sxrr")
+
+[node name="Sprite3D4" type="Sprite3D" parent="." index="4"]
+transform = Transform3D(-6.55671e-07, -1.31134e-06, -15, 0, -15, 1.31134e-06, -15, 5.73206e-14, 6.55671e-07, -9.5, 0, 0)
+double_sided = false
+texture = ExtResource("2_8sxrr")
+
+[node name="Sprite3D5" type="Sprite3D" parent="." index="5"]
+transform = Transform3D(15, 0, 0, 0, -6.55671e-07, 15, 0, -15, -6.55671e-07, 0, 9.4802, 0)
+double_sided = false
+texture = ExtResource("2_8sxrr")
+
+[node name="Sprite3D6" type="Sprite3D" parent="." index="6"]
+transform = Transform3D(15, 0, 0, 0, -6.55671e-07, -15, 0, 15, -6.55671e-07, 0, -9.5, 0)
+double_sided = false
+texture = ExtResource("2_8sxrr")
