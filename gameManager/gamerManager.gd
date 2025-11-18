@@ -62,7 +62,7 @@ func listenForInputs():
 func gameOver():
 	gameHasEnded = true
 	gameSpeed = 0
-	player.gameIsOngoing = false
+	player.kill()
 	resetWorld()
 	gameOverMenue.updateAndShow(distanceTraveled + externalScore)
 

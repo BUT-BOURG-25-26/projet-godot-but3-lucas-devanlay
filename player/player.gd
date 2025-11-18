@@ -22,11 +22,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		if(global_position.z>1):
 			print("game over")
-			deathVFX.emit()
-			model.hide() 
-			gameManager.gameOver()
-			global_position.z = 0
-			
+			gameManager.gameOver()			
 		elif(global_position.z>0):
 			velocity.z = -0.01
 		elif(global_position.z<0):
@@ -49,3 +45,9 @@ func resetPlayer():
 	global_rotation.y=0
 	turningAround =false
 	gameIsOngoing = false
+	
+func kill():
+	deathVFX.emit()
+	model.hide() 
+	gameIsOngoing = false
+	global_position.z = 0
