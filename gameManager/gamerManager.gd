@@ -15,6 +15,7 @@ var worldElem : WorldElement
 var mainScene : Node3D
 var gameSpeed : float = 1
 var nextTarget = 10
+var waiting = false
 
 func _ready() -> void:
 	player = $"../player"
@@ -26,11 +27,14 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if(!gameHasStarted):
-		if(listenForInputs()):
+		if(listenForInputs() and !waiting):
 			start()
 	elif(gameHasEnded):
 		if(listenForInputs()):
+			waiting = true
 			restart()
+			await get_tree().create_timer(0.5).timeout
+			waiting = false
 	else:
 		increaseDistanceTraveled()
 		if(updateGameSpeed()):

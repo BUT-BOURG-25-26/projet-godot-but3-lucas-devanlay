@@ -117,7 +117,6 @@ func addBoxes(placement : int =0,double : bool =false):
 		box.global_position.x = limitX
 		if(hasSpikes):
 			var spike : Spike = singleSpikeScene.instantiate()
-			spikeList.append(spike)
 			box.add_child.call_deferred(spike)
 			await spike.ready
 			spike.global_position.y = 3*(i+1)
