@@ -14,7 +14,7 @@ var distanceLable : Label
 var worldElem : WorldElement
 var mainScene : Node3D
 var gameSpeed : float = 1
-var nextTarget = 500
+var nextTarget = 10
 
 func _ready() -> void:
 	player = $"../player"
@@ -75,17 +75,17 @@ func addToExternalScore(additionScore : float):
 
 func updateGameSpeed() -> bool:
 	if(nextTarget<=distanceTraveled):
-		gameSpeed+=0.5
-		if(gameSpeed >= 20 ):
-			return true
-		if(gameSpeed>15):
-			nextTarget=nextTarget*5
+		gameSpeed+=0.1
+		if(gameSpeed >= 15 ):
+			return false
 		elif(gameSpeed>10):
 			nextTarget=nextTarget*4
-		else:
+		elif(gameSpeed>5):
 			nextTarget=nextTarget*3
+		else:
+			nextTarget=nextTarget*2
 		return true
-	return false
+	return true
 
 func start():
 	gameHasStarted= true

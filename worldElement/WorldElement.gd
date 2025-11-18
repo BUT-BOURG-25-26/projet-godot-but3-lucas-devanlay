@@ -59,7 +59,7 @@ func addObstacles(placement : int =0) ->void:
 	var double : bool = false
 	var isSpike : bool
 	var lowerLimit = gameSpeed/1.5-5
-	var upperLimit = gameSpeed+1
+	var upperLimit = gameSpeed+0.5
 	if(lowerLimit<0):
 		lowerLimit = 0
 	limit  = randi_range(lowerLimit,upperLimit)
