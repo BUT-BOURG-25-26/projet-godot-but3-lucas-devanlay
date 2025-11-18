@@ -21,7 +21,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = (-Input.get_action_strength("ui_left") + Input.get_action_strength("ui_right") )*20
 		move_and_slide()
 		if(global_position.z>1):
-			print("game over")
 			gameManager.gameOver()			
 		elif(global_position.z>0):
 			velocity.z = -0.01
@@ -42,7 +41,7 @@ func speedUpRunning():
 	
 func resetPlayer():
 	global_position = Vector3(0,0,0)
-	global_rotation.y=0
+	velocity = Vector3(0,0,0)
 	turningAround =false
 	gameIsOngoing = false
 	

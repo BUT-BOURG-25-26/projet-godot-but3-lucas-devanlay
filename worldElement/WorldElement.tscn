@@ -13,7 +13,7 @@ groundTileScene = ExtResource("2_4cbjq")
 dirtBoxScene = ExtResource("3_1xntr")
 strawberryScene = ExtResource("4_a2qwj")
 singleSpikeScene = ExtResource("5_hbkv8")
-spikebaleScene = ExtResource("6_qs2m5")
+spikeBaleScene = ExtResource("6_qs2m5")
 
 [node name="Ground" parent="." instance=ExtResource("2_4cbjq")]
 

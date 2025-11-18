@@ -11,13 +11,13 @@ var spikeList : Array[Spike]
 @export var dirtBoxScene : PackedScene 
 @export var strawberryScene : PackedScene 
 @export var singleSpikeScene : PackedScene
-@export var spikebaleScene : PackedScene
-@export var strawberrySpawnChance : int = 90
+@export var spikeBaleScene : PackedScene
+@export var strawberrySpawnChance : int = 87
 
 var gameSpeed : float = 1
 var distanceUntilNextTile : int
 const tileSize : int = 60
-@export var pregeneratedTileNumber : int = 15
+@export var pregeneratedTileNumber : int = 10
 
 func _ready() -> void:
 	var childrens = get_children()
@@ -43,7 +43,6 @@ func _process(delta: float) -> void:
 		addObstacles(pregeneratedTileNumber)
 		deleteElementsOutideView()
 		distanceUntilNextTile = tileSize - gameSpeed
-	print("Boxes :",len(boxList)," Strawberry :",len(strawberryList)," tiles :",len(groundTiles), " speed :",gameSpeed)
 
 func preGenerateTerraine():
 	addGroundTile(-1)
@@ -59,29 +58,16 @@ func addObstacles(placement : int =0) ->void:
 	var limit : int
 	var double : bool = false
 	var isSpike : bool
-	if(gameSpeed<3):
-		limit  = randi_range(0,2)
-	elif(gameSpeed<4):
-		limit  = randi_range(0,2)
-		double = randi_range(0,15)>=15
-	elif(gameSpeed<5):
-		limit  = randi_range(0,3)
-		double = randi_range(0,10)>=10
-	elif(gameSpeed<8):
-		limit  = randi_range(1,5)
-		double = randi_range(0,5)>=5
-	elif(gameSpeed<14):
-		limit  = randi_range(3,8)
-		double = randi_range(0,5)>=4
-	else:
-		limit  = randi_range(5,8)
-		double = randi_range(0,1)
+	var lowerLimit = gameSpeed/1.5-5
+	var upperLimit = gameSpeed+1
+	if(lowerLimit<0):
+		lowerLimit = 0
+	limit  = randi_range(lowerLimit,upperLimit)
+	double = randi_range(0,20-gameSpeed)<=5
 	for i in range(limit):
-		isSpike = randi_range(0,1)
-		if(isSpike):
+		if(i >= gameSpeed/3):
 			addSpikeBall(placement)
-		else:
-			addBoxes(placement, double)
+		addBoxes(placement, double)
 
 func addGroundTile(placement : int =0):
 	var tile : GroundTile = groundTileScene.instantiate() 
@@ -92,37 +78,41 @@ func addGroundTile(placement : int =0):
 	tile.global_position.z = -placement*tileSize
 	
 func addSpikeBall(placement : int =0):
-	var spike : Spike = spikebaleScene.instantiate()
-	spikeList.append(spike)
-	add_child.call_deferred(spike)
-	await spike.ready
+	var lowerLimit : int =gameSpeed-5
+	var multiply : int
+	if(lowerLimit<1):
+		multiply = randi_range(1,gameSpeed/4)
+	else:
+		multiply= randi_range(lowerLimit,gameSpeed/4)
 	var limitX : float = randf_range(-16,16)
 	var limitZ : float = randf_range(0,60)
-	spike.global_position.y = 4
-	spike.global_position.z = -placement*tileSize+limitZ
-	spike.global_position.x = limitX
+	for i in range(0,multiply):
+		var spike : Spike = spikeBaleScene.instantiate()
+		spikeList.append(spike)
+		add_child.call_deferred(spike)
+		await spike.ready
+		spike.global_position.y = randf_range(0,5)
+		spike.global_position.z = -placement*tileSize+limitZ+randf_range(-5,5)
+		spike.global_position.x = limitX+randf_range(-5,5)
 	
 func addBoxes(placement : int =0,double : bool =false):
-	var box : BaseBox = dirtBoxScene.instantiate()
-	var box2 : BaseBox
-	boxList.append(box)
-	add_child.call_deferred(box)
-	if(double):
-		box2 = dirtBoxScene.instantiate()
-		boxList.append(box2)
-		add_child.call_deferred(box2)
-	await box.ready
-	var limitX : float = randf_range(-16,16)
-	var limitZ : float = randf_range(0,60)
-	box.global_position.y = 3.5
-	box.global_position.z = -placement*tileSize+limitZ
-	box.global_position.x = limitX
-	if(double):
-		await box2.ready
-		box2.global_position.y = 7
-		box2.global_position.z = -placement*tileSize+limitZ
-		box2.global_position.x = limitX
-		box2.gravity_scale=0.5	
+	var lowerLimit : int =gameSpeed-5
+	var multiply : int
+	if(lowerLimit<0):
+		multiply = randi_range(0,gameSpeed/4)
+	else:
+		multiply= randi_range(lowerLimit,gameSpeed/4)
+	for i in range(0,multiply+1):
+		var box : BaseBox = dirtBoxScene.instantiate()
+		boxList.append(box)
+		add_child.call_deferred(box)
+		await box.ready
+		var limitX : float = randf_range(-16,16)
+		var limitZ : float = randf_range(0,60)
+		box.global_position.y = 3.5*(i+1)
+		box.global_position.z = -placement*tileSize+limitZ
+		box.global_position.x = limitX
+		print(global_position)
 	
 func addCollectibles(placement : int =0):
 	var success : int = randi_range(gameSpeed,100)
