@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://tlsclga6abf2"]
+
+[ext_resource type="PackedScene" uid="uid://bdgy4pdlmc8dl" path="res://ressources/Models/spike_ball.glb" id="1_ikfyc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ikfyc"]
+
+[node name="Spikeball" type="Area3D"]
+
+[node name="spike_ball" parent="." instance=ExtResource("1_ikfyc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+shape = SubResource("SphereShape3D_ikfyc")

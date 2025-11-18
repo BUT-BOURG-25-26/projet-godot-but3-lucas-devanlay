@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://idyyrojv5d2b"]
+
+[ext_resource type="PackedScene" uid="uid://bdgy4pdlmc8dl" path="res://ressources/Models/spike_ball.glb" id="1_igrsp"]
+
+[node name="spike_ball" instance=ExtResource("1_igrsp")]
