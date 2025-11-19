@@ -86,11 +86,19 @@ func updateGameSpeed() -> bool:
 		if(gameSpeed >= 15 ):
 			return false
 		elif(gameSpeed>10):
-			nextTarget=nextTarget*4
+			nextTarget=nextTarget + 5000
+		elif(gameSpeed>6):
+			nextTarget=nextTarget + 3000
 		elif(gameSpeed>5):
-			nextTarget=nextTarget*3
+			nextTarget=nextTarget + 2000
+		elif(gameSpeed>4):
+			nextTarget=nextTarget + 1000
+		elif(gameSpeed>3):
+			nextTarget=nextTarget + 750
+		elif(gameSpeed>2):
+			nextTarget=nextTarget + 500
 		else:
-			nextTarget=nextTarget*2
+			nextTarget=nextTarget + 100
 		return true
 	return true
 
@@ -105,7 +113,6 @@ func start():
 	
 func restart():
 	gameOverMenue.hide()
-	player.model.show()
 	player.resetPlayer()
 	worldElem.resetWorld()
 	worldElem.restart()

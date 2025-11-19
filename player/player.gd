@@ -44,6 +44,8 @@ func resetPlayer():
 	velocity = Vector3(0,0,0)
 	turningAround =false
 	gameIsOngoing = false
+	model.show()
+	rotate_y(PI)
 	
 func kill():
 	deathVFX.emit()

@@ -13,9 +13,9 @@ var spikeList : Array[Spike]
 @export var strawberryScene : PackedScene 
 @export var singleSpikeScene : PackedScene
 @export var spikeBaleScene : PackedScene
-@export var strawberrySpawnChance : int = 87
+@export var strawberrySpawnChance : int = 80
 
-var gameSpeed : float = 5
+var gameSpeed : float = 1
 var distanceUntilNextTile : int
 const tileSize : int = 60
 @export var pregeneratedTileNumber : int = 10
@@ -42,6 +42,7 @@ func _process(delta: float) -> void:
 	if(distanceUntilNextTile<=0 and gameIsOngoing):
 		addGroundTile(pregeneratedTileNumber)
 		addObstacles(pregeneratedTileNumber)
+		addCollectibles(pregeneratedTileNumber)
 		deleteElementsOutideView()
 		distanceUntilNextTile = tileSize - gameSpeed
 
@@ -59,8 +60,8 @@ func addObstacles(placement : int =0) ->void:
 	var limit : int
 	var double : bool = false
 	var isSpike : bool
-	var lowerLimit = gameSpeed/1.5-5
-	var upperLimit = gameSpeed+0.5
+	var lowerLimit = gameSpeed/2-5
+	var upperLimit = gameSpeed/2+0.5
 	if(lowerLimit<0):
 		lowerLimit = 0
 	limit  = randi_range(lowerLimit,upperLimit)
