@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7hvpqjdk1u7i"]
+
+[ext_resource type="Script" uid="uid://bqqlept7uaahi" path="res://Music/music.gd" id="1_d7ysw"]
+[ext_resource type="AudioStream" uid="uid://bmxpmkh6x3a36" path="res://ressources/Audio/musics/Celeste 64 OST _ Next Steps (Main Theme) [l_2sP1K1Hpo].mp3" id="2_8eoea"]
+[ext_resource type="AudioStream" uid="uid://ci2meyygpsx33" path="res://ressources/Audio/musics/Celeste 64_ Fragments of the Mountain  Full OST.mp3" id="3_kut1s"]
+
+[node name="Music" type="Node"]
+script = ExtResource("1_d7ysw")
+
+[node name="menuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kut1s")
+
+[node name="playingMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8eoea")

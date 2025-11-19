@@ -13,6 +13,7 @@ var gameOverMenue : Control
 var distanceLable : Label
 var worldElem : WorldElement
 var mainScene : Node3D
+var musicHanlder : musicHandler
 var gameSpeed : float = 1
 var nextTarget = 10
 var waiting = false
@@ -24,6 +25,7 @@ func _ready() -> void:
 	worldElem = $"../WorldElement"
 	distanceLable = $"../UI/Score"
 	mainScene = $".."
+	musicHanlder = $"../Music"
 	
 func _process(delta: float) -> void:
 	if(!gameHasStarted):
@@ -65,6 +67,7 @@ func listenForInputs():
 	
 func gameOver():
 	gameHasEnded = true
+	musicHanlder.inMenue = true
 	gameSpeed = 0
 	player.kill()
 	resetWorld()
@@ -98,6 +101,7 @@ func start():
 	menue.hide()
 	distanceTraveled = 0
 	externalScore = 0
+	musicHanlder.inMenue = false
 	
 func restart():
 	gameOverMenue.hide()

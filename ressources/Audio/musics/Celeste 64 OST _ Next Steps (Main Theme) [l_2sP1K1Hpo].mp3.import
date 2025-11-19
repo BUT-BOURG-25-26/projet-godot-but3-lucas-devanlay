@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bmxpmkh6x3a36"
+path="res://.godot/imported/Celeste 64 OST _ Next Steps (Main Theme) [l_2sP1K1Hpo].mp3-2cc121709fae948cc5d9c2fb100fe09e.mp3str"
+
+[deps]
+
+source_file="res://ressources/Audio/musics/Celeste 64 OST _ Next Steps (Main Theme) [l_2sP1K1Hpo].mp3"
+dest_files=["res://.godot/imported/Celeste 64 OST _ Next Steps (Main Theme) [l_2sP1K1Hpo].mp3-2cc121709fae948cc5d9c2fb100fe09e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bt2vkmrpam56u"]
+[gd_scene load_steps=11 format=3 uid="uid://bt2vkmrpam56u"]
 
 [ext_resource type="PackedScene" uid="uid://bui44bws5ufjk" path="res://player/player.tscn" id="1_iwpey"]
 [ext_resource type="Script" uid="uid://d0cmhkikeqc6c" path="res://gameManager/gamerManager.gd" id="2_g4qto"]
 [ext_resource type="PackedScene" uid="uid://v2e6edh5tl2g" path="res://Menues/menue.tscn" id="3_hr5et"]
 [ext_resource type="PackedScene" uid="uid://dgse65bexnbc4" path="res://Menues/gameOverMenue/gameOver.tscn" id="4_6mfv6"]
 [ext_resource type="PackedScene" uid="uid://0jhci6oqaxfb" path="res://worldElement/WorldElement.tscn" id="4_61od6"]
+[ext_resource type="PackedScene" uid="uid://b7hvpqjdk1u7i" path="res://Music/music.tscn" id="6_2qqqv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iwpey"]
 
@@ -64,3 +65,5 @@ offset_right = -0.552002
 offset_bottom = -0.0320053
 theme_override_font_sizes/font_size = 30
 text = "score : 0"
+
+[node name="Music" parent="." instance=ExtResource("6_2qqqv")]

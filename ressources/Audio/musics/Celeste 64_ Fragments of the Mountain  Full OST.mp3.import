@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ci2meyygpsx33"
+path="res://.godot/imported/Celeste 64_ Fragments of the Mountain  Full OST.mp3-e72cfefeb87aac85cc2a42a724c57943.mp3str"
+
+[deps]
+
+source_file="res://ressources/Audio/musics/Celeste 64_ Fragments of the Mountain  Full OST.mp3"
+dest_files=["res://.godot/imported/Celeste 64_ Fragments of the Mountain  Full OST.mp3-e72cfefeb87aac85cc2a42a724c57943.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
