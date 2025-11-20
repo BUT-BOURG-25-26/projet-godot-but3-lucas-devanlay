@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dhe1j5vo150ls"]
 
 [ext_resource type="PackedScene" uid="uid://bso81h8ygyrft" path="res://ressources/Models/strawberry.glb" id="1_afdm1"]
-[ext_resource type="Script" uid="uid://dnusd35r01tdd" path="res://worldElement/collectibles/strawberry.gd" id="2_7pjgk"]
+[ext_resource type="Script" uid="uid://dnusd35r01tdd" path="res://worldElements/bonus/strawberry.gd" id="2_7pjgk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_afdm1"]
 

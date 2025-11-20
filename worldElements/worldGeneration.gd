@@ -1,7 +1,7 @@
 class_name WorldGeneration
 extends Node3D
 
-var  worldManager : WorldElement
+var  worldManager : WorldManager
 var tileSize : int
 var groundTiles : Array[GroundTile]
 var boxList : Array[BaseBox]
@@ -58,12 +58,9 @@ func addObstacles(placement : int =0) ->void:
 		lowerLimit = 0
 	if(upperLimit<1):
 		upperLimit=1
-	print("I wnat a box!")
 	limit  = randi_range(lowerLimit,upperLimit)
 	double = randi_range(0,20-gameSpeed)<=5
 	for i in range(limit):
-		print("I box!")
-
 		if(i >= gameSpeed/3):
 			addSpikeBall(placement)
 		addBoxes(placement, double)

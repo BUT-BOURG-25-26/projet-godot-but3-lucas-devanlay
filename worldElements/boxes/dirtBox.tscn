@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bphngn78xk3k"]
 
-[ext_resource type="PackedScene" uid="uid://b5vjlu8vqlssn" path="res://worldElement/boxes/basebox.tscn" id="1_4hrss"]
-[ext_resource type="Script" uid="uid://dotlkpwci0yt0" path="res://worldElement/boxes/dirtBox.gd" id="2_r2ulq"]
+[ext_resource type="PackedScene" uid="uid://b5vjlu8vqlssn" path="res://worldElements/boxes/basebox.tscn" id="1_4hrss"]
+[ext_resource type="Script" uid="uid://dotlkpwci0yt0" path="res://worldElements/boxes/dirtBox.gd" id="2_r2ulq"]
 [ext_resource type="Texture2D" uid="uid://baog858saqd7g" path="res://ressources/Textures/rock_4.png" id="3_putgq"]
 
 [node name="DirtBox" instance=ExtResource("1_4hrss")]

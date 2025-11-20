@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxmog028ahjg2"]
 
-[ext_resource type="PackedScene" uid="uid://b5vjlu8vqlssn" path="res://worldElement/boxes/basebox.tscn" id="1_rv346"]
+[ext_resource type="PackedScene" uid="uid://b5vjlu8vqlssn" path="res://worldElements/boxes/basebox.tscn" id="1_rv346"]
 [ext_resource type="Texture2D" uid="uid://c8jyjq3hdgbq4" path="res://ressources/Textures/concrete_wall.png" id="2_8sxrr"]
-[ext_resource type="PackedScene" uid="uid://bi8m28tcymiw" path="res://worldElement/spikes/spikeSlabe.tscn" id="3_8sxrr"]
+[ext_resource type="PackedScene" uid="uid://bi8m28tcymiw" path="res://worldElements/spikes/spikeSlabe.tscn" id="3_8sxrr"]
 
 [node name="concreteBox" instance=ExtResource("1_rv346")]
 

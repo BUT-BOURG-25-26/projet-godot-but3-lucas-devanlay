@@ -11,7 +11,7 @@ var player : Player
 var menue : CanvasLayer
 var gameOverMenue : Control
 var distanceLable : Label
-var worldElem : WorldElement
+var worlManager : WorldManager
 var mainScene : Node3D
 var musicHanlder : musicHandler
 var gameSpeed : float = 1
@@ -22,7 +22,7 @@ func _ready() -> void:
 	player = $"../player"
 	menue = $"../UI/MainMenue"
 	gameOverMenue = $"../UI/GameOverMenue"
-	worldElem = $"../WorldElement"
+	worlManager = $"../WorldManager"
 	distanceLable = $"../UI/Score"
 	mainScene = $".."
 	musicHanlder = $"../Music"
@@ -41,19 +41,19 @@ func _process(delta: float) -> void:
 		increaseDistanceTraveled()
 		if(updateGameSpeed()):
 			player.speedUpRunning()
-		worldElem.gameSpeed = gameSpeed
+		worlManager.gameSpeed = gameSpeed
 
 func preparePlayer()->void:
 	player.turningAround = true
 	player.gameIsOngoing = true
 
 func prepareWorld()->void:
-	worldElem.gameIsOngoing = true
-	worldElem.gameSpeed = gameSpeed
+	worlManager.gameIsOngoing = true
+	worlManager.gameSpeed = gameSpeed
 
 func resetWorld()->void:
-	worldElem.gameIsOngoing = false
-	worldElem.gameSpeed = 0
+	worlManager.gameIsOngoing = false
+	worlManager.gameSpeed = 0
 
 func listenForInputs():
 	if(Input.get_action_strength("ui_accept")
@@ -114,8 +114,8 @@ func start():
 func restart():
 	gameOverMenue.hide()
 	player.resetPlayer()
-	worldElem.resetWorld()
-	worldElem.restart()
+	worlManager.resetWorld()
+	worlManager.restart()
 	menue.updateAndShow(distanceTraveled + externalScore)
 	resetAttributes()
 	print("restarted")

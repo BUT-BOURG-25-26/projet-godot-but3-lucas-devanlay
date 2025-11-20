@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://tlsclga6abf2"]
 
-[ext_resource type="Script" uid="uid://bgt8hpni4pj28" path="res://worldElement/spikes/spike.gd" id="1_t25su"]
+[ext_resource type="Script" uid="uid://bgt8hpni4pj28" path="res://worldElements/spikes/spike.gd" id="1_t25su"]
 [ext_resource type="PackedScene" uid="uid://bdgy4pdlmc8dl" path="res://ressources/Models/spike_ball.glb" id="2_3emxx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ikfyc"]

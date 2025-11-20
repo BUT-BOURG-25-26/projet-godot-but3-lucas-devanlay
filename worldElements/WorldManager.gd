@@ -1,4 +1,4 @@
-class_name WorldElement
+class_name WorldManager
 extends Node3D
 
 var gameSpeed : float = 5

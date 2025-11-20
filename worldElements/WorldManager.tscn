@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://0jhci6oqaxfb"]
 
-[ext_resource type="Script" uid="uid://c5chyokl55n84" path="res://worldElement/WorldElement.gd" id="1_iit2x"]
-[ext_resource type="PackedScene" uid="uid://brur4bcgca3ya" path="res://worldElement/groundTiles/ground.tscn" id="2_4cbjq"]
-[ext_resource type="PackedScene" uid="uid://bphngn78xk3k" path="res://worldElement/boxes/dirtBox.tscn" id="3_1xntr"]
-[ext_resource type="PackedScene" uid="uid://dhe1j5vo150ls" path="res://worldElement/collectibles/strawberry.tscn" id="4_a2qwj"]
-[ext_resource type="PackedScene" uid="uid://cxmog028ahjg2" path="res://worldElement/boxes/concreteBox.tscn" id="4_qs2m5"]
-[ext_resource type="PackedScene" uid="uid://tlsclga6abf2" path="res://worldElement/spikes/spikeball.tscn" id="6_qs2m5"]
-[ext_resource type="Script" uid="uid://ciosodcgfpls8" path="res://worldElement/worldGeneration.gd" id="8_w6hea"]
+[ext_resource type="Script" uid="uid://c5chyokl55n84" path="res://worldElements/WorldManager.gd" id="1_iit2x"]
+[ext_resource type="PackedScene" uid="uid://brur4bcgca3ya" path="res://worldElements/groundTiles/ground.tscn" id="2_4cbjq"]
+[ext_resource type="PackedScene" uid="uid://bphngn78xk3k" path="res://worldElements/boxes/dirtBox.tscn" id="3_1xntr"]
+[ext_resource type="PackedScene" uid="uid://dhe1j5vo150ls" path="res://worldElements/bonus/strawberry.tscn" id="4_a2qwj"]
+[ext_resource type="PackedScene" uid="uid://cxmog028ahjg2" path="res://worldElements/boxes/concreteBox.tscn" id="4_qs2m5"]
+[ext_resource type="PackedScene" uid="uid://tlsclga6abf2" path="res://worldElements/spikes/spikeball.tscn" id="6_qs2m5"]
+[ext_resource type="Script" uid="uid://ciosodcgfpls8" path="res://worldElements/worldGeneration.gd" id="8_w6hea"]
 
 [node name="WorldManager" type="Node3D"]
 script = ExtResource("1_iit2x")

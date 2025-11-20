@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://brur4bcgca3ya"]
 
 [ext_resource type="Material" uid="uid://vfvviwn3lmb" path="res://ressources/Materials/ground.tres" id="1_cr4sx"]
-[ext_resource type="Script" uid="uid://iro5hcobgug2" path="res://worldElement/groundTiles/ground.gd" id="1_pcd0v"]
+[ext_resource type="Script" uid="uid://iro5hcobgug2" path="res://worldElements/groundTiles/ground.gd" id="1_pcd0v"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_7tbfk"]
 
