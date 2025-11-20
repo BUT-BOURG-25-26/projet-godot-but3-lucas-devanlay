@@ -6,11 +6,13 @@ var turningAround : bool =false
 var gameManager : GameManager
 var deathVFX : Area3D
 var model : Node3D
+var respawnSFX : AudioStreamPlayer
 
 func _ready() -> void:
 	gameManager = get_tree().get_first_node_in_group("gameManager")
 	deathVFX = $DeathVfx
 	model = $playerModel
+	respawnSFX= $respawn
 	
 func _physics_process(delta: float) -> void:
 	if(gameIsOngoing):
@@ -44,6 +46,7 @@ func resetPlayer():
 	velocity = Vector3(0,0,0)
 	turningAround =false
 	gameIsOngoing = false
+	respawnSFX.play(0)
 	model.show()
 	rotate_y(PI)
 	

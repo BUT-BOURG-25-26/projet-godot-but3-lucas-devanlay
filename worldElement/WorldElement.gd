@@ -15,7 +15,7 @@ var spikeList : Array[Spike]
 @export var spikeBaleScene : PackedScene
 @export var strawberrySpawnChance : int = 80
 
-var gameSpeed : float = 1
+var gameSpeed : float = 5
 var distanceUntilNextTile : int
 const tileSize : int = 60
 @export var pregeneratedTileNumber : int = 10
@@ -120,14 +120,6 @@ func addBoxes(placement : int =0,double : bool =false):
 		box.global_position.y = 3*(i+1)
 		box.global_position.z = -placement*tileSize+limitZ
 		box.global_position.x = limitX
-		if(hasSpikes):
-			var spike : Spike = singleSpikeScene.instantiate()
-			box.add_child.call_deferred(spike)
-			await spike.ready
-			spike.global_position.y = 3*(i+1)
-			spike.global_position.z = -placement*tileSize+limitZ+2
-			spike.global_position.x = limitX
-			spike.rotate_x(PI/2)
 	
 func addCollectibles(placement : int =0):
 	var success : int = randi_range(gameSpeed,100)

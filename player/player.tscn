@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bui44bws5ufjk"]
+[gd_scene load_steps=6 format=3 uid="uid://bui44bws5ufjk"]
 
 [ext_resource type="PackedScene" uid="uid://cceujylhlyecd" path="res://player/playerModel.tscn" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://cj0mnefx753nv" path="res://player/player.gd" id="2_rkbax"]
 [ext_resource type="PackedScene" uid="uid://dwty00g5f63fw" path="res://player/deathVFX.tscn" id="3_g1dw6"]
+[ext_resource type="AudioStream" uid="uid://chpajehsocw85" path="res://ressources/Audio/sfx/respawnSFX.wav" id="4_yw30f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rkbax"]
 
@@ -17,3 +18,7 @@ transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0.208369, 2.0421, -0.06
 shape = SubResource("CapsuleShape3D_rkbax")
 
 [node name="DeathVfx" parent="." instance=ExtResource("3_g1dw6")]
+
+[node name="respawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yw30f")
+volume_db = -4.0
