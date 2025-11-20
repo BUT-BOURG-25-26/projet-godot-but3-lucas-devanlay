@@ -5,17 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://bphngn78xk3k" path="res://worldElement/boxes/dirtBox.tscn" id="3_1xntr"]
 [ext_resource type="PackedScene" uid="uid://dhe1j5vo150ls" path="res://worldElement/collectibles/strawberry.tscn" id="4_a2qwj"]
 [ext_resource type="PackedScene" uid="uid://cxmog028ahjg2" path="res://worldElement/boxes/concreteBox.tscn" id="4_qs2m5"]
-[ext_resource type="PackedScene" uid="uid://bhd0qaaj4gj4q" path="res://worldElement/spikes/singleSpike.tscn" id="5_hbkv8"]
 [ext_resource type="PackedScene" uid="uid://tlsclga6abf2" path="res://worldElement/spikes/spikeball.tscn" id="6_qs2m5"]
+[ext_resource type="Script" uid="uid://ciosodcgfpls8" path="res://worldElement/worldGeneration.gd" id="8_w6hea"]
 
-[node name="WorldElement" type="Node3D"]
+[node name="WorldManager" type="Node3D"]
 script = ExtResource("1_iit2x")
-groundTileScene = ExtResource("2_4cbjq")
-dirtBoxScene = ExtResource("3_1xntr")
-concreteBoxScene = ExtResource("4_qs2m5")
-strawberryScene = ExtResource("4_a2qwj")
-singleSpikeScene = ExtResource("5_hbkv8")
-spikeBaleScene = ExtResource("6_qs2m5")
 
 [node name="Ground" parent="." instance=ExtResource("2_4cbjq")]
 
@@ -75,6 +69,14 @@ axis_lock_linear_z = false
 axis_lock_angular_x = false
 axis_lock_angular_y = false
 axis_lock_angular_z = false
+
+[node name="worldGeneration" type="Node3D" parent="."]
+script = ExtResource("8_w6hea")
+groundTileScene = ExtResource("2_4cbjq")
+dirtBoxScene = ExtResource("3_1xntr")
+concreteBoxScene = ExtResource("4_qs2m5")
+strawberryScene = ExtResource("4_a2qwj")
+spikeBaleScene = ExtResource("6_qs2m5")
 
 [connection signal="body_entered" from="DirtBox" to="DirtBox" method="_on_body_entered"]
 [connection signal="body_shape_entered" from="DirtBox" to="DirtBox" method="_on_body_shape_entered"]
