@@ -14,7 +14,7 @@ var distanceLable : Label
 var worlManager : WorldManager
 var mainScene : Node3D
 var musicHanlder : musicHandler
-var gameSpeed : float = 1
+var difficulty : float = 1
 var nextTarget = 10
 var waiting = false
 
@@ -39,9 +39,9 @@ func _process(delta: float) -> void:
 			waiting = false
 	else:
 		increaseDistanceTraveled()
-		if(updateGameSpeed()):
+		if(updateDifficulty()):
 			player.speedUpRunning()
-		worlManager.gameSpeed = gameSpeed
+		worlManager.difficulty = difficulty
 
 func preparePlayer()->void:
 	player.turningAround = true
@@ -49,11 +49,11 @@ func preparePlayer()->void:
 
 func prepareWorld()->void:
 	worlManager.gameIsOngoing = true
-	worlManager.gameSpeed = gameSpeed
+	worlManager.difficulty = difficulty
 
 func resetWorld()->void:
 	worlManager.gameIsOngoing = false
-	worlManager.gameSpeed = 0
+	worlManager.difficulty = 0
 
 func listenForInputs():
 	if(Input.get_action_strength("ui_accept")
@@ -67,7 +67,7 @@ func listenForInputs():
 	
 func gameOver():
 	musicHanlder.inMenue = true
-	gameSpeed = 0
+	difficulty = 0
 	player.kill()
 	resetWorld()
 	gameOverMenue.updateAndShow(distanceTraveled + externalScore)
@@ -75,28 +75,28 @@ func gameOver():
 	gameHasEnded = true
 
 func increaseDistanceTraveled():
-	distanceTraveled +=gameSpeed
+	distanceTraveled +=difficulty
 	distanceLable.text = "score : "+str(int(distanceTraveled + externalScore))
 	
 func addToExternalScore(additionScore : float):
 	externalScore += additionScore
 
-func updateGameSpeed() -> bool:
+func updateDifficulty() -> bool:
 	if(nextTarget<=distanceTraveled):
-		gameSpeed+=0.1
-		if(gameSpeed >= 15 ):
+		difficulty+=0.1
+		if(difficulty >= 15 ):
 			return false
-		elif(gameSpeed>10):
+		elif(difficulty>10):
 			nextTarget=nextTarget + 5000
-		elif(gameSpeed>6):
+		elif(difficulty>6):
 			nextTarget=nextTarget + 3000
-		elif(gameSpeed>5):
+		elif(difficulty>5):
 			nextTarget=nextTarget + 2000
-		elif(gameSpeed>4):
+		elif(difficulty>4):
 			nextTarget=nextTarget + 1000
-		elif(gameSpeed>3):
+		elif(difficulty>3):
 			nextTarget=nextTarget + 750
-		elif(gameSpeed>2):
+		elif(difficulty>2):
 			nextTarget=nextTarget + 500
 		else:
 			nextTarget=nextTarget + 100
@@ -125,7 +125,7 @@ func resetAttributes():
 	distanceTraveled = 0
 	externalScore = 0
 	gameHasStarted = false
-	gameSpeed = 1
+	difficulty = 1
 	gameHasEnded= false
 
 func quite():

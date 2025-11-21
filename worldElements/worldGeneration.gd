@@ -8,8 +8,8 @@ var boxList : Array[BaseBox]
 var strawberryList : Array[Strawberry]
 var spikeList : Array[Spike]
 
-var gameSpeed : int =1
-@export var pregeneratedTileNumber : int = 10
+var difficulty : float =0 #same as gameSpeed from WorldManager
+@export var pregeneratedTileNumber : int = 30
 
 @export var groundTileScene : PackedScene
 @export var dirtBoxScene : PackedScene
@@ -31,8 +31,8 @@ func _ready() -> void:
 			strawberryList.append(childrens[i])
 	preGenerateTerraine()
 
-func generateNext(newGameSpeed : int):
-	gameSpeed = newGameSpeed
+func generateNext(newdifficulty : int):
+	difficulty = newdifficulty
 	addGroundTile(pregeneratedTileNumber)
 	addObstacles(pregeneratedTileNumber)
 	addCollectibles(pregeneratedTileNumber)
@@ -42,26 +42,29 @@ func preGenerateTerraine():
 	addGroundTile(-1)
 	addGroundTile(0)
 	addGroundTile(1)
+	addGroundTile(2)
 	print("pregenerating")
-	for i in range(2,pregeneratedTileNumber+1):
+	for i in range(3,pregeneratedTileNumber+1):
+		difficulty = i/10
 		addGroundTile(i)
 		addObstacles(i)
 		addCollectibles(i)
+	difficulty = 1
 
 func addObstacles(placement : int =0) ->void:
 	var limit : int
 	var double : bool = false
 	var isSpike : bool
-	var lowerLimit = gameSpeed/2-5
-	var upperLimit = gameSpeed/2+0.5
+	var lowerLimit = difficulty/2-5
+	var upperLimit = difficulty/2+0.5
 	if(lowerLimit<0):
 		lowerLimit = 0
 	if(upperLimit<1):
 		upperLimit=1
 	limit  = randi_range(lowerLimit,upperLimit)
-	double = randi_range(0,20-gameSpeed)<=5
+	double = randi_range(0,20-difficulty)<=5
 	for i in range(limit):
-		if(i >= gameSpeed/3):
+		if(difficulty>2 and i >= difficulty/2):
 			addSpikeBall(placement)
 		addBoxes(placement, double)
 
@@ -74,12 +77,12 @@ func addGroundTile(placement : int =0):
 	tile.global_position.z = -placement*tileSize
 	
 func addSpikeBall(placement : int =0):
-	var lowerLimit : int =gameSpeed-5
+	var lowerLimit : int =difficulty-5
 	var multiply : int
 	if(lowerLimit<1):
-		multiply = randi_range(1,gameSpeed/4)
+		multiply = randi_range(1,difficulty/4)
 	else:
-		multiply= randi_range(lowerLimit,gameSpeed/4)
+		multiply= randi_range(lowerLimit,difficulty/4)
 	var limitX : float = randf_range(-16,16)
 	var limitZ : float = randf_range(0,60)
 	for i in range(0,multiply):
@@ -92,16 +95,18 @@ func addSpikeBall(placement : int =0):
 		spike.global_position.x = limitX+randf_range(-5,5)
 	
 func addBoxes(placement : int =0,double : bool =false):
-	var lowerLimit : int =gameSpeed-5
+	var lowerLimit : int =difficulty-5
 	var multiply : int = lowerLimit
 	var hasSpikes : bool = false
 	if(lowerLimit<0):
-		multiply = randi_range(0,gameSpeed/4)
+		multiply = randi_range(0,difficulty/4)
 	else:
-		if(gameSpeed>2):
-			multiply= randi_range(lowerLimit,gameSpeed)
-		if(gameSpeed>3):
-			hasSpikes = randi_range(0,100)>=100-(gameSpeed-3)*10
+		if(difficulty>4):
+			multiply= randi_range(lowerLimit,3)
+		elif(difficulty>2):
+			multiply= randi_range(lowerLimit,difficulty)
+		if(difficulty>3):
+			hasSpikes = randi_range(0,100)>=100-(difficulty-3)*10
 	var limitX : float = randf_range(-16,16)
 	var limitZ : float = randf_range(0,60)
 	var box : BaseBox
@@ -113,12 +118,12 @@ func addBoxes(placement : int =0,double : bool =false):
 		boxList.append(box)
 		add_child.call_deferred(box)
 		await box.ready
-		box.global_position.y = 3*(i+1)
+		box.global_position.y = 3.5*(i+1)
 		box.global_position.z = -placement*tileSize+limitZ
 		box.global_position.x = limitX
 	
 func addCollectibles(placement : int =0):
-	var success : int = randi_range(gameSpeed,100)
+	var success : int = randi_range(difficulty,100)
 	if(success>=strawberrySpawnChance):
 		addStrawberry(placement)
 
@@ -127,9 +132,9 @@ func addStrawberry(placement : int =0):
 	strawberryList.append(berry)
 	add_child.call_deferred(berry)
 	await berry.ready
-	var limitX : float = randf_range(-15,15)
-	var limitY : float = randf_range(1,6)
-	var limitZ : float = randf_range(-30,30)
+	var limitX : float = randf_range(-14,14)
+	var limitY : float = randf_range(1,11)
+	var limitZ : float = randf_range(-20,20)
 	berry.global_position.y = limitY
 	berry.global_position.z = -placement*tileSize+limitZ
 	berry.global_position.x = limitX

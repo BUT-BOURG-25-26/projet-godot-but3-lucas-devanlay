@@ -1,10 +1,10 @@
 class_name WorldManager
 extends Node3D
 
-var gameSpeed : float = 5
+var difficulty : float = 1
 var distanceUntilNextTile : int
 const tileSize : int = 60
-var worldGeneration : Node3D
+var worldGeneration : WorldGeneration
 var gameIsOngoing : bool = false
 
 func _ready() -> void:
@@ -14,13 +14,17 @@ func _ready() -> void:
 #Moves the entire map backward by the set speed
 func _physics_process(delta: float) -> void:
 	if(gameIsOngoing):
-		global_position.z+=gameSpeed
-		distanceUntilNextTile -= gameSpeed
+		if(difficulty>5):
+			global_position.z+=5
+			distanceUntilNextTile -= 5
+		else:
+			global_position.z+=difficulty
+			distanceUntilNextTile -= difficulty
 
 func _process(delta: float) -> void:
 	if(distanceUntilNextTile<=0 and gameIsOngoing):
-		worldGeneration.generateNext(gameSpeed)
-		distanceUntilNextTile = tileSize - gameSpeed
+		worldGeneration.generateNext(difficulty)
+		distanceUntilNextTile = tileSize - difficulty
 		
 func restart():
 	worldGeneration.clearAll()
@@ -30,4 +34,4 @@ func restart():
 func resetWorld():
 	global_position = Vector3(0,0,0)
 	gameIsOngoing = 0
-	gameSpeed = 1
+	difficulty = 1
