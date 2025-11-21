@@ -66,12 +66,13 @@ func listenForInputs():
 	return false
 	
 func gameOver():
-	gameHasEnded = true
 	musicHanlder.inMenue = true
 	gameSpeed = 0
 	player.kill()
 	resetWorld()
 	gameOverMenue.updateAndShow(distanceTraveled + externalScore)
+	await get_tree().create_timer(0.5).timeout
+	gameHasEnded = true
 
 func increaseDistanceTraveled():
 	distanceTraveled +=gameSpeed

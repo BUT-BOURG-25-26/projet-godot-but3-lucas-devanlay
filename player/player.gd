@@ -4,13 +4,14 @@ extends CharacterBody3D
 var gameIsOngoing : bool = false
 var turningAround : bool =false	
 var gameManager : GameManager
-var deathVFX : Area3D
+var deathVFX : DeathVfx = null
+@export var deathVFXScene : PackedScene
 var model : Node3D
 var respawnSFX : AudioStreamPlayer
 
 func _ready() -> void:
 	gameManager = get_tree().get_first_node_in_group("gameManager")
-	deathVFX = $DeathVfx
+	setUpVFX()
 	model = $playerModel
 	respawnSFX= $respawn
 	
@@ -46,6 +47,7 @@ func resetPlayer():
 	velocity = Vector3(0,0,0)
 	turningAround =false
 	gameIsOngoing = false
+	setUpVFX()
 	respawnSFX.play(0)
 	model.show()
 	rotate_y(PI)
@@ -55,3 +57,9 @@ func kill():
 	model.hide() 
 	gameIsOngoing = false
 	global_position.z = 0
+	
+func setUpVFX():
+	if(deathVFX!=null):
+		deathVFX.free()
+	deathVFX = deathVFXScene.instantiate()
+	add_child(deathVFX)

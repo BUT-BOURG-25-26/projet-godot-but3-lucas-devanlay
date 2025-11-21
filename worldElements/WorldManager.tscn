@@ -17,34 +17,22 @@ script = ExtResource("1_iit2x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.72264, 5.61976, 9.62615)
 
 [node name="DirtBox" parent="." instance=ExtResource("3_1xntr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5751, 2.59691, 5.78753)
-axis_lock_linear_x = false
-axis_lock_linear_y = false
-axis_lock_linear_z = false
-axis_lock_angular_x = false
-axis_lock_angular_y = false
-axis_lock_angular_z = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5751, 2.59691, 5.46296)
+
+[node name="DirtBox5" parent="DirtBox" instance=ExtResource("3_1xntr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1765, 4.28629, 0.0705914)
+
+[node name="strawberry3" parent="DirtBox/DirtBox5" instance=ExtResource("4_a2qwj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0747271, 2.56449, -0.104114)
 
 [node name="DirtBox2" parent="." instance=ExtResource("3_1xntr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7987, 2.57922, -2.63795)
-axis_lock_linear_x = false
-axis_lock_linear_y = false
-axis_lock_linear_z = false
-axis_lock_angular_x = false
-axis_lock_angular_y = false
-axis_lock_angular_z = false
+transform = Transform3D(0.99999, 0.00452039, 0, -0.00452039, 0.99999, 0, 0, 0, 1, 17.5668, 2.57922, -4.60861)
 
 [node name="DirtBox3" parent="." instance=ExtResource("3_1xntr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3986, 2.95617, 13.4572)
-axis_lock_linear_x = false
-axis_lock_linear_y = false
-axis_lock_linear_z = false
-axis_lock_angular_x = false
-axis_lock_angular_y = false
-axis_lock_angular_z = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7542, 2.95617, 13.4572)
 
 [node name="DirtBox4" parent="." instance=ExtResource("3_1xntr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6588, 2.98747, 6.27866)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.70107, 2.51645, 1.75817)
 axis_lock_linear_x = false
 axis_lock_linear_y = false
 axis_lock_linear_z = false
@@ -52,23 +40,11 @@ axis_lock_angular_x = false
 axis_lock_angular_y = false
 axis_lock_angular_z = false
 
-[node name="DirtBox5" parent="." instance=ExtResource("3_1xntr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3986, 7.41517, 5.53355)
-axis_lock_linear_x = false
-axis_lock_linear_y = false
-axis_lock_linear_z = false
-axis_lock_angular_x = false
-axis_lock_angular_y = false
-axis_lock_angular_z = false
+[node name="strawberry2" parent="DirtBox4" instance=ExtResource("4_a2qwj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11469, 5.48127, 0.827036)
 
 [node name="concreteBox" parent="." instance=ExtResource("4_qs2m5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0524, 2.89184, 10.2205)
-axis_lock_linear_x = false
-axis_lock_linear_y = false
-axis_lock_linear_z = false
-axis_lock_angular_x = false
-axis_lock_angular_y = false
-axis_lock_angular_z = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.027, 3.41958, 10.2205)
 
 [node name="worldGeneration" type="Node3D" parent="."]
 script = ExtResource("8_w6hea")
@@ -80,11 +56,11 @@ spikeBaleScene = ExtResource("6_qs2m5")
 
 [connection signal="body_entered" from="DirtBox" to="DirtBox" method="_on_body_entered"]
 [connection signal="body_shape_entered" from="DirtBox" to="DirtBox" method="_on_body_shape_entered"]
+[connection signal="body_entered" from="DirtBox/DirtBox5" to="DirtBox/DirtBox5" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="DirtBox/DirtBox5" to="DirtBox/DirtBox5" method="_on_body_shape_entered"]
 [connection signal="body_entered" from="DirtBox2" to="DirtBox2" method="_on_body_entered"]
 [connection signal="body_shape_entered" from="DirtBox2" to="DirtBox2" method="_on_body_shape_entered"]
 [connection signal="body_entered" from="DirtBox3" to="DirtBox3" method="_on_body_entered"]
 [connection signal="body_shape_entered" from="DirtBox3" to="DirtBox3" method="_on_body_shape_entered"]
 [connection signal="body_entered" from="DirtBox4" to="DirtBox4" method="_on_body_entered"]
 [connection signal="body_shape_entered" from="DirtBox4" to="DirtBox4" method="_on_body_shape_entered"]
-[connection signal="body_entered" from="DirtBox5" to="DirtBox5" method="_on_body_entered"]
-[connection signal="body_shape_entered" from="DirtBox5" to="DirtBox5" method="_on_body_shape_entered"]

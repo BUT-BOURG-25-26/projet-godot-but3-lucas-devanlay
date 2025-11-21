@@ -1,3 +1,4 @@
+class_name DeathVfx
 extends Area3D
 
 var deathSFX : AudioStreamPlayer
@@ -11,7 +12,7 @@ func _ready() -> void:
 			particules.append(childrens[i])
 	
 func emit():
+	show()
 	for i in range(len(particules)):
 		particules[i].emitting = true
 	deathSFX.play(0)
-	

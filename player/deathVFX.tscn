@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dwty00g5f63fw"]
+[gd_scene load_steps=27 format=3 uid="uid://dwty00g5f63fw"]
 
 [ext_resource type="Script" uid="uid://oeabo2vkc8rl" path="res://player/deathVfx.gd" id="1_nj6im"]
 [ext_resource type="Material" uid="uid://ewk4uvif0qia" path="res://ressources/Materials/redHaire.tres" id="2_3os2u"]
@@ -7,14 +7,37 @@
 [ext_resource type="Material" uid="uid://djme8r3ricsxj" path="res://ressources/particles/deathVFX3.tres" id="5_hecmc"]
 [ext_resource type="AudioStream" uid="uid://cpo1r8nv7ephj" path="res://ressources/Audio/sfx/deathSFX.wav" id="6_kgf3s"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_x8yux"]
+[sub_resource type="Curve" id="Curve_2u4b4"]
+_limits = [-1.0, 0.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, -0.966292), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_w70d7"]
+_limits = [-1.0, 0.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, -0.966292), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_kgf3s"]
+curve_x = SubResource("Curve_2u4b4")
+curve_z = SubResource("Curve_w70d7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hecmc"]
+directional_velocity_min = -1.60933e-05
+directional_velocity_max = 60.0
+directional_velocity_curve = SubResource("CurveXYZTexture_kgf3s")
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
 
 [sub_resource type="SphereMesh" id="SphereMesh_8rgr8"]
 
 [sub_resource type="Skin" id="Skin_nj6im"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_x8yux"]
+
 [sub_resource type="Curve" id="Curve_kgf3s"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_limits = [0.0, 1.41, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1.41), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_w70d7"]
@@ -28,25 +51,25 @@ orbit_velocity_min = 9.49949e-08
 orbit_velocity_max = 1.0
 gravity = Vector3(0, 0, 0)
 
-[sub_resource type="Curve" id="Curve_w70d7"]
-_limits = [-1.0, 0.0, 0.0, 1.0]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_xqxra"]
+_limits = [-1.1, 0.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, -1.1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_kgf3s"]
-curve_z = SubResource("Curve_w70d7")
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ujrhn"]
+curve_z = SubResource("Curve_xqxra")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hecmc"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fmf2s"]
 directional_velocity_min = -1.60933e-05
 directional_velocity_max = 60.0
-directional_velocity_curve = SubResource("CurveXYZTexture_kgf3s")
+directional_velocity_curve = SubResource("CurveXYZTexture_ujrhn")
 orbit_velocity_min = 9.49949e-08
 orbit_velocity_max = 1.0
 gravity = Vector3(0, 0, 0)
 
 [sub_resource type="Curve" id="Curve_hecmc"]
-_limits = [-1.0, 0.0, 0.0, 1.0]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+_limits = [-0.7, 0.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, -0.7), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_2u4b4"]
@@ -57,63 +80,34 @@ directional_velocity_min = -1.60933e-05
 directional_velocity_max = 60.0
 directional_velocity_curve = SubResource("CurveXYZTexture_2u4b4")
 orbit_velocity_min = 9.49949e-08
-orbit_velocity_max = 0.149
+orbit_velocity_max = 0.15
 gravity = Vector3(0, 0, 0)
-color = Color(1, 0.286275, 0.196078, 1)
+
+[sub_resource type="Curve" id="Curve_8u5sg"]
+_limits = [-1.0, 0.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, -0.966292), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_r4acf"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_8mpf6"]
+curve_x = SubResource("Curve_8u5sg")
+curve_z = SubResource("Curve_r4acf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nyuak"]
+directional_velocity_min = -1.60933e-05
+directional_velocity_max = 60.0
+directional_velocity_curve = SubResource("CurveXYZTexture_8mpf6")
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
 
 [node name="DeathVfx" type="Area3D"]
 script = ExtResource("1_nj6im")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_x8yux")
-
-[node name="deathparticles" type="GPUParticles3D" parent="."]
-material_override = ExtResource("2_3os2u")
-emitting = false
-amount = 1
-one_shot = true
-process_material = ExtResource("3_w70d7")
-draw_passes = 2
-draw_pass_1 = SubResource("SphereMesh_8rgr8")
-draw_pass_2 = null
-draw_skin = SubResource("Skin_nj6im")
-
-[node name="deathparticles3" type="GPUParticles3D" parent="."]
-material_override = ExtResource("2_3os2u")
-emitting = false
-amount = 1
-one_shot = true
-process_material = ExtResource("5_hecmc")
-draw_passes = 2
-draw_pass_1 = SubResource("SphereMesh_8rgr8")
-draw_pass_2 = null
-draw_skin = SubResource("Skin_nj6im")
-
-[node name="deathparticles2" type="GPUParticles3D" parent="."]
-material_override = ExtResource("2_3os2u")
-emitting = false
-amount = 1
-one_shot = true
-process_material = ExtResource("4_kgf3s")
-draw_passes = 2
-draw_pass_1 = SubResource("SphereMesh_8rgr8")
-draw_pass_2 = null
-draw_skin = SubResource("Skin_nj6im")
-
-[node name="deathparticles4" type="GPUParticles3D" parent="."]
-material_override = ExtResource("2_3os2u")
-emitting = false
-amount = 1
-one_shot = true
-use_fixed_seed = true
-seed = 543281805
-process_material = SubResource("ParticleProcessMaterial_ecwuw")
-draw_passes = 2
-draw_pass_1 = SubResource("SphereMesh_8rgr8")
-draw_pass_2 = null
-draw_skin = SubResource("Skin_nj6im")
-
-[node name="deathparticles5" type="GPUParticles3D" parent="."]
+[node name="ZminusXminus" type="GPUParticles3D" parent="."]
 material_override = ExtResource("2_3os2u")
 emitting = false
 amount = 1
@@ -126,11 +120,81 @@ draw_pass_1 = SubResource("SphereMesh_8rgr8")
 draw_pass_2 = null
 draw_skin = SubResource("Skin_nj6im")
 
-[node name="deathparticles6" type="GPUParticles3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_x8yux")
+
+[node name="ZplusXplus" type="GPUParticles3D" parent="."]
 material_override = ExtResource("2_3os2u")
 emitting = false
 amount = 1
 one_shot = true
+use_fixed_seed = true
+seed = 503290164
+process_material = ExtResource("3_w70d7")
+draw_passes = 2
+draw_pass_1 = SubResource("SphereMesh_8rgr8")
+draw_pass_2 = null
+draw_skin = SubResource("Skin_nj6im")
+
+[node name="Xplus" type="GPUParticles3D" parent="."]
+material_override = ExtResource("2_3os2u")
+emitting = false
+amount = 1
+one_shot = true
+use_fixed_seed = true
+seed = 8630807
+process_material = ExtResource("5_hecmc")
+draw_passes = 2
+draw_pass_1 = SubResource("SphereMesh_8rgr8")
+draw_pass_2 = null
+draw_skin = SubResource("Skin_nj6im")
+
+[node name="ZminusXplus" type="GPUParticles3D" parent="."]
+material_override = ExtResource("2_3os2u")
+emitting = false
+amount = 1
+one_shot = true
+use_fixed_seed = true
+seed = 166776729
+process_material = ExtResource("4_kgf3s")
+draw_passes = 2
+draw_pass_1 = SubResource("SphereMesh_8rgr8")
+draw_pass_2 = null
+draw_skin = SubResource("Skin_nj6im")
+
+[node name="Zplus" type="GPUParticles3D" parent="."]
+material_override = ExtResource("2_3os2u")
+emitting = false
+amount = 1
+one_shot = true
+use_fixed_seed = true
+seed = 543281805
+process_material = SubResource("ParticleProcessMaterial_ecwuw")
+draw_passes = 2
+draw_pass_1 = SubResource("SphereMesh_8rgr8")
+draw_pass_2 = null
+draw_skin = SubResource("Skin_nj6im")
+
+[node name="Zminus" type="GPUParticles3D" parent="."]
+material_override = ExtResource("2_3os2u")
+emitting = false
+amount = 1
+one_shot = true
+use_fixed_seed = true
+seed = 543281805
+process_material = SubResource("ParticleProcessMaterial_fmf2s")
+draw_passes = 2
+draw_pass_1 = SubResource("SphereMesh_8rgr8")
+draw_pass_2 = null
+draw_skin = SubResource("Skin_nj6im")
+
+[node name="Xminus" type="GPUParticles3D" parent="."]
+material_override = ExtResource("2_3os2u")
+emitting = false
+amount = 1
+one_shot = true
+use_fixed_seed = true
+seed = 3217963112
 process_material = SubResource("ParticleProcessMaterial_xqxra")
 draw_passes = 2
 draw_pass_1 = SubResource("SphereMesh_8rgr8")
@@ -140,3 +204,16 @@ draw_skin = SubResource("Skin_nj6im")
 [node name="deathSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_kgf3s")
 volume_db = -4.0
+
+[node name="ZplusXminus" type="GPUParticles3D" parent="."]
+material_override = ExtResource("2_3os2u")
+emitting = false
+amount = 1
+one_shot = true
+use_fixed_seed = true
+seed = 543281805
+process_material = SubResource("ParticleProcessMaterial_nyuak")
+draw_passes = 2
+draw_pass_1 = SubResource("SphereMesh_8rgr8")
+draw_pass_2 = null
+draw_skin = SubResource("Skin_nj6im")

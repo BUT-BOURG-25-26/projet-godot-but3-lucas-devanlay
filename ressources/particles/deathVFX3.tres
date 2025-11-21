@@ -1,15 +1,18 @@
 [gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://djme8r3ricsxj"]
 
 [sub_resource type="Curve" id="Curve_3f6bi"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_limits = [0.0, 1.41, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1.41), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_56t2y"]
 curve_x = SubResource("Curve_3f6bi")
 
 [resource]
-directional_velocity_min = 0.999984
+directional_velocity_min = -1.60933e-05
 directional_velocity_max = 60.0
 directional_velocity_curve = SubResource("CurveXYZTexture_56t2y")
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 0.15
 gravity = Vector3(0, 0, 0)
 color = Color(1, 0.286275, 0.196078, 1)

@@ -10,6 +10,7 @@
 [node name="player" type="CharacterBody3D" groups=["player"]]
 collision_mask = 3
 script = ExtResource("2_rkbax")
+deathVFXScene = ExtResource("3_g1dw6")
 
 [node name="playerModel" parent="." instance=ExtResource("2_g1dw6")]
 
