@@ -1,13 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://bt2vkmrpam56u"]
+[gd_scene load_steps=15 format=3 uid="uid://bt2vkmrpam56u"]
 
 [ext_resource type="PackedScene" uid="uid://bui44bws5ufjk" path="res://player/player.tscn" id="1_iwpey"]
 [ext_resource type="Script" uid="uid://d0cmhkikeqc6c" path="res://gameManager/gamerManager.gd" id="2_g4qto"]
+[ext_resource type="Texture2D" uid="uid://6gcu6qhpcuhw" path="res://ressources/Textures/Skyboxes/city.png" id="2_we1jl"]
 [ext_resource type="PackedScene" uid="uid://v2e6edh5tl2g" path="res://Menues/menue.tscn" id="3_hr5et"]
 [ext_resource type="PackedScene" uid="uid://dgse65bexnbc4" path="res://Menues/gameOverMenue/gameOver.tscn" id="4_6mfv6"]
 [ext_resource type="PackedScene" uid="uid://0jhci6oqaxfb" path="res://worldElements/WorldManager.tscn" id="4_61od6"]
 [ext_resource type="PackedScene" uid="uid://b7hvpqjdk1u7i" path="res://Music/music.tscn" id="6_2qqqv"]
+[ext_resource type="Texture2D" uid="uid://vygcbrhnuxk7" path="res://ressources/Textures/clouds.png" id="8_bnlnp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iwpey"]
+sky_curve = 0.0416088
+sky_cover = ExtResource("2_we1jl")
+ground_bottom_color = Color(0.552597, 0.654926, 1, 1)
+ground_horizon_color = Color(0.615686, 0.651591, 0.767242, 1)
+ground_curve = 2.07937
 
 [sub_resource type="Sky" id="Sky_iwpey"]
 sky_material = SubResource("ProceduralSkyMaterial_iwpey")
@@ -15,14 +22,22 @@ sky_material = SubResource("ProceduralSkyMaterial_iwpey")
 [sub_resource type="Environment" id="Environment_g4qto"]
 background_mode = 2
 sky = SubResource("Sky_iwpey")
+sky_rotation = Vector3(0, -2.40855, 0)
 tonemap_mode = 2
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_61od6"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vuu3o"]
+albedo_texture = ExtResource("8_bnlnp")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0pyiw"]
+material = SubResource("StandardMaterial3D_vuu3o")
+size = Vector2(200, 200)
+
 [node name="MainScene" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.817205, 0.576347, 0, -0.576347, 0.817205, 0.0647998, 12.067, 19.1359)
+transform = Transform3D(1, 0, 0, 0, 0.817205, 0.576347, 0, -0.576347, 0.817205, 0, 12, 19)
 keep_aspect = 0
 
 [node name="player" parent="." instance=ExtResource("1_iwpey")]
@@ -67,3 +82,8 @@ theme_override_font_sizes/font_size = 30
 text = "score : 0"
 
 [node name="Music" parent="." instance=ExtResource("6_2qqqv")]
+
+[node name="cloude" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.8182, -40.8039)
+visible = false
+mesh = SubResource("PlaneMesh_0pyiw")
