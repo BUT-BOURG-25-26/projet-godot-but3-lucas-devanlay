@@ -93,13 +93,15 @@ func addSpikeBall(placement : int =0):
 	
 func addBoxes(placement : int =0,double : bool =false):
 	var lowerLimit : int =gameSpeed-5
-	var multiply : int
+	var multiply : int = lowerLimit
 	var hasSpikes : bool = false
 	if(lowerLimit<0):
 		multiply = randi_range(0,gameSpeed/4)
 	else:
-		multiply= randi_range(lowerLimit,gameSpeed/4)
-		hasSpikes = randi_range(gameSpeed,100)>0
+		if(gameSpeed>2):
+			multiply= randi_range(lowerLimit,gameSpeed)
+		if(gameSpeed>3):
+			hasSpikes = randi_range(0,100)>=100-(gameSpeed-3)*10
 	var limitX : float = randf_range(-16,16)
 	var limitZ : float = randf_range(0,60)
 	var box : BaseBox
