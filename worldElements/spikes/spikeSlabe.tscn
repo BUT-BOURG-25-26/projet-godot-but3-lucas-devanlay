@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bhd0qaaj4gj4q" path="res://worldElements/spikes/singleSpike.tscn" id="1_lq3k1"]
 
-[node name="SpikeSlabe" type="Node3D"]
+[node name="SpikeSlabe" type="Node3D" groups=["obstacle"]]
 
 [node name="SingleSpike6" parent="." instance=ExtResource("1_lq3k1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9049, 0, 1.93237)

@@ -5,7 +5,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dip77"]
 
-[node name="SingleSpike" type="Area3D"]
+[node name="SingleSpike" type="Area3D" groups=["obstacle"]]
 script = ExtResource("1_nfik5")
 
 [node name="spike" parent="." instance=ExtResource("2_jcd0r")]

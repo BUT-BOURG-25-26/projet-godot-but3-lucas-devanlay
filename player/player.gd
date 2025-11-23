@@ -2,12 +2,15 @@ class_name Player
 extends CharacterBody3D
 
 var gameIsOngoing : bool = false
-var turningAround : bool =false	
+var turningAround : bool =false
+@export var turnAroundStrength : float = 0.2
+@export var dashStrength : float = 50
 var gameManager : GameManager
 var deathVFX : DeathVfx = null
 var canDash : bool = true
+var dashing : bool = false
 @export var deathVFXScene : PackedScene
-var model : Node3D
+var model : PlayerModel
 var respawnSFX : AudioStreamPlayer
 
 func _ready() -> void:
@@ -15,6 +18,7 @@ func _ready() -> void:
 	setUpVFX()
 	model = $playerModel
 	respawnSFX= $respawn
+	model.setHairToRed()
 	
 func _physics_process(delta: float) -> void:
 	if(gameIsOngoing):
@@ -23,35 +27,44 @@ func _physics_process(delta: float) -> void:
 		if(is_on_floor()):
 			velocity.y +=  getInputUp()*40
 		velocity.x = (-(getInputLeft()) + (getInputRight()))*20
-		move_and_slide()
+		if(canDash && Input.get_action_strength("dash")):
+			dash()
 		if(global_position.z>1):
-			gameManager.gameOver()
-		elif(global_position.z>0):
-			velocity.z = -0.01
-		elif(global_position.z<0):
-			velocity.z = 0.1
+			if(velocity.z<0):
+				gameManager.gameOver()
+			velocity.z = 0
+			global_position.z = 0
+		elif(global_position.z>=1):
+			velocity.z -= 0.1
+		elif(global_position.z<-5):
+			velocity.z += 1
+		checkCollission()
+		move_and_slide()
+		if(global_position.z<-1 and global_position.z>1):
+			global_position.z = 0
+			velocity.z = 0
+
 
 func _process(delta: float) -> void:
 	if(turningAround):
-		var turnAroundStrength : float = 0.2
-		rotate_y(turnAroundStrength)
-		if(global_rotation.y==PI or global_rotation.y<= -2):
-			global_rotation.y=PI
-			turningAround =false
+		turnAround()
 
 func speedUpRunning():
 	var model = $playerModel
 	model.speedUpRun()
 	
 func resetPlayer():
+	model.setHairToRed()
 	global_position = Vector3(0,0,0)
 	velocity = Vector3(0,0,0)
 	turningAround =false
 	gameIsOngoing = false
+	dashing = false
+	canDash = true
 	setUpVFX()
 	respawnSFX.play(0)
-	model.show()
 	rotate_y(PI)
+	model.show()
 	
 func kill():
 	deathVFX.emit()
@@ -88,3 +101,29 @@ func getInputRight() -> float:
 		return Input.get_action_strength("right")
 	else: 
 		return 0
+
+func turnAround()->void:
+	rotate_y(turnAroundStrength)
+	if(global_rotation.y==PI or global_rotation.y<= -2):
+		global_rotation.y=PI
+		turningAround =false
+		
+func dash()->void:
+	canDash = false
+	dashing = true
+	model.setHairToBlue()
+	velocity.z = -dashStrength
+	await get_tree().create_timer(0.5).timeout
+	model.setHairToRed()
+	dashing = false
+	canDash = true
+	
+func  checkCollission()->void:
+	var obstacles : Array[Node] = get_tree().get_nodes_in_group("obstacle")
+	for i in range(len(obstacles)):
+		if((obstacles[i].global_position.z < global_position.z + 4) 
+		and (obstacles[i].global_position.z > global_position.z -4)
+		and (obstacles[i].global_position.y > global_position.y-2)):
+			if(obstacles[i].is_in_group("destroyable") and dashing):
+				obstacles[i].queue_free()
+			

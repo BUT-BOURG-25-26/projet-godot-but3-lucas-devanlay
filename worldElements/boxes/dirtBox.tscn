@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dotlkpwci0yt0" path="res://worldElements/boxes/dirtBox.gd" id="2_r2ulq"]
 [ext_resource type="Texture2D" uid="uid://baog858saqd7g" path="res://ressources/Textures/rock_4.png" id="3_putgq"]
 
-[node name="DirtBox" instance=ExtResource("1_4hrss")]
+[node name="DirtBox" groups=["destroyable", "obstacle"] instance=ExtResource("1_4hrss")]
 disable_mode = 1
 script = ExtResource("2_r2ulq")
 

@@ -1,39 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cceujylhlyecd"]
+[gd_scene load_steps=6 format=3 uid="uid://cceujylhlyecd"]
 
 [ext_resource type="PackedScene" uid="uid://cuu0rm1xoxb8s" path="res://ressources/Models/player.glb" id="1_uyire"]
 [ext_resource type="Script" uid="uid://uqsojnp7scnj" path="res://player/playerModel.gd" id="2_6olgr"]
 [ext_resource type="Material" uid="uid://ewk4uvif0qia" path="res://ressources/Materials/redHaire.tres" id="2_ct271"]
 [ext_resource type="Script" uid="uid://bhis4xte3qwpm" path="res://player/animation_player.gd" id="2_ldwlr"]
+[ext_resource type="Material" uid="uid://bpy64etpm8ch1" path="res://ressources/Materials/blueHaire.tres" id="4_intl7"]
 
 [node name="playerModel" instance=ExtResource("1_uyire")]
 script = ExtResource("2_6olgr")
+redHaireMaterialScene = ExtResource("2_ct271")
+blueHaireMaterialScene = ExtResource("4_intl7")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/6/rotation = Quaternion(-2.49188e-07, 1.32873e-07, 0.00259848, 0.999997)
 bones/8/rotation = Quaternion(-2.49188e-07, -1.32873e-07, -0.00259848, 0.999997)
 bones/9/rotation = Quaternion(0.991584, 0.0813817, -0.00902708, 0.100285)
 bones/13/rotation = Quaternion(0.991584, -0.0813817, 0.00902708, 0.100285)
-
-[node name="Cube_001" parent="Armature/Skeleton3D" index="1"]
-surface_material_override/0 = ExtResource("2_ct271")
-
-[node name="Cube_006" parent="Armature/Skeleton3D" index="4"]
-surface_material_override/0 = ExtResource("2_ct271")
-
-[node name="Cube_007" parent="Armature/Skeleton3D" index="5"]
-surface_material_override/0 = ExtResource("2_ct271")
-
-[node name="Cube_008" parent="Armature/Skeleton3D" index="6"]
-surface_material_override/0 = ExtResource("2_ct271")
-
-[node name="Cube_009" parent="Armature/Skeleton3D" index="7"]
-surface_material_override/0 = ExtResource("2_ct271")
-
-[node name="Cube_010" parent="Armature/Skeleton3D" index="8"]
-surface_material_override/0 = ExtResource("2_ct271")
-
-[node name="Cube_011" parent="Armature/Skeleton3D" index="9"]
-surface_material_override/0 = ExtResource("2_ct271")
 
 [node name="BezierCircle" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67078, 0)

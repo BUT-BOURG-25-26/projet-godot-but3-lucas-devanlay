@@ -160,8 +160,10 @@ func deleteElementsOutideView():
 		if(groundTiles[0].global_position.z>tileSize):
 			groundTiles[0].queue_free()
 			groundTiles.pop_front()
-	while(!boxList.is_empty() and (boxList[0].global_position.z>tileSize or boxList[0].global_position.y<-4)):
-			boxList[0].queue_free()
+	if(is_instance_valid(boxList[0])):
+		if(!boxList.is_empty()  and (boxList[0].global_position.z>tileSize or boxList[0].global_position.y<-4)):
+			if(is_instance_valid(boxList[0])):
+				boxList[0].queue_free()
 			boxList.pop_front()
 	if(!strawberryList.is_empty()):
 		if(strawberryList[0].global_position.z>tileSize or strawberryList[0].global_position.y<-4):
@@ -172,7 +174,8 @@ func clearAll():
 	for i in range(len(groundTiles)):
 		groundTiles[i].queue_free()
 	for i in range(len(boxList)):
-		boxList[i].queue_free()
+		if(is_instance_valid(boxList[i])):
+			boxList[i].queue_free()
 	for i in range(len(strawberryList)):
 		strawberryList[i].queue_free()
 	for i in range(len(spikeList)):
