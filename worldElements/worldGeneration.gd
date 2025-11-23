@@ -9,7 +9,7 @@ var strawberryList : Array[Strawberry]
 var spikeList : Array[Spike]
 
 var difficulty : float =0 #same as gameSpeed from WorldManager
-@export var pregeneratedTileNumber : int = 30
+@export var pregeneratedTileNumber : int = 25
 
 @export var groundTileScene : PackedScene
 @export var dirtBoxScene : PackedScene
@@ -53,20 +53,31 @@ func preGenerateTerraine():
 
 func addObstacles(placement : int =0) ->void:
 	var limit : int
-	var double : bool = false
-	var isSpike : bool
-	var lowerLimit = difficulty/2-5
-	var upperLimit = difficulty/2+0.5
-	if(lowerLimit<0):
-		lowerLimit = 0
-	if(upperLimit<1):
-		upperLimit=1
-	limit  = randi_range(lowerLimit,upperLimit)
-	double = randi_range(0,20-difficulty)<=5
+	var double : int = 0
+	if(difficulty<=2):
+		limit=randi_range(0,1)
+	elif(difficulty<=3):
+		limit=randi_range(1,2)
+		double = randi_range(0,2)
+	elif(difficulty<=4):
+		limit=randi_range(1,3)
+		double = randi_range(1,2)
+	elif(difficulty<=5):
+		limit=randi_range(2,3)
+		double = randi_range(2,3)
+	else:
+		limit=randi_range(2,4)
+		double = 3
+		
 	for i in range(limit):
-		if(difficulty>2 and i >= difficulty/2):
+		if(i > limit/2):
 			addSpikeBall(placement)
-		addBoxes(placement, double)
+		else:
+			if(double>0):
+				addBoxes(placement, true)
+				double-=1
+			else:
+				addBoxes(placement, false)
 
 func addGroundTile(placement : int =0):
 	var tile : GroundTile = groundTileScene.instantiate() 
@@ -96,17 +107,22 @@ func addSpikeBall(placement : int =0):
 	
 func addBoxes(placement : int =0,double : bool =false):
 	var lowerLimit : int =difficulty-5
-	var multiply : int = lowerLimit
+	var multiply : int = 0
 	var hasSpikes : bool = false
-	if(lowerLimit<0):
-		multiply = randi_range(0,difficulty/4)
-	else:
+	if(double):
 		if(difficulty>4):
-			multiply= randi_range(lowerLimit,3)
+			multiply= randi_range(1,3)
+		elif(difficulty>3):
+			multiply= 1
 		elif(difficulty>2):
-			multiply= randi_range(lowerLimit,difficulty)
-		if(difficulty>3):
-			hasSpikes = randi_range(0,100)>=100-(difficulty-3)*10
+			multiply= randi_range(0,1)
+		if(difficulty>4):
+			hasSpikes = randi_range(0,100)>=85
+		elif(difficulty>3):
+			hasSpikes = randi_range(0,100)>=90
+		elif(difficulty>2):
+			hasSpikes = randi_range(0,100)>=95
+
 	var limitX : float = randf_range(-16,16)
 	var limitZ : float = randf_range(0,60)
 	var box : BaseBox

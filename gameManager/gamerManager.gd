@@ -92,17 +92,17 @@ func updateDifficulty() -> bool:
 		elif(difficulty>10):
 			nextTarget=nextTarget + 5000
 		elif(difficulty>6):
-			nextTarget=nextTarget + 3000
+			nextTarget=nextTarget + 2500
 		elif(difficulty>5):
-			nextTarget=nextTarget + 2000
-		elif(difficulty>4):
 			nextTarget=nextTarget + 1000
-		elif(difficulty>3):
-			nextTarget=nextTarget + 750
-		elif(difficulty>2):
+		elif(difficulty>4):
 			nextTarget=nextTarget + 500
-		else:
+		elif(difficulty>3):
+			nextTarget=nextTarget + 250
+		elif(difficulty>2):
 			nextTarget=nextTarget + 100
+		else:
+			nextTarget=nextTarget + 50
 		return true
 	return true
 

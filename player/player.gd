@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = (-(getInputLeft()) + (getInputRight()))*20
 		move_and_slide()
 		if(global_position.z>1):
-			gameManager.gameOver()			
+			gameManager.gameOver()
 		elif(global_position.z>0):
 			velocity.z = -0.01
 		elif(global_position.z<0):
