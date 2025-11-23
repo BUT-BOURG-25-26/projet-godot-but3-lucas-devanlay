@@ -44,7 +44,7 @@ axis_lock_angular_z = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11469, 5.48127, 0.827036)
 
 [node name="concreteBox" parent="." instance=ExtResource("4_qs2m5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.027, 3.41958, 10.2205)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0959, 3.41958, -12.7178)
 
 [node name="worldGeneration" type="Node3D" parent="."]
 script = ExtResource("8_w6hea")

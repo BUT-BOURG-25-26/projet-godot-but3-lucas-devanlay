@@ -61,6 +61,9 @@ func listenForInputs():
 		+Input.get_action_strength("ui_down")
 		+Input.get_action_strength("ui_left")
 		+Input.get_action_strength("ui_right")
+		+Input.get_action_strength("right")
+		+Input.get_action_strength("left")
+		+Input.get_action_strength("up")
 	):
 		return true
 	return false

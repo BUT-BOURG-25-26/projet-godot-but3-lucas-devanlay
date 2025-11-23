@@ -5,6 +5,7 @@ var gameIsOngoing : bool = false
 var turningAround : bool =false	
 var gameManager : GameManager
 var deathVFX : DeathVfx = null
+var canDash : bool = true
 @export var deathVFXScene : PackedScene
 var model : Node3D
 var respawnSFX : AudioStreamPlayer
@@ -20,8 +21,8 @@ func _physics_process(delta: float) -> void:
 		if(!is_on_floor()):
 			velocity.y -= 2
 		if(is_on_floor()):
-			velocity.y +=  Input.get_action_strength("ui_up")*40
-		velocity.x = (-Input.get_action_strength("ui_left") + Input.get_action_strength("ui_right") )*20
+			velocity.y +=  getInputUp()*40
+		velocity.x = (-(getInputLeft()) + (getInputRight()))*20
 		move_and_slide()
 		if(global_position.z>1):
 			gameManager.gameOver()			
@@ -63,3 +64,27 @@ func setUpVFX():
 		deathVFX.free()
 	deathVFX = deathVFXScene.instantiate()
 	add_child(deathVFX)
+	
+func getInputUp() -> float:
+	if(Input.get_action_strength("ui_up")>0):
+		return Input.get_action_strength("ui_up")
+	elif(Input.get_action_strength("up")>0):
+		return Input.get_action_strength("up")
+	else: 
+		return 0
+		
+func getInputLeft() -> float:
+	if(Input.get_action_strength("ui_left")>0):
+		return Input.get_action_strength("ui_left")
+	elif(Input.get_action_strength("left")>0):
+		return Input.get_action_strength("left")
+	else: 
+		return 0
+
+func getInputRight() -> float:
+	if(Input.get_action_strength("ui_right")>0):
+		return Input.get_action_strength("ui_right")
+	elif(Input.get_action_strength("right")>0):
+		return Input.get_action_strength("right")
+	else: 
+		return 0
