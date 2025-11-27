@@ -29,20 +29,16 @@ func _physics_process(delta: float) -> void:
 		velocity.x = (-(getInputLeft()) + (getInputRight()))*20
 		if(canDash && Input.get_action_strength("dash")):
 			dash()
-		if(global_position.z>1):
-			if(velocity.z<0):
-				gameManager.gameOver()
-			velocity.z = 0
-			global_position.z = 0
+		if(global_position.z>2):
+			gameManager.gameOver()
 		elif(global_position.z>=1):
-			velocity.z -= 0.1
+			velocity.z = -0.5
 		elif(global_position.z<-5):
 			velocity.z += 1
 		checkCollission()
 		move_and_slide()
-		if(global_position.z<-1 and global_position.z>1):
+		if(global_position.z>-0.1 and global_position.z<0.1):
 			global_position.z = 0
-			velocity.z = 0
 
 
 func _process(delta: float) -> void:
@@ -114,16 +110,22 @@ func dash()->void:
 	model.setHairToBlue()
 	velocity.z = -dashStrength
 	await get_tree().create_timer(0.5).timeout
-	model.setHairToRed()
 	dashing = false
+	await get_tree().create_timer(0.2).timeout
+	model.setHairToRed()
 	canDash = true
 	
 func  checkCollission()->void:
 	var obstacles : Array[Node] = get_tree().get_nodes_in_group("obstacle")
 	for i in range(len(obstacles)):
-		if((obstacles[i].global_position.z < global_position.z + 4) 
-		and (obstacles[i].global_position.z > global_position.z -4)
-		and (obstacles[i].global_position.y > global_position.y-2)):
+		if((obstacles[i].global_position.z < global_position.z + 3) 
+		and (obstacles[i].global_position.z > global_position.z -10)
+		and (obstacles[i].global_position.x > global_position.x -3)
+		and (obstacles[i].global_position.x < global_position.x +3)
+		and (obstacles[i].global_position.y > global_position.y-3)
+		and (obstacles[i].global_position.y < global_position.y+3)):
 			if(obstacles[i].is_in_group("destroyable") and dashing):
+				obstacles[i].physics_interpolation_mode=Node.PHYSICS_INTERPOLATION_MODE_OFF
 				obstacles[i].queue_free()
+				velocity.z+=-5
 			
