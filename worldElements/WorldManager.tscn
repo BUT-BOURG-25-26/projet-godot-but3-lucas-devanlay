@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://0jhci6oqaxfb"]
+[gd_scene load_steps=14 format=3 uid="uid://0jhci6oqaxfb"]
 
 [ext_resource type="Script" uid="uid://c5chyokl55n84" path="res://worldElements/WorldManager.gd" id="1_iit2x"]
 [ext_resource type="PackedScene" uid="uid://brur4bcgca3ya" path="res://worldElements/groundTiles/ground.tscn" id="2_4cbjq"]
@@ -6,7 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://dhe1j5vo150ls" path="res://worldElements/bonus/strawberry.tscn" id="4_a2qwj"]
 [ext_resource type="PackedScene" uid="uid://cxmog028ahjg2" path="res://worldElements/boxes/concreteBox.tscn" id="4_qs2m5"]
 [ext_resource type="PackedScene" uid="uid://tlsclga6abf2" path="res://worldElements/spikes/spikeball.tscn" id="6_qs2m5"]
+[ext_resource type="Script" uid="uid://dlw0lw4c7nfxg" path="res://worldElements/world_elements_imports.gd" id="8_nxsld"]
 [ext_resource type="Script" uid="uid://ciosodcgfpls8" path="res://worldElements/worldGeneration.gd" id="8_w6hea"]
+[ext_resource type="PackedScene" uid="uid://bin6otcfkkirq" path="res://worldElements/premadeObstacleSet/set1.tscn" id="9_jlwf5"]
+[ext_resource type="PackedScene" uid="uid://bantck382n5g2" path="res://worldElements/premadeObstacleSet/set2.tscn" id="10_c5f7f"]
+[ext_resource type="PackedScene" uid="uid://bm424mv3e4bjl" path="res://worldElements/premadeObstacleSet/set3.tscn" id="11_gq22w"]
+[ext_resource type="PackedScene" uid="uid://c4uh1bwexfcf2" path="res://worldElements/premadeObstacleSet/set4.tscn" id="12_lcviq"]
+[ext_resource type="PackedScene" uid="uid://dlk6kitbub5q3" path="res://worldElements/premadeObstacleSet/set5.tscn" id="13_or14a"]
 
 [node name="WorldManager" type="Node3D"]
 script = ExtResource("1_iit2x")
@@ -18,18 +24,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.72264, 5.61976, 9.62615)
 
 [node name="DirtBox" parent="." instance=ExtResource("3_1xntr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5751, 2.59691, 5.46296)
+mass = 1.0
 
 [node name="DirtBox5" parent="DirtBox" instance=ExtResource("3_1xntr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1765, 4.28629, 0.0705914)
+mass = 1.0
 
 [node name="strawberry3" parent="DirtBox/DirtBox5" instance=ExtResource("4_a2qwj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0747271, 2.56449, -0.104114)
 
 [node name="DirtBox2" parent="." instance=ExtResource("3_1xntr")]
 transform = Transform3D(0.99999, 0.00452039, 0, -0.00452039, 0.99999, 0, 0, 0, 1, 17.5668, 2.57922, -4.60861)
+mass = 1.0
 
 [node name="DirtBox3" parent="." instance=ExtResource("3_1xntr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7542, 2.95617, 13.4572)
+mass = 1.0
 
 [node name="DirtBox4" parent="." instance=ExtResource("3_1xntr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.70107, 2.51645, 1.75817)
@@ -39,20 +49,30 @@ axis_lock_linear_z = false
 axis_lock_angular_x = false
 axis_lock_angular_y = false
 axis_lock_angular_z = false
+mass = 1.0
 
 [node name="strawberry2" parent="DirtBox4" instance=ExtResource("4_a2qwj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11469, 5.48127, 0.827036)
 
 [node name="concreteBox" parent="." instance=ExtResource("4_qs2m5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0959, 3.41958, -12.7178)
+mass = 1.0
 
 [node name="worldGeneration" type="Node3D" parent="."]
 script = ExtResource("8_w6hea")
+
+[node name="worldElementsImports" type="Node3D" parent="worldGeneration"]
+script = ExtResource("8_nxsld")
 groundTileScene = ExtResource("2_4cbjq")
 dirtBoxScene = ExtResource("3_1xntr")
 concreteBoxScene = ExtResource("4_qs2m5")
 strawberryScene = ExtResource("4_a2qwj")
-spikeBaleScene = ExtResource("6_qs2m5")
+spikeBallScene = ExtResource("6_qs2m5")
+set1 = ExtResource("9_jlwf5")
+set2 = ExtResource("10_c5f7f")
+set3 = ExtResource("11_gq22w")
+set4 = ExtResource("12_lcviq")
+set5 = ExtResource("13_or14a")
 
 [connection signal="body_entered" from="DirtBox" to="DirtBox" method="_on_body_entered"]
 [connection signal="body_shape_entered" from="DirtBox" to="DirtBox" method="_on_body_shape_entered"]

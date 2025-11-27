@@ -1,0 +1,120 @@
+[gd_scene load_steps=2 format=3 uid="uid://bantck382n5g2"]
+
+[ext_resource type="PackedScene" uid="uid://bphngn78xk3k" path="res://worldElements/boxes/dirtBox.tscn" id="2_kxap6"]
+
+[node name="Set" type="Node3D"]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 0)
+
+[node name="DirtBox" parent="Node3D" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.86023, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox3" parent="Node3D" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.68742, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox4" parent="Node3D" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox5" parent="Node3D" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox6" parent="Node3D" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox7" parent="Node3D" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3, 2.5, 0)
+mass = 1.0
+
+[node name="Node3D2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, 0)
+
+[node name="DirtBox" parent="Node3D2" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.86023, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox2" parent="Node3D2" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox3" parent="Node3D2" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.68742, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox4" parent="Node3D2" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox5" parent="Node3D2" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox6" parent="Node3D2" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox7" parent="Node3D2" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3, 2.5, 0)
+mass = 1.0
+
+[node name="Node3D" type="Node3D" parent="Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 0)
+
+[node name="DirtBox" parent="Node3D2/Node3D" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.86023, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox3" parent="Node3D2/Node3D" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.68742, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox4" parent="Node3D2/Node3D" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox5" parent="Node3D2/Node3D" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox6" parent="Node3D2/Node3D" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox7" parent="Node3D2/Node3D" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3, 2.5, 0)
+mass = 1.0
+
+[node name="Node3D3" type="Node3D" parent="."]
+
+[node name="DirtBox" parent="Node3D3" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.86023, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox2" parent="Node3D3" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox3" parent="Node3D3" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.68742, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox4" parent="Node3D3" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox5" parent="Node3D3" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox6" parent="Node3D3" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 2.5, 0)
+mass = 1.0
+
+[node name="DirtBox7" parent="Node3D3" instance=ExtResource("2_kxap6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3, 2.5, 0)
+mass = 1.0

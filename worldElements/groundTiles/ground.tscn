@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://brur4bcgca3ya"]
+[gd_scene load_steps=9 format=3 uid="uid://brur4bcgca3ya"]
 
 [ext_resource type="Material" uid="uid://vfvviwn3lmb" path="res://ressources/Materials/ground.tres" id="1_cr4sx"]
 [ext_resource type="Script" uid="uid://iro5hcobgug2" path="res://worldElements/groundTiles/ground.gd" id="1_pcd0v"]
+[ext_resource type="Texture2D" uid="uid://vygcbrhnuxk7" path="res://ressources/Textures/clouds.png" id="3_k8op3"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_7tbfk"]
 
@@ -13,6 +14,16 @@ bind_count = 1
 bind/0/name = &""
 bind/0/bone = -1
 bind/0/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vuu3o"]
+transparency = 2
+alpha_scissor_threshold = 0.605
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("3_k8op3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4iqq7"]
+material = SubResource("StandardMaterial3D_vuu3o")
+size = Vector2(200, 200)
 
 [node name="Ground" type="StaticBody3D"]
 script = ExtResource("1_pcd0v")
@@ -26,3 +37,14 @@ transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
 mesh = SubResource("PlaneMesh_pcd0v")
 skin = SubResource("Skin_cxqsp")
 skeleton = NodePath("")
+
+[node name="leftCloud" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35, -2, 0)
+visible = false
+mesh = SubResource("PlaneMesh_4iqq7")
+skeleton = NodePath("../rightCloud")
+
+[node name="rightCloud" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 35, -2, 0)
+visible = false
+mesh = SubResource("PlaneMesh_4iqq7")

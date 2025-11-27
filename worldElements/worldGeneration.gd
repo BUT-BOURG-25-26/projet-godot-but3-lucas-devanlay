@@ -10,15 +10,11 @@ var spikeList : Array[Spike]
 
 var difficulty : float =0 #same as gameSpeed from WorldManager
 @export var pregeneratedTileNumber : int = 25
-
-@export var groundTileScene : PackedScene
-@export var dirtBoxScene : PackedScene
-@export var concreteBoxScene : PackedScene 
-@export var strawberryScene : PackedScene 
-@export var spikeBaleScene : PackedScene
+var imports : Imports
 @export var strawberrySpawnChance : int = 80
 
 func _ready() -> void:
+	imports = $worldElementsImports
 	worldManager = $".."
 	tileSize = worldManager.tileSize
 	var childrens = worldManager.get_children()
@@ -80,7 +76,7 @@ func addObstacles(placement : int =0) ->void:
 				addBoxes(placement, false)
 
 func addGroundTile(placement : int =0):
-	var tile : GroundTile = groundTileScene.instantiate() 
+	var tile : GroundTile = imports.getGroundTile()
 	groundTiles.append(tile)
 	add_child.call_deferred(tile)
 	await tile.ready
@@ -97,7 +93,7 @@ func addSpikeBall(placement : int =0):
 	var limitX : float = randf_range(-16,16)
 	var limitZ : float = randf_range(0,60)
 	for i in range(0,multiply):
-		var spike : Spike = spikeBaleScene.instantiate()
+		var spike : Spike = imports.getSpikeBall()
 		spikeList.append(spike)
 		add_child.call_deferred(spike)
 		await spike.ready
@@ -128,9 +124,9 @@ func addBoxes(placement : int =0,double : bool =false):
 	var box : BaseBox
 	for i in range(0,multiply+1):
 		if(hasSpikes):
-			box = concreteBoxScene.instantiate()
+			box = imports.getConcreteBoxe()
 		else:
-			box = dirtBoxScene.instantiate()
+			box = imports.getDirtBoxe()
 		boxList.append(box)
 		add_child.call_deferred(box)
 		await box.ready
@@ -144,7 +140,7 @@ func addCollectibles(placement : int =0):
 		addStrawberry(placement)
 
 func addStrawberry(placement : int =0):
-	var berry : Strawberry = strawberryScene.instantiate()
+	var berry : Strawberry = imports.getStrawberry()
 	strawberryList.append(berry)
 	add_child.call_deferred(berry)
 	await berry.ready
