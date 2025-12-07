@@ -1,28 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://v2e6edh5tl2g"]
+[gd_scene load_steps=7 format=3 uid="uid://v2e6edh5tl2g"]
 
 [ext_resource type="Script" uid="uid://c4pto6n8qehr3" path="res://Menues/mainMenue.gd" id="1_afckf"]
 [ext_resource type="FontFile" uid="uid://w04gwi0drdjr" path="res://ressources/Fonts/Renogare.otf" id="1_utcse"]
 [ext_resource type="Script" uid="uid://bmwgkasswpysc" path="res://Menues/scoreList.gd" id="1_viy6b"]
 [ext_resource type="Script" uid="uid://dsw78j024470" path="res://Menues/closeButton.gd" id="3_dfnn4"]
 [ext_resource type="Script" uid="uid://dxxahlwqv24kx" path="res://Menues/instruction.gd" id="5_1m4pd"]
+[ext_resource type="Texture2D" uid="uid://fm0s1imblk4y" path="res://ressources/Title/CELESTE-RUnner-12-7-2025.png" id="6_tbx1l"]
 
 [node name="Menue" type="CanvasLayer"]
 script = ExtResource("1_afckf")
-
-[node name="Title" type="Label" parent="."]
-anchors_preset = -1
-anchor_top = 0.063
-anchor_right = 1.0
-anchor_bottom = 0.294
-offset_left = 2.0
-offset_top = 0.299999
-offset_right = 1.0
-offset_bottom = 0.399994
-theme_override_fonts/font = ExtResource("1_utcse")
-theme_override_font_sizes/font_size = 64
-text = "CELEST RUNNER"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="ScoreList" type="ItemList" parent="." groups=["scoreList"]]
 anchors_preset = -1
@@ -80,5 +66,10 @@ text = "Press anywhere to start"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_1m4pd")
+
+[node name="Titile" type="Sprite2D" parent="."]
+position = Vector2(357.5, 122.5)
+scale = Vector2(0.708008, 0.776882)
+texture = ExtResource("6_tbx1l")
 
 [connection signal="pressed" from="CloseButton" to="CloseButton" method="_on_pressed"]

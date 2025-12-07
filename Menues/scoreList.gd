@@ -3,12 +3,6 @@ extends ItemList
 var scoreList : Array[float]
 @export var numberOfScores : int = 10
 #Only to include test data
-func _ready() -> void:
-	addScore(3999)
-	addScore(255)
-	addScore(3669)
-	addScore(2468486)
-	updateScores()
 
 func addScore(score : float):
 	scoreList.append(score)
