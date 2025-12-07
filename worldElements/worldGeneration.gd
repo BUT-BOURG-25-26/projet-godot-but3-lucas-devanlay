@@ -57,16 +57,18 @@ func addObstacles(placement : int =0) ->void:
 		double = randi_range(0,2)
 	elif(difficulty<=4):
 		limit=randi_range(1,3)
-		double = randi_range(1,2)
+		double = randi_range(0,2)
 	elif(difficulty<=5):
 		limit=randi_range(2,3)
-		double = randi_range(2,3)
+		double = randi_range(1,3)
 	else:
 		limit=randi_range(2,4)
-		double = 3
+		double = randi_range(1,3)
 		
 	for i in range(limit):
 		if(i > limit/2):
+			addSpikeBall(placement)
+		elif(difficulty>=4 and randi_range(0,1)):
 			addSpikeBall(placement)
 		else:
 			if(double>0):
@@ -179,5 +181,4 @@ func clearAll():
 	groundTiles.clear()	
 	boxList.clear()
 	strawberryList.clear()
-	spikeList.clear()
-	
+	spikeList.clear()	

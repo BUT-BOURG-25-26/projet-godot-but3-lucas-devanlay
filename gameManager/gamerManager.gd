@@ -15,7 +15,7 @@ var worlManager : WorldManager
 var mainScene : Node3D
 var musicHanlder : musicHandler
 var difficulty : float = 1
-var nextTarget = 10
+var nextTarget = 100
 var waiting = false
 
 func _ready() -> void:
@@ -85,24 +85,25 @@ func addToExternalScore(additionScore : float):
 	externalScore += additionScore
 
 func updateDifficulty() -> bool:
+	print(difficulty)
 	if(nextTarget<=distanceTraveled):
 		difficulty+=0.1
 		if(difficulty >= 15 ):
 			return false
 		elif(difficulty>10):
-			nextTarget=nextTarget + 5000
+			nextTarget=nextTarget + 20000
 		elif(difficulty>6):
-			nextTarget=nextTarget + 2500
+			nextTarget=nextTarget + 10000
 		elif(difficulty>5):
-			nextTarget=nextTarget + 1000
+			nextTarget=nextTarget + 5000
 		elif(difficulty>4):
-			nextTarget=nextTarget + 500
+			nextTarget=nextTarget + 2000
 		elif(difficulty>3):
-			nextTarget=nextTarget + 250
+			nextTarget=nextTarget + 1000
 		elif(difficulty>2):
-			nextTarget=nextTarget + 100
+			nextTarget=nextTarget + 500
 		else:
-			nextTarget=nextTarget + 50
+			nextTarget=nextTarget + 200
 		return true
 	return true
 
@@ -130,6 +131,8 @@ func resetAttributes():
 	gameHasStarted = false
 	difficulty = 1
 	gameHasEnded= false
+	nextTarget = 100
+
 
 func quite():
 	get_tree().quit()
