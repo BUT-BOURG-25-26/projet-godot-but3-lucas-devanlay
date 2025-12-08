@@ -24,7 +24,7 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	if(gameIsOngoing):
-		if(!is_on_floor()):
+		if(!is_on_floor() and !dashing):
 			velocity.y -= 2
 		if(is_on_floor()):
 			velocity.y +=  getInputUp()*40
@@ -115,6 +115,7 @@ func dash()->void:
 	dashSFX.play()
 	model.setHairToBlue()
 	velocity.z = -dashStrength
+	velocity.y = 0
 	await get_tree().create_timer(0.5).timeout
 	dashing = false
 	await get_tree().create_timer(1.5).timeout

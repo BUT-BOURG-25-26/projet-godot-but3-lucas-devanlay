@@ -13,6 +13,8 @@ func _process(delta: float) -> void:
 			play("Idle")
 		elif(player.turningAround):
 			play("Turn_L")
+		elif(player.velocity.z<-1):
+			play("Dash")
 		elif(player.velocity.y>0):
 			play("Jump")
 		else:
