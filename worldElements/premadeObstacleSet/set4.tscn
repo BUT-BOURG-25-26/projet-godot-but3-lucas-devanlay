@@ -4,50 +4,50 @@
 
 [node name="Set" type="Node3D"]
 
-[node name="DirtBox3" parent="." instance=ExtResource("2_w7xbg")]
+[node name="DirtBox3" parent="." groups=["obsatcle"] instance=ExtResource("2_w7xbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3126, 2.5, 0)
 mass = 1.0
 
-[node name="DirtBox5" parent="." instance=ExtResource("2_w7xbg")]
+[node name="DirtBox5" parent="." groups=["obsatcle"] instance=ExtResource("2_w7xbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 0)
 mass = 1.0
 
-[node name="DirtBox6" parent="." instance=ExtResource("2_w7xbg")]
+[node name="DirtBox6" parent="." groups=["obsatcle"] instance=ExtResource("2_w7xbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.5, 0)
 mass = 1.0
 
-[node name="DirtBox7" parent="." instance=ExtResource("2_w7xbg")]
+[node name="DirtBox7" parent="." groups=["obsatcle"] instance=ExtResource("2_w7xbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 7.3, 0)
 mass = 1.0
 
-[node name="DirtBox8" parent="." instance=ExtResource("2_w7xbg")]
+[node name="DirtBox8" parent="." groups=["obsatcle"] instance=ExtResource("2_w7xbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 7.3, 0)
 mass = 1.0
 
-[node name="DirtBox4" parent="." instance=ExtResource("2_w7xbg")]
+[node name="DirtBox4" parent="." groups=["obsatcle"] instance=ExtResource("2_w7xbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 7.3, 0)
 mass = 1.0
 
-[node name="DirtBox10" parent="." instance=ExtResource("2_w7xbg")]
+[node name="DirtBox10" parent="." groups=["obsatcle"] instance=ExtResource("2_w7xbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3126, 7.3, 0)
 mass = 1.0
 
-[node name="DirtBox11" parent="." instance=ExtResource("2_w7xbg")]
+[node name="DirtBox11" parent="." groups=["obsatcle"] instance=ExtResource("2_w7xbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 7.3, 0)
 mass = 1.0
 
-[node name="DirtBox12" parent="." instance=ExtResource("2_w7xbg")]
+[node name="DirtBox12" parent="." groups=["obsatcle"] instance=ExtResource("2_w7xbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 7.3, 0)
 mass = 1.0
 
-[node name="DirtBox13" parent="." instance=ExtResource("2_w7xbg")]
+[node name="DirtBox13" parent="." groups=["obsatcle"] instance=ExtResource("2_w7xbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 2.5, 0)
 mass = 1.0
 
-[node name="DirtBox14" parent="." instance=ExtResource("2_w7xbg")]
+[node name="DirtBox14" parent="." groups=["obsatcle"] instance=ExtResource("2_w7xbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2.5, 0)
 mass = 1.0
 
-[node name="DirtBox15" parent="." instance=ExtResource("2_w7xbg")]
+[node name="DirtBox15" parent="." groups=["obsatcle"] instance=ExtResource("2_w7xbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 2.5, 0)
 mass = 1.0

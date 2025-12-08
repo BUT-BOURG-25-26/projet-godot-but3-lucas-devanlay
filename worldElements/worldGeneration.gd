@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 	print("boxList ",len(boxList))
 
 func generateNext(newdifficulty : int):
-	difficulty = newdifficulty
+	difficulty = newdifficulty+pregeneratedTileNumber/10
 	addGroundTile(pregeneratedTileNumber)
 	addObstacles(pregeneratedTileNumber)
 	addCollectibles(pregeneratedTileNumber)
@@ -81,9 +81,7 @@ func addObstacles(placement : int =0) ->void:
 		double = randi_range(1,3)
 		
 	for i in range(limit):
-		if(i > limit/2):
-			addSpikeBall(placement)
-		elif(difficulty>=4 and randi_range(0,1)):
+		if(difficulty > 2 and randi_range(difficulty,25)>20):
 			addSpikeBall(placement)
 		else:
 			if(double>0):
@@ -160,7 +158,10 @@ func addBoxes(placement : int =0,double : bool =false):
 		boxList.append(box)
 		add_child.call_deferred(box)
 		await box.ready
-		box.global_position.y = 3.5*(i+1)
+		if(i==0):
+			box.global_position.y = 2.75
+		else:
+			box.global_position.y = 4.6*(i)+2.75
 		box.global_position.z = -placement*tileSize+limitZ
 		box.global_position.x = limitX
 	

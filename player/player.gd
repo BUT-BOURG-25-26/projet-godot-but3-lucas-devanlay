@@ -125,24 +125,21 @@ func dash()->void:
 func  checkCollission()->void:
 	var obstacles : Array[Node] = get_tree().get_nodes_in_group("obstacle")
 	for i in range(len(obstacles)):
-		if(dashing):
+		if(obstacles[i].is_in_group("destroyable") and dashing):
 			if((obstacles[i].global_position.z < global_position.z + 3) 
 			and (obstacles[i].global_position.z > global_position.z -10)
 			and (obstacles[i].global_position.x > global_position.x -3)
 			and (obstacles[i].global_position.x < global_position.x +3)
-			and (obstacles[i].global_position.y > global_position.y-5)
-			and (obstacles[i].global_position.y < global_position.y+5)):
-				if(obstacles[i].is_in_group("destroyable") and dashing):
-					obstacles[i].physics_interpolation_mode=Node.PHYSICS_INTERPOLATION_MODE_OFF
-					obstacles[i].queue_free()
-					gameManager.addToExternalScore(100)
-					velocity.z+=-5
-				else:
-					gameManager.gameOver()
+			and (obstacles[i].global_position.y > global_position.y-10)
+			and (obstacles[i].global_position.y < global_position.y+10)):
+				obstacles[i].physics_interpolation_mode=Node.PHYSICS_INTERPOLATION_MODE_OFF
+				obstacles[i].queue_free()
+				gameManager.addToExternalScore(100)
+				velocity.z+=-5
 		elif((obstacles[i].global_position.z < global_position.z + 1) 
 			and (obstacles[i].global_position.z > global_position.z -1)
 			and (obstacles[i].global_position.x > global_position.x -2)
 			and (obstacles[i].global_position.x < global_position.x +2)
 			and (obstacles[i].global_position.y > global_position.y)
 			and (obstacles[i].global_position.y < global_position.y+2)):
-					gameManager.gameOver()
+				gameManager.gameOver()
