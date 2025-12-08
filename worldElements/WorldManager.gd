@@ -15,12 +15,14 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if(gameIsOngoing):
 		if(difficulty>5):
-			global_position.z+=5
+			global_position.z+=3
 			distanceUntilNextTile -= 5
+		elif(difficulty<2):
+			global_position.z+=1
+			distanceUntilNextTile -= 1
 		else:
-			global_position.z+=difficulty
-			distanceUntilNextTile -= difficulty
-
+			global_position.z+=difficulty/2
+			distanceUntilNextTile -= difficulty/2
 func _process(delta: float) -> void:
 	if(distanceUntilNextTile<=0 and gameIsOngoing):
 		worldGeneration.generateNext(difficulty)

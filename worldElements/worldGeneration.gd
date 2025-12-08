@@ -27,6 +27,9 @@ func _ready() -> void:
 			strawberryList.append(childrens[i])
 	preGenerateTerraine()
 
+func _process(delta: float) -> void:
+	print("boxList ",len(boxList))
+
 func generateNext(newdifficulty : int):
 	difficulty = newdifficulty
 	addGroundTile(pregeneratedTileNumber)
@@ -41,10 +44,22 @@ func preGenerateTerraine():
 	addGroundTile(2)
 	print("pregenerating")
 	for i in range(3,pregeneratedTileNumber+1):
-		difficulty = i/10
+		difficulty = i/6
+		"""
+		if(i==10):
+			addSet(1,i)
+		elif(i==20):
+			addSet(4,i)
+		elif(i==pregeneratedTileNumber):
+			addSet(2,i)
+		elif(i==pregeneratedTileNumber+1):
+			addSet(2,i)
+		else :
+		"""
 		addGroundTile(i)
 		addObstacles(i)
 		addCollectibles(i)
+		
 	difficulty = 1
 
 func addObstacles(placement : int =0) ->void:
@@ -76,6 +91,19 @@ func addObstacles(placement : int =0) ->void:
 				double-=1
 			else:
 				addBoxes(placement, false)
+
+func addSet(id: int=0,placement : int =0):
+	addGroundTile(placement)
+	var tile = imports.getSet(id)
+	add_child.call_deferred(tile)
+	await tile.ready
+
+	var boxes : Array[Node] = tile.get_children()
+	for i in range(len(boxes)):
+		if(boxes[i] is BaseBox):
+			boxList.append(boxes[i])
+	tile.global_position.y = 0
+	tile.global_position.z = -placement*tileSize
 
 func addGroundTile(placement : int =0):
 	var tile : GroundTile = imports.getGroundTile()
@@ -158,10 +186,10 @@ func deleteElementsOutideView():
 		if(groundTiles[0].global_position.z>tileSize):
 			groundTiles[0].queue_free()
 			groundTiles.pop_front()
-	if(is_instance_valid(boxList[0])):
-		if(!boxList.is_empty()  and (boxList[0].global_position.z>tileSize or boxList[0].global_position.y<-4)):
-			if(is_instance_valid(boxList[0])):
-				boxList[0].queue_free()
+	if(!boxList.is_empty() and is_instance_valid(boxList[0])):
+		if((boxList[0].global_position.z>tileSize or boxList[0].global_position.y<-4)):
+			print(boxList[0].name)
+			boxList[0].queue_free()
 			boxList.pop_front()
 	if(!strawberryList.is_empty()):
 		if(strawberryList[0].global_position.z>tileSize or strawberryList[0].global_position.y<-4):

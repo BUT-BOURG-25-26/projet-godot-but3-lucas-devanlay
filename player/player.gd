@@ -123,8 +123,8 @@ func  checkCollission()->void:
 			and (obstacles[i].global_position.z > global_position.z -10)
 			and (obstacles[i].global_position.x > global_position.x -3)
 			and (obstacles[i].global_position.x < global_position.x +3)
-			and (obstacles[i].global_position.y > global_position.y-3)
-			and (obstacles[i].global_position.y < global_position.y+3)):
+			and (obstacles[i].global_position.y > global_position.y-5)
+			and (obstacles[i].global_position.y < global_position.y+5)):
 				if(obstacles[i].is_in_group("destroyable") and dashing):
 					obstacles[i].physics_interpolation_mode=Node.PHYSICS_INTERPOLATION_MODE_OFF
 					obstacles[i].queue_free()
