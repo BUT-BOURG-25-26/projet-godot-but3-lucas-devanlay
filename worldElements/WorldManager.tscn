@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://0jhci6oqaxfb"]
+[gd_scene load_steps=15 format=3 uid="uid://0jhci6oqaxfb"]
 
 [ext_resource type="Script" uid="uid://c5chyokl55n84" path="res://worldElements/WorldManager.gd" id="1_iit2x"]
 [ext_resource type="PackedScene" uid="uid://brur4bcgca3ya" path="res://worldElements/groundTiles/ground.tscn" id="2_4cbjq"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dhe1j5vo150ls" path="res://worldElements/bonus/strawberry.tscn" id="4_a2qwj"]
 [ext_resource type="PackedScene" uid="uid://cxmog028ahjg2" path="res://worldElements/boxes/concreteBox.tscn" id="4_qs2m5"]
 [ext_resource type="PackedScene" uid="uid://tlsclga6abf2" path="res://worldElements/spikes/spikeball.tscn" id="6_qs2m5"]
+[ext_resource type="PackedScene" uid="uid://cuwdiq5gxc2as" path="res://worldElements/boxes/longs/longDirtBox.tscn" id="8_c5f7f"]
 [ext_resource type="Script" uid="uid://dlw0lw4c7nfxg" path="res://worldElements/world_elements_imports.gd" id="8_nxsld"]
 [ext_resource type="Script" uid="uid://ciosodcgfpls8" path="res://worldElements/worldGeneration.gd" id="8_w6hea"]
 [ext_resource type="PackedScene" uid="uid://bin6otcfkkirq" path="res://worldElements/premadeObstacleSet/set1.tscn" id="9_jlwf5"]
@@ -65,6 +66,7 @@ script = ExtResource("8_w6hea")
 script = ExtResource("8_nxsld")
 groundTileScene = ExtResource("2_4cbjq")
 dirtBoxScene = ExtResource("3_1xntr")
+longDirtBoxScene = ExtResource("8_c5f7f")
 concreteBoxScene = ExtResource("4_qs2m5")
 strawberryScene = ExtResource("4_a2qwj")
 spikeBallScene = ExtResource("6_qs2m5")
@@ -84,3 +86,5 @@ set5 = ExtResource("13_or14a")
 [connection signal="body_shape_entered" from="DirtBox3" to="DirtBox3" method="_on_body_shape_entered"]
 [connection signal="body_entered" from="DirtBox4" to="DirtBox4" method="_on_body_entered"]
 [connection signal="body_shape_entered" from="DirtBox4" to="DirtBox4" method="_on_body_shape_entered"]
+[connection signal="body_entered" from="concreteBox" to="concreteBox" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="concreteBox" to="concreteBox" method="_on_body_shape_entered"]

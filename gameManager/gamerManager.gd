@@ -85,7 +85,6 @@ func addToExternalScore(additionScore : float):
 	externalScore += additionScore
 
 func updateDifficulty() -> bool:
-	print(difficulty)
 	if(nextTarget<=distanceTraveled):
 		difficulty+=0.1
 		if(difficulty >= 15 ):

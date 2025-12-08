@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfec77xbtqqes"]
+
+[ext_resource type="PackedScene" uid="uid://b5vjlu8vqlssn" path="res://worldElements/boxes/basebox.tscn" id="1_e4e26"]
+[ext_resource type="Script" uid="uid://b4rch54eu7flx" path="res://worldElements/boxes/longs/longBaseBox.gd" id="2_mv8xm"]
+
+[node name="longBaseBox" instance=ExtResource("1_e4e26")]
+script = ExtResource("2_mv8xm")
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 0)

@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxmog028ahjg2"]
+[gd_scene load_steps=5 format=3 uid="uid://cxmog028ahjg2"]
 
 [ext_resource type="PackedScene" uid="uid://b5vjlu8vqlssn" path="res://worldElements/boxes/basebox.tscn" id="1_rv346"]
 [ext_resource type="Texture2D" uid="uid://c8jyjq3hdgbq4" path="res://ressources/Textures/concrete_wall.png" id="2_8sxrr"]
+[ext_resource type="Script" uid="uid://b5h1fhbprejjr" path="res://worldElements/boxes/concreteBox.gd" id="2_yo75g"]
 [ext_resource type="PackedScene" uid="uid://bi8m28tcymiw" path="res://worldElements/spikes/spikeSlabe.tscn" id="3_8sxrr"]
 
 [node name="concreteBox" instance=ExtResource("1_rv346")]
+script = ExtResource("2_yo75g")
 
 [node name="SpikeSlabe2" parent="." index="0" instance=ExtResource("3_8sxrr")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1, 1, 2.8)
