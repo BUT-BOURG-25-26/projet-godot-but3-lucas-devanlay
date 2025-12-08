@@ -12,12 +12,14 @@ var dashing : bool = false
 @export var deathVFXScene : PackedScene
 var model : PlayerModel
 var respawnSFX : AudioStreamPlayer
+var dashSFX : AudioStreamPlayer
 
 func _ready() -> void:
 	gameManager = get_tree().get_first_node_in_group("gameManager")
 	setUpVFX()
 	model = $playerModel
 	respawnSFX= $respawn
+	dashSFX = $dash
 	model.setHairToRed()
 	
 func _physics_process(delta: float) -> void:
@@ -31,10 +33,13 @@ func _physics_process(delta: float) -> void:
 			dash()
 		if(global_position.z>2):
 			gameManager.gameOver()
-		elif(global_position.z>=1):
+		elif(global_position.z>=0.5):
 			velocity.z = -0.5
 		elif(global_position.z<-5):
 			velocity.z += 1
+		elif(global_position.z<0 and velocity.z>=1):
+			velocity.z = 10
+		
 		checkCollission()
 		move_and_slide()
 		if(global_position.z>-0.1 and global_position.z<0.1):
@@ -107,11 +112,12 @@ func turnAround()->void:
 func dash()->void:
 	canDash = false
 	dashing = true
+	dashSFX.play()
 	model.setHairToBlue()
 	velocity.z = -dashStrength
 	await get_tree().create_timer(0.5).timeout
 	dashing = false
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(1.5).timeout
 	model.setHairToRed()
 	canDash = true
 	
