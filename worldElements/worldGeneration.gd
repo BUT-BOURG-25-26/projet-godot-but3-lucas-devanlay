@@ -8,7 +8,7 @@ var strawberryList : Array[Strawberry]
 var spikeList : Array[Spike]
 
 var difficulty : float =0 #same as gameSpeed from WorldManager
-@export var pregeneratedTileNumber : int = 40
+@export var pregeneratedTileNumber : int = 25
 var imports : Imports
 @export var strawberrySpawnChance : int = 80
 
@@ -40,7 +40,6 @@ func preGenerateTerraine():
 	print("pregenerating")
 	for i in range(3,pregeneratedTileNumber+1):
 		difficulty = i/6
-		"""
 		if(i==10):
 			addSet(1,i)
 		elif(i==20):
@@ -50,10 +49,9 @@ func preGenerateTerraine():
 		elif(i==pregeneratedTileNumber+1):
 			addSet(2,i)
 		else :
-		"""
-		addGroundTile(i)
-		addObstacles(i)
-		addCollectibles(i)
+			addGroundTile(i)
+			addObstacles(i)
+			addCollectibles(i)
 		
 	difficulty = 1
 
