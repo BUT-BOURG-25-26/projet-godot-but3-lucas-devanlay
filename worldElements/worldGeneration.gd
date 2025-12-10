@@ -8,7 +8,7 @@ var strawberryList : Array[Strawberry]
 var spikeList : Array[Spike]
 
 var difficulty : float =0 #same as gameSpeed from WorldManager
-@export var pregeneratedTileNumber : int = 25
+@export var pregeneratedTileNumber : int = 40
 var imports : Imports
 @export var strawberrySpawnChance : int = 80
 
@@ -22,6 +22,8 @@ func _ready() -> void:
 			groundTiles.append(childrens[i])
 		elif(childrens[i] is Strawberry):
 			strawberryList.append(childrens[i])
+		elif(childrens[i] is Spike):
+			spikeList.append(childrens[i])
 	preGenerateTerraine()
 
 func generateNext(newdifficulty : int):
@@ -179,7 +181,6 @@ func deleteElementsOutideView():
 				strawberryList.pop_front()
 		else:
 			strawberryList.pop_front()
-
 
 func clearAll():
 	for i in range(len(groundTiles)):
