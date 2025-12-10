@@ -87,5 +87,4 @@ script = ExtResource("8_bnlnp")
 transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 0, 0, 0)
 shape = SubResource("BoxShape3D_bnlnp")
 
-[connection signal="area_shape_entered" from="objectCleaner" to="objectCleaner" method="_on_area_shape_entered"]
 [connection signal="body_shape_entered" from="objectCleaner" to="objectCleaner" method="_on_body_shape_entered"]
