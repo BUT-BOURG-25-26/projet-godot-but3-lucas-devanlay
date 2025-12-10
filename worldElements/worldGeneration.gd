@@ -4,7 +4,6 @@ extends Node3D
 var  worldManager : WorldManager
 var tileSize : int
 var groundTiles : Array[GroundTile]
-var boxList : Array[BaseBox]
 var strawberryList : Array[Strawberry]
 var spikeList : Array[Spike]
 
@@ -19,9 +18,7 @@ func _ready() -> void:
 	tileSize = worldManager.tileSize
 	var childrens = worldManager.get_children()
 	for i in range(len(childrens)):
-		if(childrens[i] is BaseBox):
-			boxList.append(childrens[i])
-		elif(childrens[i] is GroundTile):
+		if(childrens[i] is GroundTile):
 			groundTiles.append(childrens[i])
 		elif(childrens[i] is Strawberry):
 			strawberryList.append(childrens[i])
@@ -32,7 +29,6 @@ func generateNext(newdifficulty : int):
 	addGroundTile(pregeneratedTileNumber)
 	addObstacles(pregeneratedTileNumber)
 	addCollectibles(pregeneratedTileNumber)
-	deleteElementsOutideView()
 
 func preGenerateTerraine():
 	addGroundTile(-1)
@@ -95,10 +91,6 @@ func addSet(id: int=0,placement : int =0):
 	add_child.call_deferred(tile)
 	await tile.ready
 
-	var boxes : Array[Node] = tile.get_children()
-	for i in range(len(boxes)):
-		if(boxes[i] is BaseBox):
-			boxList.append(boxes[i])
 	tile.global_position.y = 0
 	tile.global_position.z = -placement*tileSize
 
@@ -149,7 +141,6 @@ func addBoxes(placement : int =0,double : bool =false,  interiorPlacement : int 
 		box = imports.getLongDirtBoxe()
 	else:
 		box = imports.getDirtBoxe()
-	boxList.append(box)
 	add_child.call_deferred(box)
 	await box.ready
 	box.global_position.y = box.getSize()/2
@@ -175,30 +166,31 @@ func addStrawberry(placement : int =0):
 	
 func deleteElementsOutideView():
 	if(!groundTiles.is_empty()):
-		if(groundTiles[0].global_position.z>tileSize):
-			groundTiles[0].queue_free()
-			groundTiles.pop_front()
-	if(!boxList.is_empty() and is_instance_valid(boxList[0])):
-		if((boxList[0].global_position.z>tileSize or boxList[0].global_position.y<-4)):
-			print(boxList[0].name)
-			boxList[0].queue_free()
-			boxList.pop_front()
+		if(is_instance_valid(groundTiles[0])):
+			if(groundTiles[0].global_position.z>tileSize):
+				groundTiles[0].queue_free()
+				groundTiles.pop_front()			
+		else:
+			groundTiles.pop_front()		
 	if(!strawberryList.is_empty()):
-		if(strawberryList[0].global_position.z>tileSize or strawberryList[0].global_position.y<-4):
-			strawberryList[0].queue_free()
+		if(is_instance_valid(strawberryList[0])):
+			if(strawberryList[0].global_position.z>tileSize or strawberryList[0].global_position.y<-4):
+				strawberryList[0].queue_free()
+				strawberryList.pop_front()
+		else:
 			strawberryList.pop_front()
+
 
 func clearAll():
 	for i in range(len(groundTiles)):
-		groundTiles[i].queue_free()
-	for i in range(len(boxList)):
-		if(is_instance_valid(boxList[i])):
-			boxList[i].queue_free()
+		if(is_instance_valid(groundTiles[i])):
+			groundTiles[i].queue_free()
 	for i in range(len(strawberryList)):
-		strawberryList[i].queue_free()
+		if(is_instance_valid(strawberryList[i])):
+			strawberryList[i].queue_free()
 	for i in range(len(spikeList)):
-		spikeList[i].queue_free()	
+		if(is_instance_valid(spikeList[i])):
+			spikeList[i].queue_free()	
 	groundTiles.clear()	
-	boxList.clear()
 	strawberryList.clear()
 	spikeList.clear()	

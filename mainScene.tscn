@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bt2vkmrpam56u"]
+[gd_scene load_steps=14 format=3 uid="uid://bt2vkmrpam56u"]
 
 [ext_resource type="PackedScene" uid="uid://bui44bws5ufjk" path="res://player/player.tscn" id="1_iwpey"]
 [ext_resource type="Script" uid="uid://d0cmhkikeqc6c" path="res://gameManager/gamerManager.gd" id="2_g4qto"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dgse65bexnbc4" path="res://Menues/gameOverMenue/gameOver.tscn" id="4_6mfv6"]
 [ext_resource type="PackedScene" uid="uid://0jhci6oqaxfb" path="res://worldElements/WorldManager.tscn" id="4_61od6"]
 [ext_resource type="PackedScene" uid="uid://b7hvpqjdk1u7i" path="res://Music/music.tscn" id="6_2qqqv"]
+[ext_resource type="Script" uid="uid://vi1fp8d2mbpm" path="res://objectCleaner.gd" id="8_bnlnp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iwpey"]
 sky_curve = 0.0416088
@@ -26,10 +27,12 @@ tonemap_mode = 2
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_61od6"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bnlnp"]
+
 [node name="MainScene" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.817205, 0.576347, 0, -0.576347, 0.817205, 0, 12, 19)
+transform = Transform3D(1, 0, 0, 0, 0.849791, 0.527119, 0, -0.527119, 0.849791, 0, 14.8955, 13.4099)
 keep_aspect = 0
 
 [node name="player" parent="." instance=ExtResource("1_iwpey")]
@@ -74,3 +77,15 @@ theme_override_font_sizes/font_size = 30
 text = "score : 0"
 
 [node name="Music" parent="." instance=ExtResource("6_2qqqv")]
+
+[node name="objectCleaner" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 100)
+collision_mask = 3
+script = ExtResource("8_bnlnp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="objectCleaner"]
+transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 0, 0, 0)
+shape = SubResource("BoxShape3D_bnlnp")
+
+[connection signal="area_shape_entered" from="objectCleaner" to="objectCleaner" method="_on_area_shape_entered"]
+[connection signal="body_shape_entered" from="objectCleaner" to="objectCleaner" method="_on_body_shape_entered"]
