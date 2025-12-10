@@ -25,6 +25,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if(gameIsOngoing):
 		if(dashing):
+			if(velocity.z>1):
+				velocity.z = -dashStrength
 			velocity.y -= 1
 		elif(!is_on_floor()):
 			velocity.y -= 2

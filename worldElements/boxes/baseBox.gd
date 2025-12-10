@@ -18,6 +18,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			hide()
 			var	gameManager : GameManager = get_tree().get_first_node_in_group("gameManager")
 			gameManager.addToExternalScore(getValue())
-			body.velocity.z = -body.dashStrength
 			body.move_and_slide()
 			queue_free()
