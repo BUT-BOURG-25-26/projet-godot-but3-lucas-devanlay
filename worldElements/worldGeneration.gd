@@ -197,6 +197,13 @@ func clearAll():
 			strawberryList[i].queue_free()
 	for i in range(len(spikeList)):
 		if(is_instance_valid(spikeList[i])):
+			spikeList[i].queue_free()
+	var childrens : Array[Node] = get_children()
+	for i in range(len(childrens)):
+		print(childrens[i].name)
+		if(childrens[i] is not Imports):
+			childrens[i].queue_free()
+	
 	groundTiles.clear()	
 	strawberryList.clear()
 	spikeList.clear()	
