@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4uh1bwexfcf2"]
+[gd_scene load_steps=3 format=3 uid="uid://c4uh1bwexfcf2"]
 
 [ext_resource type="PackedScene" uid="uid://bphngn78xk3k" path="res://worldElements/boxes/dirtBox.tscn" id="2_w7xbg"]
+[ext_resource type="PackedScene" uid="uid://tlsclga6abf2" path="res://worldElements/spikes/spikeball.tscn" id="2_y2grv"]
 
 [node name="Set" type="Node3D"]
 
@@ -51,3 +52,18 @@ mass = 1.0
 [node name="DirtBox15" parent="." groups=["obsatcle"] instance=ExtResource("2_w7xbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 2.5, 0)
 mass = 1.0
+
+[node name="Spikeball" parent="." instance=ExtResource("2_y2grv")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 2.5, 0)
+
+[node name="Spikeball2" parent="." instance=ExtResource("2_y2grv")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 5, 2.5, 0)
+
+[node name="Spikeball3" parent="." instance=ExtResource("2_y2grv")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 10, 2.5, 0)
+
+[node name="Spikeball4" parent="." instance=ExtResource("2_y2grv")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -5, 2.5, 0)
+
+[node name="Spikeball5" parent="." instance=ExtResource("2_y2grv")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -10, 2.5, 0)
