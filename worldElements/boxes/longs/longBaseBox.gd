@@ -1,4 +1,4 @@
-class_name longBaseBox
+class_name LongBaseBox
 extends BaseBox
 
 func _ready() -> void:

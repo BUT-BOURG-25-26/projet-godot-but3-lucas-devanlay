@@ -7,6 +7,7 @@ extends Node3D
 @export var concreteBoxScene : PackedScene 
 @export var strawberryScene : PackedScene 
 @export var spikeBallScene : PackedScene
+@export var longConcreteBoxScene : PackedScene
 
 @export var set1 : PackedScene
 @export var set2 : PackedScene
@@ -20,11 +21,14 @@ func getGroundTile()->GroundTile:
 func getDirtBoxe()->DirtBox:
 	return dirtBoxScene.instantiate()
 
-func getLongDirtBoxe()->longDirtBox:
+func getLongDirtBoxe()->LongDirtBox:
 	return longDirtBoxScene.instantiate()
 
-func getConcreteBoxe()->BaseBox:
+func getConcreteBoxe()->ConcreteBox:
 	return concreteBoxScene.instantiate()
+	
+func getLongConcreteBoxe()->LongConcreteBox:
+	return longConcreteBoxScene.instantiate()
 	
 func getStrawberry()->Strawberry:
 	return strawberryScene.instantiate()
