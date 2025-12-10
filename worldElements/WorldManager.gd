@@ -34,6 +34,7 @@ func restart():
 	worldGeneration.clearAll()
 	distanceUntilNextTile= tileSize
 	worldGeneration.preGenerateTerraine()
+	global_position = Vector3(0,0,0)
 	
 func resetWorld():
 	global_position = Vector3(0,0,0)

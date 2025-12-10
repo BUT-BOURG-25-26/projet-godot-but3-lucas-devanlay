@@ -11,7 +11,7 @@ var difficulty : float =0 #same as gameSpeed from WorldManager
 @export var pregeneratedTileNumber : int = 25
 var imports : Imports
 @export var strawberrySpawnChance : int = 80
-
+		
 func _ready() -> void:
 	imports = $worldElementsImports
 	worldManager = $".."
@@ -44,10 +44,10 @@ func preGenerateTerraine():
 			addSet(1,i)
 		elif(i==20):
 			addSet(4,i)
+		elif(i==pregeneratedTileNumber-1):
+			addSet(2,i)
 		elif(i==pregeneratedTileNumber):
-			addSet(2,i)
-		elif(i==pregeneratedTileNumber+1):
-			addSet(2,i)
+			addGroundTile(i)
 		else :
 			addGroundTile(i)
 			addObstacles(i)
@@ -57,34 +57,32 @@ func preGenerateTerraine():
 
 func addObstacles(placement : int =0) ->void:
 	var limit : int
-	var double : int = 0
+	var numberOfDouble : int = 0 
 
 	if(difficulty<=2):
 		limit=randi_range(0,1)
-		double = randi_range(0,10)>=10
 	elif(difficulty<=3):
 		limit=randi_range(1,2)
-		double = randi_range(0,10)>=8
+		numberOfDouble = randi_range(-5,1)
 	elif(difficulty<=4):
 		limit=randi_range(1,3)
-		double = randi_range(0,10)>=6
+		numberOfDouble = randi_range(-3,1)
 	elif(difficulty<=5):
 		limit=randi_range(2,3)
-		double = randi_range(0,10)>=4
+		numberOfDouble = randi_range(-3,2)
 	elif(difficulty<=6):
 		limit=randi_range(3,4)
-		double = randi_range(0,10)>=3
+		numberOfDouble = randi_range(0,2)
 	else:
-		limit=randi_range(3,4)
-		double = randi_range(0,10)>=2
-		
+		limit=randi_range(3,5)
+		numberOfDouble = randi_range(1,2)
 	for i in range(limit):
 		if(difficulty > 2 and randi_range(difficulty,25)>20):
 			addSpikeBall(placement,i)
 		else:
-			if(double>0):
+			if(numberOfDouble>0):
 				addBoxes(placement, true,i)
-				double-=1
+				numberOfDouble-=1
 			else:
 				addBoxes(placement, false,i)
 
@@ -130,20 +128,27 @@ func addBoxes(placement : int =0,double : bool =false,  interiorPlacement : int 
 		hasSpikes = randi_range(0,100)>=70	
 	elif(difficulty>4):
 		hasSpikes = randi_range(0,100)>=80
-	elif(difficulty>3):
+	elif(difficulty>3 and !double):
 		hasSpikes = randi_range(0,100)>=90
-	elif(difficulty>2):
+	elif(difficulty>2 and !double):
 		hasSpikes = randi_range(0,100)>=95
-
-	var limitX : float = randf_range(-16,16)
-	var limitZ : float = 60/(interiorPlacement+1)
+	var limitZ : float
+	var limitX : float
 	var box : BaseBox
-	if(hasSpikes):
+	if(hasSpikes and double):
+		box = imports.getLongConcreteBoxe()
+	elif(hasSpikes):
 		box = imports.getConcreteBoxe()
 	elif(double):
 		box = imports.getLongDirtBoxe()
 	else:
 		box = imports.getDirtBoxe()
+	if(box is LongBaseBox):
+		limitX = randf_range(-13,13)
+		limitZ = 40/(interiorPlacement+1)
+	else:
+		limitX  = randf_range(-13,13)
+		limitZ = 40/(interiorPlacement+1)
 	add_child.call_deferred(box)
 	await box.ready
 	box.global_position.y = box.getSize()/2
@@ -192,7 +197,6 @@ func clearAll():
 			strawberryList[i].queue_free()
 	for i in range(len(spikeList)):
 		if(is_instance_valid(spikeList[i])):
-			spikeList[i].queue_free()	
 	groundTiles.clear()	
 	strawberryList.clear()
 	spikeList.clear()	
