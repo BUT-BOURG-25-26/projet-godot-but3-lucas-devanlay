@@ -71,8 +71,11 @@ func addObstacles(placement : int =0) ->void:
 	elif(difficulty<=5):
 		limit=randi_range(2,3)
 		double = randi_range(0,10)>=4
+	elif(difficulty<=6):
+		limit=randi_range(3,4)
+		double = randi_range(0,10)>=3
 	else:
-		limit=randi_range(2,4)
+		limit=randi_range(3,4)
 		double = randi_range(0,10)>=2
 		
 	for i in range(limit):
