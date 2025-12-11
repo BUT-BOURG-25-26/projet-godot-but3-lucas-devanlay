@@ -4,7 +4,8 @@ extends Node3D
 var value : float = 0
 var animationPlayer : AnimationPlayer
 var animationToPlay : String  = ""
- 
+var audioPlayer : AudioStreamPlayer3D
+
 func _ready() -> void:
 	animationPlayer = $AnimationPlayer
 	
@@ -16,6 +17,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if(body is Player):
 		var gameManager = get_tree().get_first_node_in_group("gameManager")
 		gameManager.addToExternalScore(value)
+		audioPlayer.play()
 		hide()
 		value= 0
 	if(body is Spike or body is BaseBox):

@@ -5,3 +5,4 @@ func _ready() -> void:
 	super()
 	animationToPlay = "rotation"
 	value = 500
+	audioPlayer = $AudioStreamPlayer3D
