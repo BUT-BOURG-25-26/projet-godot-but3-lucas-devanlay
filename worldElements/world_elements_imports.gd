@@ -5,7 +5,8 @@ extends Node3D
 @export var dirtBoxScene : PackedScene
 @export var longDirtBoxScene : PackedScene
 @export var concreteBoxScene : PackedScene 
-@export var strawberryScene : PackedScene 
+@export var strawberryScene : PackedScene
+@export var theoScene : PackedScene 
 @export var spikeBallScene : PackedScene
 @export var longConcreteBoxScene : PackedScene
 
@@ -32,6 +33,9 @@ func getLongConcreteBoxe()->LongConcreteBox:
 	
 func getStrawberry()->Strawberry:
 	return strawberryScene.instantiate()
+	
+func getTheo()->Theo:
+	return theoScene.instantiate()
 
 func getSpikeBall()->Spike:
 	return spikeBallScene.instantiate()
