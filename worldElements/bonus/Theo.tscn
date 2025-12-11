@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvohfbf04yrai"]
+
+[ext_resource type="Script" uid="uid://prmsxp6tco6t" path="res://worldElements/bonus/Theo.gd" id="1_4dtyf"]
+[ext_resource type="PackedScene" uid="uid://dprvpmosb03b" path="res://ressources/Models/theo.glb" id="1_87cij"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_87cij"]
+
+[node name="theo" instance=ExtResource("1_87cij")]
+script = ExtResource("1_4dtyf")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/rotation = Quaternion(0.280762, 0, 0, 0.959777)
+bones/2/rotation = Quaternion(-0.183723, 0.085691, -0.0345843, 0.978625)
+bones/2/scale = Vector3(1, 1.00127, 1)
+bones/3/rotation = Quaternion(-1.97906e-09, -3.72529e-09, 0, 1)
+bones/4/rotation = Quaternion(0.0234492, -0.0104449, -0.00484987, 0.999659)
+bones/5/position = Vector3(0.485622, 0.325614, 0.0920544)
+bones/5/rotation = Quaternion(-0.193047, 0.188695, -0.7253, 0.633298)
+bones/6/rotation = Quaternion(0.0336596, 0.0133487, -0.120997, 0.991992)
+bones/7/position = Vector3(-0.485622, 0.325614, 0.0920545)
+bones/7/rotation = Quaternion(0.21129, 0.206587, 0.640374, 0.708943)
+bones/8/rotation = Quaternion(0.295176, -0.0545559, 0.0923755, 0.949401)
+bones/9/position = Vector3(0.325827, -0.485859, 0.454291)
+bones/9/rotation = Quaternion(0.902852, 0.100867, 0.0520158, 0.414702)
+bones/9/scale = Vector3(0.999997, 1, 0.999995)
+bones/10/rotation = Quaternion(0.22666, 0.0164929, 0.0238373, 0.973543)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/position = Vector3(0.422997, -0.978436, 0.821068)
+bones/12/position = Vector3(0.377513, -0.791991, 1.03024)
+bones/12/rotation = Quaternion(0.705559, 0.0467546, 0.0467547, 0.705559)
+bones/13/position = Vector3(-0.325827, -0.485859, 0.616134)
+bones/13/rotation = Quaternion(0.943937, -0.141511, -0.000722736, -0.298255)
+bones/13/scale = Vector3(0.999997, 1, 0.999996)
+bones/14/rotation = Quaternion(0.42822, -0.015288, -0.045035, 0.902422)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/position = Vector3(-0.422997, -0.757383, 0.117137)
+bones/16/position = Vector3(-0.377513, -0.791991, 1.03024)
+bones/16/rotation = Quaternion(0.705559, -0.0467546, -0.0467547, 0.705559)
+
+[node name="Area3D" type="Area3D" parent="." index="3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 1.88626, 0)
+shape = SubResource("CapsuleShape3D_87cij")
