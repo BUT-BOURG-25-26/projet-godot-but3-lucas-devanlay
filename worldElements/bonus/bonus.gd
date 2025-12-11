@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 		if(!animationPlayer.is_playing() and animationToPlay!=""):
 			animationPlayer.play(animationToPlay)
 
-func _on_area_3d_body_entered(body: Node3D) -> void:
+func actOnCollision(body: Node3D)-> void:
 	if(body is Player):
 		var gameManager = get_tree().get_first_node_in_group("gameManager")
 		gameManager.addToExternalScore(value)

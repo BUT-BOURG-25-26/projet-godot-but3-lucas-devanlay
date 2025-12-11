@@ -4,7 +4,7 @@ extends Node3D
 var  worldManager : WorldManager
 var tileSize : int
 var groundTiles : Array[GroundTile]
-var strawberryList : Array[Strawberry]
+var strawberryList : Array[Bonus]
 var spikeList : Array[Spike]
 
 var difficulty : float =0 #same as gameSpeed from WorldManager
@@ -157,20 +157,25 @@ func addBoxes(placement : int =0,double : bool =false,  interiorPlacement : int 
 	
 func addCollectibles(placement : int =0):
 	var success : int = randi_range(difficulty,100)
-	if(success>=strawberrySpawnChance):
-		addStrawberry(placement)
-
-func addStrawberry(placement : int =0):
-	var berry : Strawberry = imports.getStrawberry()
-	strawberryList.append(berry)
-	add_child.call_deferred(berry)
-	await berry.ready
+	var bonus : Bonus
+	var limitY : float
 	var limitX : float = randf_range(-14,14)
-	var limitY : float = randf_range(1,11)
 	var limitZ : float = randf_range(-20,20)
-	berry.global_position.y = limitY
-	berry.global_position.z = -placement*tileSize+limitZ
-	berry.global_position.x = limitX
+	if(success>=95):
+		bonus = imports.getTheo()
+		limitY = 0
+	elif(success>=strawberrySpawnChance):
+		bonus = imports.getStrawberry()
+		limitY = randf_range(1,11)
+	else:
+		return
+	strawberryList.append(bonus)
+	add_child.call_deferred(bonus)
+	await bonus.ready
+	
+	bonus.global_position.y = limitY
+	bonus.global_position.z = -placement*tileSize+limitZ
+	bonus.global_position.x = limitX
 	
 func deleteElementsOutideView():
 	if(!groundTiles.is_empty()):
@@ -200,7 +205,6 @@ func clearAll():
 			spikeList[i].queue_free()
 	var childrens : Array[Node] = get_children()
 	for i in range(len(childrens)):
-		print(childrens[i].name)
 		if(childrens[i] is not Imports):
 			childrens[i].queue_free()
 	

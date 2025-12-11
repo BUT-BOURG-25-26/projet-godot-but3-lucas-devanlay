@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bt2vkmrpam56u"]
+[gd_scene load_steps=15 format=3 uid="uid://bt2vkmrpam56u"]
 
 [ext_resource type="PackedScene" uid="uid://bui44bws5ufjk" path="res://player/player.tscn" id="1_iwpey"]
 [ext_resource type="Script" uid="uid://d0cmhkikeqc6c" path="res://gameManager/gamerManager.gd" id="2_g4qto"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://0jhci6oqaxfb" path="res://worldElements/WorldManager.tscn" id="4_61od6"]
 [ext_resource type="PackedScene" uid="uid://b7hvpqjdk1u7i" path="res://Music/music.tscn" id="6_2qqqv"]
 [ext_resource type="Script" uid="uid://vi1fp8d2mbpm" path="res://objectCleaner.gd" id="8_bnlnp"]
+[ext_resource type="PackedScene" uid="uid://dvohfbf04yrai" path="res://worldElements/bonus/Theo.tscn" id="9_vuu3o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iwpey"]
 sky_curve = 0.0416088
@@ -86,5 +87,8 @@ script = ExtResource("8_bnlnp")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="objectCleaner"]
 transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 0, 0, 0)
 shape = SubResource("BoxShape3D_bnlnp")
+
+[node name="theo" parent="." instance=ExtResource("9_vuu3o")]
+transform = Transform3D(1.11122, 0, 1.00756, 0, 1.5, 0, -1.00756, 0, 1.11122, -15.7678, 0, 13.3154)
 
 [connection signal="body_shape_entered" from="objectCleaner" to="objectCleaner" method="_on_body_shape_entered"]
