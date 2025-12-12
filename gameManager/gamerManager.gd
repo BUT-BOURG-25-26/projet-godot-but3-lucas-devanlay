@@ -10,7 +10,8 @@ var gameHasEnded : bool = false
 var player : Player
 var menue : CanvasLayer
 var gameOverMenue : Control
-var distanceLable : Label
+var scoreLabel : Label
+var difficultyLabel : Label
 var worlManager : WorldManager
 var mainScene : Node3D
 var musicHanlder : musicHandler
@@ -23,12 +24,14 @@ func _ready() -> void:
 	menue = $"../UI/MainMenue"
 	gameOverMenue = $"../UI/GameOverMenue"
 	worlManager = $"../WorldManager"
-	distanceLable = $"../UI/Score"
+	scoreLabel = $"../UI/Score"
+	difficultyLabel = $"../UI/Difficulty"
 	mainScene = $".."
 	musicHanlder = $"../Music"
 	
 func _process(delta: float) -> void:
 	if(!gameHasStarted):
+		distanceTraveled = 0.0
 		if(listenForInputs() and !waiting):
 			start()
 	elif(gameHasEnded):
@@ -38,7 +41,8 @@ func _process(delta: float) -> void:
 			await get_tree().create_timer(0.5).timeout
 			waiting = false
 	else:
-		increaseDistanceTraveled()
+		updateScoreLabel()
+		updateDifficultyLabel()
 		if(updateDifficulty()):
 			player.speedUpRunning()
 		worlManager.difficulty = difficulty
@@ -70,19 +74,21 @@ func listenForInputs():
 	
 func gameOver():
 	musicHanlder.inMenue = true
-	difficulty = 0
 	player.kill()
 	resetWorld()
 	gameOverMenue.updateAndShow(distanceTraveled + externalScore)
 	await get_tree().create_timer(0.5).timeout
 	gameHasEnded = true
 
-func increaseDistanceTraveled():
-	distanceTraveled +=difficulty
-	distanceLable.text = "score : "+str(int(distanceTraveled + externalScore))
+func updateScoreLabel():
+	distanceTraveled +=difficulty 
+	scoreLabel.text = "Score : "+str(int(distanceTraveled + externalScore))
+
+func updateDifficultyLabel():
+	difficultyLabel.text = "Difficulty : "+str(float(difficulty))
 	
 func addToExternalScore(additionScore : float):
-	externalScore += additionScore
+	externalScore += additionScore * difficulty
 
 func updateDifficulty() -> bool:
 	if(nextTarget<=distanceTraveled):
@@ -122,16 +128,17 @@ func restart():
 	worlManager.restart()
 	menue.updateAndShow(distanceTraveled + externalScore)
 	resetAttributes()
+	updateScoreLabel()
+	updateDifficultyLabel()
 	print("restarted")
 	
 func resetAttributes():
 	distanceTraveled = 0
 	externalScore = 0
 	gameHasStarted = false
-	difficulty = 1
+	difficulty = 1.0
 	gameHasEnded= false
 	nextTarget = 100
-
 
 func quite():
 	get_tree().quit()
