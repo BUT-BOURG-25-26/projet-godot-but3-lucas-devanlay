@@ -14,9 +14,9 @@ func getValue()->int:
 func playBreakingAudio()->void:
 	var breakingSoundPlayer : AudioStreamPlayer3D
 	if(self is DirtBox):
-		breakingSoundPlayer = $"../breakingSoundDirt"
+		breakingSoundPlayer = get_node_or_null("../breakingSoundDirt")
 		if(breakingSoundPlayer == null):
-			breakingSoundPlayer = $"../../breakingSoundDirt"
+			breakingSoundPlayer = get_node_or_null("../../breakingSoundDirt")
 	else:
 		breakingSoundPlayer = $"../breakingSoundLongDirt"
 	if(breakingSoundPlayer == null):
