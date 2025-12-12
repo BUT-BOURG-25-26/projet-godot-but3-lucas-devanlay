@@ -74,7 +74,7 @@ func addObstacles(placement : int =0) ->void:
 		limit=randi_range(3,4)
 		numberOfDouble = randi_range(0,2)
 	else:
-		limit=randi_range(3,5)
+		limit=randi_range(3,6)
 		numberOfDouble = randi_range(1,2)
 	for i in range(limit):
 		if(difficulty > 2 and randi_range(difficulty,25)>20):
@@ -104,12 +104,17 @@ func addGroundTile(placement : int =0):
 	tile.global_position.z = -placement*tileSize
 	
 func addSpikeBall(placement : int =0, interiorPlacement : int =0):
-	var lowerLimit : int =difficulty-5
 	var multiply : int
-	if(lowerLimit<1):
-		multiply = randi_range(1,difficulty/4)
+	if(difficulty<2):
+		multiply = 0
+	elif(difficulty<3):
+		multiply = randi_range(-1,1)
+	elif(difficulty<4):
+		multiply = randi_range(0,1)
+	elif(difficulty<5):
+		multiply = randi_range(0,2)
 	else:
-		multiply= randi_range(lowerLimit,difficulty/4)
+		multiply = randi_range(1,5)
 	var limitX : float = randf_range(-16,16)
 	var limitZ : float = randf_range(0,60)
 	for i in range(0,multiply):
@@ -117,7 +122,7 @@ func addSpikeBall(placement : int =0, interiorPlacement : int =0):
 		spikeList.append(spike)
 		add_child.call_deferred(spike)
 		await spike.ready
-		spike.global_position.y = randf_range(0,5)
+		spike.global_position.y = randf_range(0,3)
 		spike.global_position.z = -placement*tileSize+limitZ+randf_range(-5,5)
 		spike.global_position.x = limitX+randf_range(-5,5)
 	
@@ -161,7 +166,7 @@ func addCollectibles(placement : int =0):
 	var limitY : float
 	var limitX : float = randf_range(-14,14)
 	var limitZ : float = randf_range(-20,20)
-	if(success>=95):
+	if(success>=99):
 		bonus = imports.getTheo()
 		limitY = 0
 	elif(success>=strawberrySpawnChance):
@@ -205,7 +210,7 @@ func clearAll():
 			spikeList[i].queue_free()
 	var childrens : Array[Node] = get_children()
 	for i in range(len(childrens)):
-		if(childrens[i] is not Imports):
+		if(childrens[i] is not Imports and childrens[i] is not AudioStreamPlayer3D):
 			childrens[i].queue_free()
 	
 	groundTiles.clear()	
