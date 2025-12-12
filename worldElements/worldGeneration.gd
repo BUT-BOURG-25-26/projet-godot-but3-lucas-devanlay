@@ -166,7 +166,7 @@ func addCollectibles(placement : int =0):
 	var limitY : float
 	var limitX : float = randf_range(-14,14)
 	var limitZ : float = randf_range(-20,20)
-	if(success>=99):
+	if(success>=99 and difficulty>3):
 		bonus = imports.getTheo()
 		limitY = 0
 	elif(success>=strawberrySpawnChance):
