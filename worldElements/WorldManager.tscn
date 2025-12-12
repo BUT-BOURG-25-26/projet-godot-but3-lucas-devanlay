@@ -68,9 +68,6 @@ axis_lock_angular_y = false
 axis_lock_angular_z = false
 mass = 1.0
 
-[node name="strawberry2" parent="worldGeneration/DirtBox4" instance=ExtResource("4_a2qwj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11469, 5.48127, 0.827036)
-
 [node name="concreteBox" parent="worldGeneration" groups=["destroyable"] instance=ExtResource("4_qs2m5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0959, 3.41958, -12.7178)
 mass = 1.0
@@ -90,6 +87,9 @@ attenuation_model = 3
 [node name="breakingSoundLongDirt" type="AudioStreamPlayer3D" parent="worldGeneration"]
 stream = ExtResource("18_7ibj4")
 attenuation_model = 3
+
+[node name="strawberry2" parent="worldGeneration" instance=ExtResource("4_a2qwj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.58638, 7.99772, 2.58521)
 
 [connection signal="body_entered" from="worldGeneration/DirtBox" to="worldGeneration/DirtBox" method="_on_body_entered"]
 [connection signal="body_shape_entered" from="worldGeneration/DirtBox" to="worldGeneration/DirtBox" method="_on_body_shape_entered"]
