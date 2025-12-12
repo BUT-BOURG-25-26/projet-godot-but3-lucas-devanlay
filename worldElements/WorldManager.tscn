@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://dlw0lw4c7nfxg" path="res://worldElements/world_elements_imports.gd" id="8_nxsld"]
 [ext_resource type="Script" uid="uid://ciosodcgfpls8" path="res://worldElements/worldGeneration.gd" id="8_w6hea"]
 [ext_resource type="PackedScene" uid="uid://bin6otcfkkirq" path="res://worldElements/premadeObstacleSet/set1.tscn" id="9_jlwf5"]
-[ext_resource type="PackedScene" uid="uid://dvohfbf04yrai" path="res://worldElements/bonus/Theo.tscn" id="9_lcviq"]
+[ext_resource type="PackedScene" path="res://worldElements/bonus/Theo.tscn" id="9_lcviq"]
 [ext_resource type="PackedScene" uid="uid://bantck382n5g2" path="res://worldElements/premadeObstacleSet/set2.tscn" id="10_c5f7f"]
 [ext_resource type="PackedScene" uid="uid://k68p5tucgmgv" path="res://worldElements/boxes/longs/longConcreteBox.tscn" id="10_gq22w"]
 [ext_resource type="PackedScene" uid="uid://bm424mv3e4bjl" path="res://worldElements/premadeObstacleSet/set3.tscn" id="11_gq22w"]
@@ -46,19 +46,19 @@ set5 = ExtResource("13_or14a")
 [node name="strawberry" parent="worldGeneration" instance=ExtResource("4_a2qwj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.72264, 5.61976, 9.62615)
 
-[node name="DirtBox" parent="worldGeneration" instance=ExtResource("3_1xntr")]
+[node name="DirtBox" parent="worldGeneration" groups=["destroyable"] instance=ExtResource("3_1xntr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5751, 2.59691, 5.46296)
 mass = 1.0
 
-[node name="DirtBox2" parent="worldGeneration" instance=ExtResource("3_1xntr")]
+[node name="DirtBox2" parent="worldGeneration" groups=["destroyable"] instance=ExtResource("3_1xntr")]
 transform = Transform3D(0.99999, 0.00452039, 0, -0.00452039, 0.99999, 0, 0, 0, 1, 17.5668, 2.57922, -4.60861)
 mass = 1.0
 
-[node name="DirtBox3" parent="worldGeneration" instance=ExtResource("3_1xntr")]
+[node name="DirtBox3" parent="worldGeneration" groups=["destroyable"] instance=ExtResource("3_1xntr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7542, 2.95617, 13.4572)
 mass = 1.0
 
-[node name="DirtBox4" parent="worldGeneration" instance=ExtResource("3_1xntr")]
+[node name="DirtBox4" parent="worldGeneration" groups=["destroyable"] instance=ExtResource("3_1xntr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.70107, 2.51645, 1.75817)
 axis_lock_linear_x = false
 axis_lock_linear_y = false
@@ -71,14 +71,14 @@ mass = 1.0
 [node name="strawberry2" parent="worldGeneration/DirtBox4" instance=ExtResource("4_a2qwj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11469, 5.48127, 0.827036)
 
-[node name="concreteBox" parent="worldGeneration" instance=ExtResource("4_qs2m5")]
+[node name="concreteBox" parent="worldGeneration" groups=["destroyable"] instance=ExtResource("4_qs2m5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0959, 3.41958, -12.7178)
 mass = 1.0
 
 [node name="strawberry3" parent="worldGeneration" instance=ExtResource("4_a2qwj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3239, 9.44769, 5.42944)
 
-[node name="DirtBox5" parent="worldGeneration" instance=ExtResource("3_1xntr")]
+[node name="DirtBox5" parent="worldGeneration" groups=["destroyable"] instance=ExtResource("3_1xntr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3986, 6.8832, 5.53355)
 mass = 1.0
 

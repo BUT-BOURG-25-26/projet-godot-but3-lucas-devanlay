@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://0jhci6oqaxfb" path="res://worldElements/WorldManager.tscn" id="4_61od6"]
 [ext_resource type="PackedScene" uid="uid://b7hvpqjdk1u7i" path="res://Music/music.tscn" id="6_2qqqv"]
 [ext_resource type="Script" uid="uid://vi1fp8d2mbpm" path="res://objectCleaner.gd" id="8_bnlnp"]
-[ext_resource type="PackedScene" uid="uid://dvohfbf04yrai" path="res://worldElements/bonus/Theo.tscn" id="9_vuu3o"]
+[ext_resource type="PackedScene" path="res://worldElements/bonus/Theo.tscn" id="9_vuu3o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iwpey"]
 sky_curve = 0.0416088

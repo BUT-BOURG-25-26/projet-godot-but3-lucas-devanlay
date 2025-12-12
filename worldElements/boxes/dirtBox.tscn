@@ -40,6 +40,3 @@ texture = ExtResource("3_putgq")
 transform = Transform3D(15, 0, 0, 0, -6.55671e-07, -15, 0, 15, -6.55671e-07, 0, -2.43557, 0)
 double_sided = false
 texture = ExtResource("3_putgq")
-
-[node name="breakingSoundPlayer" parent="." index="8"]
-stream_paused = false

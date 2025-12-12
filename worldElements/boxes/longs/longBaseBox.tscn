@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b5vjlu8vqlssn" path="res://worldElements/boxes/basebox.tscn" id="1_e4e26"]
 [ext_resource type="Script" uid="uid://b4rch54eu7flx" path="res://worldElements/boxes/longs/longBaseBox.gd" id="2_mv8xm"]
 
-[node name="longBaseBox" instance=ExtResource("1_e4e26")]
+[node name="longBaseBox" groups=["destroyable"] instance=ExtResource("1_e4e26")]
 script = ExtResource("2_mv8xm")
 
 [node name="CollisionShape3D" parent="." index="0"]
