@@ -32,7 +32,7 @@ tonemap_mode = 2
 [node name="MainScene" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.849791, 0.527119, 0, -0.527119, 0.849791, 0, 14.8955, 13.4099)
+transform = Transform3D(1, 0, 0, 0, 0.849791, 0.527119, 0, -0.527119, 0.849791, 0, 14.8955, 15.1808)
 keep_aspect = 0
 
 [node name="player" parent="." instance=ExtResource("1_iwpey")]
