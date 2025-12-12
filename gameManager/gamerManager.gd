@@ -88,7 +88,7 @@ func updateDifficultyLabel():
 	difficultyLabel.text = "Difficulty : "+str(float(difficulty))
 	
 func addToExternalScore(additionScore : float):
-	externalScore += additionScore * difficulty
+	externalScore += additionScore * difficulty/2
 
 func updateDifficulty() -> bool:
 	if(nextTarget<=distanceTraveled):
