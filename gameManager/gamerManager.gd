@@ -28,12 +28,14 @@ func _ready() -> void:
 	difficultyLabel = $"../UI/Difficulty"
 	mainScene = $".."
 	musicHanlder = $"../Music"
+	hideIngameInfo(true)
 	
 func _process(delta: float) -> void:
 	if(!gameHasStarted):
 		distanceTraveled = 0.0
 		if(listenForInputs() and !waiting):
 			start()
+			hideIngameInfo(false)
 	elif(gameHasEnded):
 		if(listenForInputs()):
 			waiting = true
@@ -68,6 +70,7 @@ func listenForInputs():
 		+Input.get_action_strength("right")
 		+Input.get_action_strength("left")
 		+Input.get_action_strength("up")
+		+Input.get_action_strength("dash")
 	):
 		return true
 	return false
@@ -77,9 +80,18 @@ func gameOver():
 	player.kill()
 	resetWorld()
 	gameOverMenue.updateAndShow(distanceTraveled + externalScore)
+	hideIngameInfo()
 	await get_tree().create_timer(0.5).timeout
 	gameHasEnded = true
-
+	
+func hideIngameInfo(hide:bool =true):
+	if(hide):
+		scoreLabel.hide()
+		difficultyLabel.hide()
+	else:
+		scoreLabel.show()
+		difficultyLabel.show()
+		
 func updateScoreLabel():
 	distanceTraveled +=difficulty 
 	scoreLabel.text = "Score : "+str(int(distanceTraveled + externalScore))

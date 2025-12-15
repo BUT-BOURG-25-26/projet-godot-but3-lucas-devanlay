@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://b84ho8lagegw0"]
+
+[ext_resource type="PackedScene" uid="uid://v2e6edh5tl2g" path="res://Menues/menue.tscn" id="1_8x7wf"]
+[ext_resource type="PackedScene" uid="uid://dgse65bexnbc4" path="res://Menues/gameOverMenue/gameOver.tscn" id="2_22t33"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Difficulty" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 0.233
+anchor_bottom = 0.058
+offset_right = 0.23999
+offset_bottom = -10.2
+theme_override_font_sizes/font_size = 30
+text = "Difficulty : 1.0"
+
+[node name="MainMenue" parent="." instance=ExtResource("1_8x7wf")]
+
+[node name="GameOverMenue" parent="." instance=ExtResource("2_22t33")]
+visible = false
+
+[node name="Score" type="Label" parent="."]
+anchors_preset = -1
+anchor_top = 0.039
+anchor_right = 0.186
+anchor_bottom = 0.086
+offset_top = -0.100002
+offset_right = 0.0800018
+offset_bottom = -0.400002
+theme_override_font_sizes/font_size = 30
+text = "Score : 1"

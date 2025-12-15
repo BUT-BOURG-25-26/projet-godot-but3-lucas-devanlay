@@ -62,7 +62,7 @@ offset_right = -1.88
 offset_bottom = 22.7
 theme_override_fonts/font = ExtResource("1_utcse")
 theme_override_font_sizes/font_size = 30
-text = "Press anywhere to start"
+text = "Press ←↑↓→,  slide or ASDZ to start"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_1m4pd")
@@ -72,4 +72,18 @@ position = Vector2(357.5, 122.5)
 scale = Vector2(0.708008, 0.776882)
 texture = ExtResource("6_tbx1l")
 
+[node name="Guide button" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.001
+anchor_right = 0.121
+anchor_bottom = 0.093
+offset_left = -0.72
+offset_right = -0.119942
+offset_bottom = 0.299995
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_utcse")
+theme_override_font_sizes/font_size = 64
+text = "?"
+
 [connection signal="pressed" from="CloseButton" to="CloseButton" method="_on_pressed"]
+[connection signal="pressed" from="Guide button" to="Guide button" method="_on_pressed"]
