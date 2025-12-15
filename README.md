@@ -3,7 +3,7 @@ CelesteRunner is an *UNOFFICIAL* celeste Fan game taking elements from the Celet
 
 All assets and sound files are from :
 	[Celeste 64: Fragments of the Mountain](https://github.com/EXOK/Celeste64)
-	and Celetse
+	and Celeste
 	made by [Extremely OK Games](https://exok.com/games.html)
 
 CelesteRunner was not made by or otherwise know of Extremely OK Games or any of it's team members
