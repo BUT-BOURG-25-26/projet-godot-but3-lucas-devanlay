@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 			if(velocity.y>5):
 				jumpSFX.play()
 		velocity.x = (-(getInputLeft()) + (getInputRight()))*20
-		if(canDash && Input.get_action_strength("dash")):
+		if(canDash && Input.get_action_strength("dash")+ Input.get_action_strength("ui_down")):
 			dash()
 		if(global_position.z>2):
 			gameManager.gameOver()
