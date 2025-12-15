@@ -1,18 +1,37 @@
 extends CanvasLayer
 
-var scoreList : ItemList
+var scoreBoard : ScoreBoard
+var guide : Control
+var instruction : InstructionLable
+var guideIsShown : bool = false
 
 func _ready():
-	scoreList = $ScoreList
+	scoreBoard = $ScoreBoard
+	guide = $Guide
+	instruction = $instruction
 	
 func updateAndShow(score : float = 0):
 	if(score>0):
 		addScore(score)
-	updateScoreList()
+	updatescoreBoard()
 	show()
 
-func updateScoreList():
-	scoreList.updateScores()
+func updatescoreBoard():
+	scoreBoard.updateScores()
 	
 func addScore(score : float):
-	scoreList.addScore(score)
+	scoreBoard.addScore(score)
+
+func _on_guide_button_pressed() -> void:
+	if(!guideIsShown):
+		scoreBoard.hideWithLable()
+		instruction.hide()
+		instruction.dissableDisplay()
+		guide.show()
+		guideIsShown=true
+	else:
+		scoreBoard.showWithLable()
+		instruction.show()
+		instruction.enableDisplay()
+		guide.hide()
+		guideIsShown=false

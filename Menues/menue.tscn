@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://v2e6edh5tl2g"]
+[gd_scene load_steps=8 format=3 uid="uid://v2e6edh5tl2g"]
 
 [ext_resource type="Script" uid="uid://c4pto6n8qehr3" path="res://Menues/mainMenue.gd" id="1_afckf"]
 [ext_resource type="FontFile" uid="uid://w04gwi0drdjr" path="res://ressources/Fonts/Renogare.otf" id="1_utcse"]
@@ -6,11 +6,12 @@
 [ext_resource type="Script" uid="uid://dsw78j024470" path="res://Menues/closeButton.gd" id="3_dfnn4"]
 [ext_resource type="Script" uid="uid://dxxahlwqv24kx" path="res://Menues/instruction.gd" id="5_1m4pd"]
 [ext_resource type="Texture2D" uid="uid://fm0s1imblk4y" path="res://ressources/Title/CELESTE-RUnner-12-7-2025.png" id="6_tbx1l"]
+[ext_resource type="PackedScene" uid="uid://eoq05gsgbcy3" path="res://Menues/guideMenue/guide.tscn" id="7_h23ne"]
 
 [node name="Menue" type="CanvasLayer"]
 script = ExtResource("1_afckf")
 
-[node name="ScoreList" type="ItemList" parent="." groups=["scoreList"]]
+[node name="ScoreBoard" type="ItemList" parent="." groups=["scoreList"]]
 anchors_preset = -1
 anchor_left = 0.1
 anchor_top = 0.45
@@ -52,27 +53,27 @@ script = ExtResource("3_dfnn4")
 
 [node name="instruction" type="Label" parent="."]
 anchors_preset = -1
-anchor_left = 0.161
-anchor_top = 0.227
-anchor_right = 0.854
-anchor_bottom = 0.357
-offset_left = -5.92
-offset_top = 22.7
-offset_right = -1.88
-offset_bottom = 22.7
+anchor_left = 0.153
+anchor_top = 0.252
+anchor_right = 0.914
+anchor_bottom = 0.382
+offset_left = -0.160011
+offset_top = 0.199997
+offset_right = -45.08
+offset_bottom = 0.199982
 theme_override_fonts/font = ExtResource("1_utcse")
 theme_override_font_sizes/font_size = 30
-text = "Press ←↑↓→,  slide or ASDZ to start"
+text = "Press ←↑↓→, ASDZ or slide to start"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_1m4pd")
 
-[node name="Titile" type="Sprite2D" parent="."]
+[node name="Title" type="Sprite2D" parent="."]
 position = Vector2(357.5, 122.5)
 scale = Vector2(0.708008, 0.776882)
 texture = ExtResource("6_tbx1l")
 
-[node name="Guide button" type="Button" parent="."]
+[node name="GuideButton" type="Button" parent="."]
 anchors_preset = -1
 anchor_left = 0.001
 anchor_right = 0.121
@@ -85,5 +86,8 @@ theme_override_fonts/font = ExtResource("1_utcse")
 theme_override_font_sizes/font_size = 64
 text = "?"
 
+[node name="Guide" parent="." instance=ExtResource("7_h23ne")]
+visible = false
+
 [connection signal="pressed" from="CloseButton" to="CloseButton" method="_on_pressed"]
-[connection signal="pressed" from="Guide button" to="Guide button" method="_on_pressed"]
+[connection signal="pressed" from="GuideButton" to="." method="_on_guide_button_pressed"]
