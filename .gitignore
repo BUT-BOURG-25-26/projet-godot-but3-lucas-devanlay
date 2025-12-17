@@ -19,3 +19,8 @@ android/build/libs/release/godot-lib.template_release.aar
 CelesteRunner.exe
 CelesteRunner.pck
 savedData/save_game.txt
+/android/build
+/android/build
+*.xml
+*.xml
+/android/build/res
