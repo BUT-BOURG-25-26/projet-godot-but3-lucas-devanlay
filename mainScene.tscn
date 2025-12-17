@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://6gcu6qhpcuhw" path="res://ressources/Textures/Skyboxes/city.png" id="2_we1jl"]
 [ext_resource type="PackedScene" uid="uid://0jhci6oqaxfb" path="res://worldElements/WorldManager.tscn" id="4_61od6"]
 [ext_resource type="PackedScene" uid="uid://b7hvpqjdk1u7i" path="res://Music/music.tscn" id="6_2qqqv"]
-[ext_resource type="PackedScene" uid="uid://b84ho8lagegw0" path="res://Menues/mainUi.tscn" id="7_we1jl"]
+[ext_resource type="PackedScene" path="res://Menues/mainUi.tscn" id="7_we1jl"]
 [ext_resource type="Script" uid="uid://vi1fp8d2mbpm" path="res://objectCleaner.gd" id="8_bnlnp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iwpey"]
