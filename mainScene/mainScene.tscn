@@ -32,6 +32,7 @@ tonemap_mode = 2
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.848048, 0.529919, 0, -0.529919, 0.848048, 0, 15, 15)
+keep_aspect = 0
 fov = 80.0
 
 [node name="player" parent="." instance=ExtResource("1_iucva")]
