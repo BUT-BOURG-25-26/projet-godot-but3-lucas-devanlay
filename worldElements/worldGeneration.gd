@@ -37,7 +37,6 @@ func preGenerateTerraine():
 	addGroundTile(0)
 	addGroundTile(1)
 	addGroundTile(2)
-	print("pregenerating")
 	for i in range(3,pregeneratedTileNumber+1):
 		difficulty = i/6
 		if(i==10):
