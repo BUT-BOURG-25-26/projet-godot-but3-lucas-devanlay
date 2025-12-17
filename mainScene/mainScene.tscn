@@ -1,16 +1,16 @@
 [gd_scene load_steps=13 format=3 uid="uid://bt2vkmrpam56u"]
 
-[ext_resource type="PackedScene" uid="uid://bui44bws5ufjk" path="res://player/player.tscn" id="1_iwpey"]
-[ext_resource type="Script" uid="uid://d0cmhkikeqc6c" path="res://gameManager/gamerManager.gd" id="2_g4qto"]
-[ext_resource type="Texture2D" uid="uid://6gcu6qhpcuhw" path="res://ressources/Textures/Skyboxes/city.png" id="2_we1jl"]
-[ext_resource type="PackedScene" uid="uid://0jhci6oqaxfb" path="res://worldElements/WorldManager.tscn" id="4_61od6"]
-[ext_resource type="PackedScene" uid="uid://b7hvpqjdk1u7i" path="res://Music/music.tscn" id="6_2qqqv"]
-[ext_resource type="PackedScene" path="res://Menues/mainUi.tscn" id="7_we1jl"]
-[ext_resource type="Script" uid="uid://vi1fp8d2mbpm" path="res://objectCleaner.gd" id="8_bnlnp"]
+[ext_resource type="PackedScene" uid="uid://bui44bws5ufjk" path="res://player/player.tscn" id="1_iucva"]
+[ext_resource type="Texture2D" uid="uid://6gcu6qhpcuhw" path="res://ressources/Textures/Skyboxes/city.png" id="2_kgs5k"]
+[ext_resource type="Script" uid="uid://d0cmhkikeqc6c" path="res://gameManager/gamerManager.gd" id="3_ieqsh"]
+[ext_resource type="PackedScene" uid="uid://0jhci6oqaxfb" path="res://worldElements/WorldManager.tscn" id="4_bfp76"]
+[ext_resource type="PackedScene" uid="uid://b7hvpqjdk1u7i" path="res://Music/music.tscn" id="5_3ogsb"]
+[ext_resource type="Script" uid="uid://vi1fp8d2mbpm" path="res://mainScene/objectCleaner.gd" id="6_2wgu1"]
+[ext_resource type="PackedScene" uid="uid://b84ho8lagegw0" path="res://Menues/mainUi.tscn" id="7_0nix2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iwpey"]
 sky_curve = 0.0416088
-sky_cover = ExtResource("2_we1jl")
+sky_cover = ExtResource("2_kgs5k")
 ground_bottom_color = Color(0.552597, 0.654926, 1, 1)
 ground_horizon_color = Color(0.615686, 0.651591, 0.767242, 1)
 ground_curve = 2.07937
@@ -34,14 +34,14 @@ tonemap_mode = 2
 transform = Transform3D(1, 0, 0, 0, 0.849791, 0.527119, 0, -0.527119, 0.849791, 0, 14.8955, 15.1808)
 keep_aspect = 0
 
-[node name="player" parent="." instance=ExtResource("1_iwpey")]
+[node name="player" parent="." instance=ExtResource("1_iucva")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g4qto")
 
 [node name="GamerManager" type="Node" parent="." groups=["gameManager"]]
-script = ExtResource("2_g4qto")
-worldScene = ExtResource("4_61od6")
+script = ExtResource("3_ieqsh")
+worldScene = ExtResource("4_bfp76")
 
 [node name="walls" type="Node3D" parent="."]
 
@@ -57,19 +57,19 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -14, 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall2"]
 shape = SubResource("WorldBoundaryShape3D_61od6")
 
-[node name="WorldManager" parent="." instance=ExtResource("4_61od6")]
+[node name="WorldManager" parent="." instance=ExtResource("4_bfp76")]
 
-[node name="Music" parent="." instance=ExtResource("6_2qqqv")]
+[node name="Music" parent="." instance=ExtResource("5_3ogsb")]
 
 [node name="objectCleaner" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 100)
 collision_mask = 3
-script = ExtResource("8_bnlnp")
+script = ExtResource("6_2wgu1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="objectCleaner"]
 transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 0, 0, 0)
 shape = SubResource("BoxShape3D_bnlnp")
 
-[node name="UI" parent="." instance=ExtResource("7_we1jl")]
+[node name="UI" parent="." instance=ExtResource("7_0nix2")]
 
 [connection signal="body_shape_entered" from="objectCleaner" to="objectCleaner" method="_on_body_shape_entered"]
