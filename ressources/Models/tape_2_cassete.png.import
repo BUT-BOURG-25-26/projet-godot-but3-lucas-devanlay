@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4g8cno5ekldw"
 path.s3tc="res://.godot/imported/tape_2_cassete.png-86accfbc7a475be3c9be53cf7e525657.s3tc.ctex"
+path.etc2="res://.godot/imported/tape_2_cassete.png-86accfbc7a475be3c9be53cf7e525657.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://ressources/Models/tape_2_cassete.png"
-dest_files=["res://.godot/imported/tape_2_cassete.png-86accfbc7a475be3c9be53cf7e525657.s3tc.ctex"]
+dest_files=["res://.godot/imported/tape_2_cassete.png-86accfbc7a475be3c9be53cf7e525657.s3tc.ctex", "res://.godot/imported/tape_2_cassete.png-86accfbc7a475be3c9be53cf7e525657.etc2.ctex"]
 
 [params]
 

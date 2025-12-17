@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://prqf7wwgb0ms"
 path.s3tc="res://.godot/imported/feather.png-f46978007cd93ca9bf316313821c8e8e.s3tc.ctex"
+path.etc2="res://.godot/imported/feather.png-f46978007cd93ca9bf316313821c8e8e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://ressources/Models/Sources/feather.png"
-dest_files=["res://.godot/imported/feather.png-f46978007cd93ca9bf316313821c8e8e.s3tc.ctex"]
+dest_files=["res://.godot/imported/feather.png-f46978007cd93ca9bf316313821c8e8e.s3tc.ctex", "res://.godot/imported/feather.png-f46978007cd93ca9bf316313821c8e8e.etc2.ctex"]
 
 [params]
 

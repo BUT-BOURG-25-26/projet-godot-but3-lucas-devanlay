@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://6gcu6qhpcuhw"
 path.s3tc="res://.godot/imported/city.png-9edad676a2991f800e6bd8f20ba8f55c.s3tc.ctex"
+path.etc2="res://.godot/imported/city.png-9edad676a2991f800e6bd8f20ba8f55c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://ressources/Textures/Skyboxes/city.png"
-dest_files=["res://.godot/imported/city.png-9edad676a2991f800e6bd8f20ba8f55c.s3tc.ctex"]
+dest_files=["res://.godot/imported/city.png-9edad676a2991f800e6bd8f20ba8f55c.s3tc.ctex", "res://.godot/imported/city.png-9edad676a2991f800e6bd8f20ba8f55c.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0xwr07tn55ul"
 path.s3tc="res://.godot/imported/sign_spring_platform.png-8c8aa7fa9a45c5ce4b0205815d9f735b.s3tc.ctex"
+path.etc2="res://.godot/imported/sign_spring_platform.png-8c8aa7fa9a45c5ce4b0205815d9f735b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://ressources/Models/sign_spring_platform.png"
-dest_files=["res://.godot/imported/sign_spring_platform.png-8c8aa7fa9a45c5ce4b0205815d9f735b.s3tc.ctex"]
+dest_files=["res://.godot/imported/sign_spring_platform.png-8c8aa7fa9a45c5ce4b0205815d9f735b.s3tc.ctex", "res://.godot/imported/sign_spring_platform.png-8c8aa7fa9a45c5ce4b0205815d9f735b.etc2.ctex"]
 
 [params]
 

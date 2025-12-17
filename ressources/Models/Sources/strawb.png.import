@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://csnnr0w220r5a"
 path.s3tc="res://.godot/imported/strawb.png-5cca339270517978990c25eaa903a68c.s3tc.ctex"
+path.etc2="res://.godot/imported/strawb.png-5cca339270517978990c25eaa903a68c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://ressources/Models/Sources/strawb.png"
-dest_files=["res://.godot/imported/strawb.png-5cca339270517978990c25eaa903a68c.s3tc.ctex"]
+dest_files=["res://.godot/imported/strawb.png-5cca339270517978990c25eaa903a68c.s3tc.ctex", "res://.godot/imported/strawb.png-5cca339270517978990c25eaa903a68c.etc2.ctex"]
 
 [params]
 

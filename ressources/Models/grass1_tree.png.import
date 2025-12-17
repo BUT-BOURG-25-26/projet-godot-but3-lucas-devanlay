@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgwbpu6ukwsc5"
 path.s3tc="res://.godot/imported/grass1_tree.png-d7a22bbf52f792f1e44ef0b5d55a0b03.s3tc.ctex"
+path.etc2="res://.godot/imported/grass1_tree.png-d7a22bbf52f792f1e44ef0b5d55a0b03.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://ressources/Models/grass1_tree.png"
-dest_files=["res://.godot/imported/grass1_tree.png-d7a22bbf52f792f1e44ef0b5d55a0b03.s3tc.ctex"]
+dest_files=["res://.godot/imported/grass1_tree.png-d7a22bbf52f792f1e44ef0b5d55a0b03.s3tc.ctex", "res://.godot/imported/grass1_tree.png-d7a22bbf52f792f1e44ef0b5d55a0b03.etc2.ctex"]
 
 [params]
 

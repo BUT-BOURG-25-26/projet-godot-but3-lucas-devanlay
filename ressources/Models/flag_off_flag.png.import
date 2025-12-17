@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6iwor2eqfcqr"
 path.s3tc="res://.godot/imported/flag_off_flag.png-d8d72427b04489fb0f43af3c7d22aa33.s3tc.ctex"
+path.etc2="res://.godot/imported/flag_off_flag.png-d8d72427b04489fb0f43af3c7d22aa33.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://ressources/Models/flag_off_flag.png"
-dest_files=["res://.godot/imported/flag_off_flag.png-d8d72427b04489fb0f43af3c7d22aa33.s3tc.ctex"]
+dest_files=["res://.godot/imported/flag_off_flag.png-d8d72427b04489fb0f43af3c7d22aa33.s3tc.ctex", "res://.godot/imported/flag_off_flag.png-d8d72427b04489fb0f43af3c7d22aa33.etc2.ctex"]
 
 [params]
 
