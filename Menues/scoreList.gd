@@ -9,7 +9,25 @@ var lable
 
 func _ready() -> void:
 	lable = $"../ScoreBoardLable"
+	loadScoreFromFile()
 	hideWithLable()
+
+func saveScoreToFile():
+	var file = FileAccess.open("res://savedData/save_game.txt", FileAccess.WRITE)
+	var scoreListString : String =""
+	for score in range (len(scoreList)) :
+		if(scoreList[score]>0):
+			scoreListString += str(int(scoreList[score]))+";"
+	file.store_string(scoreListString)
+
+func loadScoreFromFile():
+	var file = FileAccess.open("res://savedData/save_game.txt", FileAccess.READ)
+	if(file!=null):
+		var contents : String = file.get_as_text()
+		var stringScoreList = contents.split(";")
+		for score in range (len(stringScoreList)) :
+			print(stringScoreList[score])
+			scoreList.append(float(stringScoreList[score]))
 
 func hideWithLable():
 	hide()
@@ -26,6 +44,7 @@ func addScore(score : float):
 	
 func updateScores():
 	clear()
+	saveScoreToFile()
 	if(len(scoreList)==0):
 		hideWithLable()
 		return

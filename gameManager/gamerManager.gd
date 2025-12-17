@@ -43,6 +43,7 @@ func _process(delta: float) -> void:
 			await get_tree().create_timer(0.5).timeout
 			waiting = false
 	else:
+		distanceTraveled +=  difficulty 
 		updateScoreLabel()
 		updateDifficultyLabel()
 		if(updateDifficulty()):
@@ -77,12 +78,12 @@ func listenForInputs():
 	
 func gameOver():
 	musicHanlder.inMenue = true
+	gameHasEnded = true
 	player.kill()
 	resetWorld()
 	gameOverMenue.updateAndShow(distanceTraveled + externalScore)
 	hideIngameInfo()
 	await get_tree().create_timer(0.5).timeout
-	gameHasEnded = true
 	
 func hideIngameInfo(hide:bool =true):
 	if(hide):
@@ -93,7 +94,6 @@ func hideIngameInfo(hide:bool =true):
 		difficultyLabel.show()
 		
 func updateScoreLabel():
-	distanceTraveled +=difficulty 
 	scoreLabel.text = "Score : "+str(int(distanceTraveled + externalScore))
 
 func updateDifficultyLabel():
@@ -142,7 +142,6 @@ func restart():
 	resetAttributes()
 	updateScoreLabel()
 	updateDifficultyLabel()
-	print("restarted")
 	
 func resetAttributes():
 	distanceTraveled = 0
