@@ -33,11 +33,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if(!gameHasStarted):
 		distanceTraveled = 0.0
-		if(listenForInputs() and !waiting):
+		if(Input.is_anything_pressed() and !waiting):
 			start()
 			hideIngameInfo(false)
 	elif(gameHasEnded):
-		if(listenForInputs()):
+		if(Input.is_anything_pressed()):
 			waiting = true
 			restart()
 			await get_tree().create_timer(0.5).timeout
@@ -62,20 +62,6 @@ func resetWorld()->void:
 	worlManager.gameIsOngoing = false
 	worlManager.difficulty = 0
 
-func listenForInputs():
-	if(Input.get_action_strength("ui_accept")
-		+Input.get_action_strength("ui_up")
-		+Input.get_action_strength("ui_down")
-		+Input.get_action_strength("ui_left")
-		+Input.get_action_strength("ui_right")
-		+Input.get_action_strength("right")
-		+Input.get_action_strength("left")
-		+Input.get_action_strength("up")
-		+Input.get_action_strength("dash")
-	):
-		return true
-	return false
-	
 func gameOver():
 	musicHanlder.inMenue = true
 	gameHasEnded = true
