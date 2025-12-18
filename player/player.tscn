@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bui44bws5ufjk"]
+[gd_scene load_steps=9 format=3 uid="uid://bui44bws5ufjk"]
 
 [ext_resource type="PackedScene" uid="uid://cceujylhlyecd" path="res://player/playerModel.tscn" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://cj0mnefx753nv" path="res://player/player.gd" id="2_rkbax"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://chpajehsocw85" path="res://ressources/Audio/sfx/respawnSFX.wav" id="4_yw30f"]
 [ext_resource type="AudioStream" uid="uid://bxjn2gsivbu6q" path="res://ressources/Audio/sfx/dashSFX.mp3" id="5_qjkh3"]
 [ext_resource type="AudioStream" uid="uid://dbp8shaoka8g" path="res://ressources/Audio/sfx/jump.wav" id="6_g6k8r"]
+[ext_resource type="Script" uid="uid://dcyai7lkqm38i" path="res://player/swipeDectetor.gd" id="7_boad6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rkbax"]
 
@@ -31,3 +32,6 @@ stream = ExtResource("5_qjkh3")
 
 [node name="jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_g6k8r")
+
+[node name="SwipeDectetor" type="Node3D" parent="."]
+script = ExtResource("7_boad6")

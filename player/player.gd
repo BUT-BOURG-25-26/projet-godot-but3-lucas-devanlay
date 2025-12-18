@@ -14,6 +14,7 @@ var model : PlayerModel
 var respawnSFX : AudioStreamPlayer
 var dashSFX : AudioStreamPlayer
 var jumpSFX : AudioStreamPlayer
+var SwipeDectector : SwipeDetector
 
 func _ready() -> void:
 	gameManager = get_tree().get_first_node_in_group("gameManager")
@@ -23,6 +24,7 @@ func _ready() -> void:
 	dashSFX = $dash
 	jumpSFX = $jump
 	model.setHairToRed()
+	SwipeDectector = get_node_or_null("SwipeDectetor")
 	
 func _physics_process(delta: float) -> void:
 	if(gameIsOngoing):
@@ -37,7 +39,7 @@ func _physics_process(delta: float) -> void:
 			if(velocity.y>5):
 				jumpSFX.play()
 		velocity.x = (-(getInputLeft()) + (getInputRight()))*20
-		if(canDash && Input.get_action_strength("dash")+ Input.get_action_strength("ui_down")):
+		if(canDash && getDashInput()):
 			dash()
 		if(global_position.z>2):
 			gameManager.gameOver()
@@ -86,7 +88,16 @@ func setUpVFX():
 	deathVFX = deathVFXScene.instantiate()
 	add_child(deathVFX)
 	
+func getDashInput()->bool:
+	if(SwipeDectector.swipingDown):
+		return true
+	if(Input.get_action_strength("dash")+ Input.get_action_strength("ui_down")):
+		return true
+	return false	
+	
 func getInputUp() -> float:
+	if(SwipeDectector.swipingUp):
+		return true
 	if(Input.get_action_strength("ui_up")>0):
 		return Input.get_action_strength("ui_up")
 	elif(Input.get_action_strength("up")>0):
@@ -95,6 +106,8 @@ func getInputUp() -> float:
 		return 0
 		
 func getInputLeft() -> float:
+	if(SwipeDectector.swipingLeft):
+		return true
 	if(Input.get_action_strength("ui_left")>0):
 		return Input.get_action_strength("ui_left")
 	elif(Input.get_action_strength("left")>0):
@@ -103,6 +116,8 @@ func getInputLeft() -> float:
 		return 0
 
 func getInputRight() -> float:
+	if(SwipeDectector.swipingRight):
+		return true
 	if(Input.get_action_strength("ui_right")>0):
 		return Input.get_action_strength("ui_right")
 	elif(Input.get_action_strength("right")>0):
