@@ -24,7 +24,7 @@ func _ready() -> void:
 	dashSFX = $dash
 	jumpSFX = $jump
 	model.setHairToRed()
-	SwipeDectector = get_node_or_null("SwipeDectetor")
+	SwipeDectector = get_node_or_null("SwipeDetector")
 	
 func _physics_process(delta: float) -> void:
 	if(gameIsOngoing):

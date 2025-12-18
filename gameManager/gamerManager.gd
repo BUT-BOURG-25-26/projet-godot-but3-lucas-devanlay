@@ -33,7 +33,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if(!gameHasStarted):
 		distanceTraveled = 0.0
-		if(Input.is_anything_pressed() and !waiting):
+		if(getStartingInputs() and !waiting):
 			start()
 			hideIngameInfo(false)
 	elif(gameHasEnded):
@@ -49,6 +49,19 @@ func _process(delta: float) -> void:
 		if(updateDifficulty()):
 			player.speedUpRunning()
 		worlManager.difficulty = difficulty
+
+func getStartingInputs()->bool:
+	if(
+		Input.get_action_strength("left")+
+		Input.get_action_strength("right")+
+		Input.get_action_strength("up")+
+		Input.get_action_strength("dash")+
+		Input.get_action_strength("ui_left")+
+		Input.get_action_strength("ui_right")+
+		Input.get_action_strength("ui_accept")
+	):
+		return true
+	return player.SwipeDectector!= null and player.SwipeDectector.getSwippingInAnyDirections()
 
 func preparePlayer()->void:
 	player.turningAround = true
