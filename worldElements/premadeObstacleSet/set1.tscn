@@ -17,41 +17,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.68742, 2.5, 0)
 mass = 1.0
 
 [node name="DirtBox10" parent="." groups=["obsatcle"] instance=ExtResource("2_5a84k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6823, 2.5, 0)
 mass = 1.0
 
 [node name="DirtBox11" parent="." groups=["obsatcle"] instance=ExtResource("2_5a84k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2.5, 0)
-mass = 1.0
-
-[node name="DirtBox12" parent="." groups=["obsatcle"] instance=ExtResource("2_5a84k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 2.5, 0)
-mass = 1.0
-
-[node name="DirtBox13" parent="." groups=["obsatcle"] instance=ExtResource("2_5a84k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3, 2.5, 0)
-mass = 1.0
-
-[node name="DirtBox" parent="." groups=["obsatcle"] instance=ExtResource("2_5a84k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1398, 2.5, 0)
-mass = 1.0
-
-[node name="DirtBox3" parent="." groups=["obsatcle"] instance=ExtResource("2_5a84k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3126, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7126, 2.5, 0)
 mass = 1.0
 
 [node name="DirtBox4" parent="." groups=["obsatcle"] instance=ExtResource("2_5a84k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9472, 2.5, 0)
 mass = 1.0
 
 [node name="DirtBox5" parent="." groups=["obsatcle"] instance=ExtResource("2_5a84k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9032, 2.5, 0)
 mass = 1.0
 
 [node name="DirtBox6" parent="." groups=["obsatcle"] instance=ExtResource("2_5a84k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.88986, 2.5, 0)
 mass = 1.0
 
 [node name="DirtBox7" parent="." groups=["obsatcle"] instance=ExtResource("2_5a84k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9986, 2.5, 0)
 mass = 1.0
