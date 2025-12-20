@@ -9,8 +9,8 @@ All assets and sound files are from :
 Title generated via:
 	[textstudio](https://www.textstudio.com/logo/editable-celeste-game-logo-705#google_vignette)
 
-CelesteRunner was not made by or otherwise know of Extremely OK Games or any of it's team members
-This game is open source and made for all to access and edit for free and only made with elements available freely on line or in the above mentione games
+CelesteRunner was not made by or otherwise known of Extremely OK Games or any of its team members
+This game is open source and made for all to access and edit for free and only made with elements available freely online or in the above-mentioned games
 
 Link to the trailer [here](https://youtu.be/TAdvwGCY4hoµ)
 
