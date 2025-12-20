@@ -1,5 +1,5 @@
 # CelesteRunner
-CelesteRunner is an *UNOFFICIAL* celeste Fan game taking elements from the Celetse IP to make a runner type game
+CelesteRunner is an *UNOFFICIAL* celeste fan-game taking elements from the Celetse IP to make a runner type game
 
 All assets and sounds files are from :
 	[Celeste 64: Fragments of the Mountain](https://github.com/EXOK/Celeste64)
@@ -15,4 +15,4 @@ This game is open source and made for all to access and edit for free and only m
 Link to the trailer [here](https://youtu.be/TAdvwGCY4hoµ)
 
 By devanlay lucas
-Made using the Godot4.4.1 Game engine
+Made using the Godot4.5 Game engine
