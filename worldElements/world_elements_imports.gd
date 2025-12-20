@@ -16,7 +16,7 @@ extends Node3D
 @export var set4 : PackedScene
 @export var set5 : PackedScene
 
-func getGroundTile()->GroundTile:
+func getGroundTile()->MeshInstance3D:
 	return groundTileScene.instantiate()
 
 func getDirtBoxe()->DirtBox:

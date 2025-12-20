@@ -31,7 +31,7 @@ tonemap_mode = 2
 [node name="MainScene" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.848048, 0.529919, 0, -0.529919, 0.848048, 0, 15, 15)
+transform = Transform3D(1, 0, 0, 0, 0.8480482, 0.5299192, 0, -0.5299192, 0.8480482, 0, 15, 15)
 keep_aspect = 0
 fov = 80.0
 
@@ -47,15 +47,21 @@ worldScene = ExtResource("4_bfp76")
 [node name="walls" type="Node3D" parent="."]
 
 [node name="wall1" type="StaticBody3D" parent="walls"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 14, 10, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 16, 10, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall1"]
 shape = SubResource("WorldBoundaryShape3D_61od6")
 
 [node name="wall2" type="StaticBody3D" parent="walls"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -14, 10, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -16, 10, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall2"]
+shape = SubResource("WorldBoundaryShape3D_61od6")
+
+[node name="ground" type="StaticBody3D" parent="walls"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 8, 0, -1, -70)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/ground"]
 shape = SubResource("WorldBoundaryShape3D_61od6")
 
 [node name="WorldManager" parent="." instance=ExtResource("4_bfp76")]
@@ -70,6 +76,7 @@ script = ExtResource("6_2wgu1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="objectCleaner"]
 transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 0, 0, 0)
 shape = SubResource("BoxShape3D_bnlnp")
+debug_color = Color(0.92041546, 0.17519557, 0.55336773, 0.41960785)
 
 [node name="UI" parent="." instance=ExtResource("7_0nix2")]
 

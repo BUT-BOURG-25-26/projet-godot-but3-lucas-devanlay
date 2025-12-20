@@ -3,9 +3,8 @@ extends Node3D
 
 var  worldManager : WorldManager
 var tileSize : int
-var groundTiles : Array[GroundTile]
+var groundTiles : Array[MeshInstance3D]
 var strawberryList : Array[Bonus]
-var spikeList : Array[Spike]
 
 var difficulty : float =0 #same as gameSpeed from WorldManager
 @export var pregeneratedTileNumber : int = 20
@@ -18,12 +17,10 @@ func _ready() -> void:
 	tileSize = worldManager.tileSize
 	var childrens = worldManager.get_children()
 	for i in range(len(childrens)):
-		if(childrens[i] is GroundTile):
+		if(childrens[i] is MeshInstance3D):
 			groundTiles.append(childrens[i])
 		elif(childrens[i] is Strawberry):
 			strawberryList.append(childrens[i])
-		elif(childrens[i] is Spike):
-			spikeList.append(childrens[i])
 	preGenerateTerraine()
 
 func generateNext(newdifficulty : int):
@@ -95,7 +92,7 @@ func addSet(id: int=0,placement : int =0):
 	tile.global_position.z = -placement*tileSize
 
 func addGroundTile(placement : int =0):
-	var tile : GroundTile = imports.getGroundTile()
+	var tile : MeshInstance3D = imports.getGroundTile()
 	groundTiles.append(tile)
 	add_child.call_deferred(tile)
 	await tile.ready
@@ -118,7 +115,6 @@ func addSpikeBall(placement : int =0, interiorPlacement : int =0):
 	var limitZ : float = randf_range(0,60)
 	for i in range(0,multiply):
 		var spike : Spike = imports.getSpikeBall()
-		spikeList.append(spike)
 		add_child.call_deferred(spike)
 		await spike.ready
 		spike.global_position.y = randf_range(0,3)
@@ -191,7 +187,7 @@ func deleteElementsOutideView():
 			groundTiles.pop_front()		
 	if(!strawberryList.is_empty()):
 		if(is_instance_valid(strawberryList[0])):
-			if(strawberryList[0].global_position.z>tileSize or strawberryList[0].global_position.y<-4):
+			if(strawberryList[0].global_position.z>tileSize):
 				strawberryList[0].queue_free()
 				strawberryList.pop_front()
 		else:
@@ -204,9 +200,6 @@ func clearAll():
 	for i in range(len(strawberryList)):
 		if(is_instance_valid(strawberryList[i])):
 			strawberryList[i].queue_free()
-	for i in range(len(spikeList)):
-		if(is_instance_valid(spikeList[i])):
-			spikeList[i].queue_free()
 	var childrens : Array[Node] = get_children()
 	for i in range(len(childrens)):
 		if(childrens[i] is not Imports and childrens[i] is not AudioStreamPlayer3D):
@@ -214,4 +207,3 @@ func clearAll():
 	
 	groundTiles.clear()	
 	strawberryList.clear()
-	spikeList.clear()	
