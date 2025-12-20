@@ -6,6 +6,9 @@ All assets and sound files are from :
 	and Celeste
 	made by [Extremely OK Games](https://exok.com/games.html)
 
+Title generated via:
+	[textstudio](https://www.textstudio.com/logo/editable-celeste-game-logo-705#google_vignette)
+
 CelesteRunner was not made by or otherwise know of Extremely OK Games or any of it's team members
 This game is open source and made for all to access and edit for free and only made with elements available freely on line or in the above mentione games
 
