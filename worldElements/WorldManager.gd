@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	if(distanceUntilNextTile<=0 and gameIsOngoing):
 		worldGeneration.generateNext(difficulty)
-		distanceUntilNextTile = tileSize - difficulty
+		distanceUntilNextTile = tileSize
 		worldGeneration.deleteElementsOutideView()
 		
 func restart():
