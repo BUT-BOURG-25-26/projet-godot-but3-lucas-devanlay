@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bt2vkmrpam56u"]
+[gd_scene format=3 uid="uid://bt2vkmrpam56u"]
 
 [ext_resource type="PackedScene" uid="uid://bui44bws5ufjk" path="res://player/player.tscn" id="1_iucva"]
 [ext_resource type="Texture2D" uid="uid://6gcu6qhpcuhw" path="res://ressources/Textures/Skyboxes/city.png" id="2_kgs5k"]
@@ -28,56 +28,56 @@ tonemap_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bnlnp"]
 
-[node name="MainScene" type="Node3D"]
+[node name="MainScene" type="Node3D" unique_id=1628628515]
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2005944298]
 transform = Transform3D(1, 0, 0, 0, 0.8480482, 0.5299192, 0, -0.5299192, 0.8480482, 0, 15, 15)
 keep_aspect = 0
 fov = 80.0
 
-[node name="player" parent="." instance=ExtResource("1_iucva")]
+[node name="player" parent="." unique_id=1056530141 instance=ExtResource("1_iucva")]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1542233312]
 environment = SubResource("Environment_g4qto")
 
-[node name="GamerManager" type="Node" parent="." groups=["gameManager"]]
+[node name="GamerManager" type="Node" parent="." unique_id=441299746 groups=["gameManager"]]
 script = ExtResource("3_ieqsh")
 worldScene = ExtResource("4_bfp76")
 
-[node name="walls" type="Node3D" parent="."]
+[node name="walls" type="Node3D" parent="." unique_id=1453941963]
 
-[node name="wall1" type="StaticBody3D" parent="walls"]
+[node name="wall1" type="StaticBody3D" parent="walls" unique_id=187748536]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 16, 10, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall1" unique_id=1791224771]
 shape = SubResource("WorldBoundaryShape3D_61od6")
 
-[node name="wall2" type="StaticBody3D" parent="walls"]
+[node name="wall2" type="StaticBody3D" parent="walls" unique_id=1337405717]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -16, 10, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall2" unique_id=644871913]
 shape = SubResource("WorldBoundaryShape3D_61od6")
 
-[node name="ground" type="StaticBody3D" parent="walls"]
+[node name="ground" type="StaticBody3D" parent="walls" unique_id=1679400128]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 8, 0, -1, -70)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/ground"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/ground" unique_id=27917475]
 shape = SubResource("WorldBoundaryShape3D_61od6")
 
-[node name="WorldManager" parent="." instance=ExtResource("4_bfp76")]
+[node name="WorldManager" parent="." unique_id=1856133650 instance=ExtResource("4_bfp76")]
 
-[node name="Music" parent="." instance=ExtResource("5_3ogsb")]
+[node name="Music" parent="." unique_id=236482969 instance=ExtResource("5_3ogsb")]
 
-[node name="objectCleaner" type="Area3D" parent="."]
+[node name="objectCleaner" type="Area3D" parent="." unique_id=578567689]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 100)
 collision_mask = 3
 script = ExtResource("6_2wgu1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="objectCleaner"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="objectCleaner" unique_id=1902467282]
 transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 0, 0, 0)
 shape = SubResource("BoxShape3D_bnlnp")
 debug_color = Color(0.92041546, 0.17519557, 0.55336773, 0.41960785)
 
-[node name="UI" parent="." instance=ExtResource("7_0nix2")]
+[node name="UI" parent="." unique_id=1939364642 instance=ExtResource("7_0nix2")]
 
 [connection signal="body_shape_entered" from="objectCleaner" to="objectCleaner" method="_on_body_shape_entered"]
