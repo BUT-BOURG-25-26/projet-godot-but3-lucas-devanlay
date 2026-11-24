@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhe1j5vo150ls"]
+[gd_scene format=3 uid="uid://dhe1j5vo150ls"]
 
 [ext_resource type="PackedScene" uid="uid://bso81h8ygyrft" path="res://ressources/Models/strawberry.glb" id="1_afdm1"]
 [ext_resource type="Script" uid="uid://dn47p64i32w0k" path="res://worldElements/bonus/strawberry.gd" id="2_7pjgk"]
@@ -7,7 +7,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_afdm1"]
 
 [sub_resource type="Animation" id="Animation_q3ueg"]
-length = 0.001
+length = 0.93333334
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -15,15 +15,15 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.8666667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_2gl2n"]
 resource_name = "rotation"
-length = 5.0
+length = 3.0333333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -31,7 +31,7 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
@@ -43,7 +43,7 @@ _data = {
 &"rotation": SubResource("Animation_2gl2n")
 }
 
-[node name="strawberry" instance=ExtResource("1_afdm1")]
+[node name="strawberry" unique_id=1497748567 instance=ExtResource("1_afdm1")]
 script = ExtResource("2_7pjgk")
 
 [node name="Cube" parent="." index="0"]
@@ -52,18 +52,16 @@ transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 [node name="Cube_001" parent="." index="1"]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0.1268971, 0)
 
-[node name="Area3D" type="Area3D" parent="." index="2"]
+[node name="Area3D" type="Area3D" parent="." index="2" unique_id=366966972]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.7091037, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=1380557802]
 shape = SubResource("SphereShape3D_afdm1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
-libraries = {
-&"": SubResource("AnimationLibrary_3mbh4")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=994802540]
+libraries/ = SubResource("AnimationLibrary_3mbh4")
 
-[node name="collect" type="AudioStreamPlayer3D" parent="." index="4"]
+[node name="collect" type="AudioStreamPlayer3D" parent="." index="4" unique_id=1464675784]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47946966, 0)
 stream = ExtResource("3_02jpx")
 attenuation_model = 3

@@ -1,5 +1,5 @@
 # CelesteRunner
-CelesteRunner is an *UNOFFICIAL* celeste fan-game taking elements from the Celetse IP to make a runner type game
+CelesteRunner is an *UNOFFICIAL* celeste fan-game taking elements from the Celeste IP to make a runner type game
 
 All assets and sounds files are from :
 	[Celeste 64: Fragments of the Mountain](https://github.com/EXOK/Celeste64)

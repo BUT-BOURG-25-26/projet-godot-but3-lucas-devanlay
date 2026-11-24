@@ -1,6 +1,10 @@
 class_name Bonus
 extends Node3D
 
+const BONUS_ANTI_MERG_DISPLACEMENT : float = 2
+const SPENT_VALUE : float = 0
+const DEFAULT_VALUE : float = 500
+
 var value : float = 0
 var animationPlayer : AnimationPlayer
 var animationToPlay : String  = ""
@@ -19,7 +23,8 @@ func actOnCollision(body: Node3D)-> void:
 		gameManager.addToExternalScore(value)
 		audioPlayer.play()
 		hide()
-		value= 0
-	if(body is Spike or body is BaseBox):
-		print(name, " moved up")
-		global_position.y+=1
+		value= SPENT_VALUE
+	elif(body is Spike):
+		global_position.y += BONUS_ANTI_MERG_DISPLACEMENT * 1.5
+	elif(body is BaseBox or body is DirtBox):
+		global_position.y += BONUS_ANTI_MERG_DISPLACEMENT

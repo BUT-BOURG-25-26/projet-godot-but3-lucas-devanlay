@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cqb2viu7ah1wm"]
+
+[ext_resource type="PackedScene" uid="uid://73nfayd0wlk7" path="res://ressources/Models/Sources/spring_board.blend" id="1_wx6mt"]
+
+[node name="springBoard" unique_id=1104619059 instance=ExtResource("1_wx6mt")]
+
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(2137478833) index="0" unique_id=168869876]
+bones/0/position = Vector3(0, 1.2197576, -6.9043885e-08)
+bones/0/rotation = Quaternion(-2.6692543e-08, 2.6692543e-08, 0.7071068, 0.7071068)
+bones/3/position = Vector3(0, -0.21466884, -1.4617213e-08)
+bones/4/rotation = Quaternion(2.6692543e-08, -2.6692543e-08, -0.7071068, 0.7071068)
+bones/4/scale = Vector3(1, 0.791423, 1)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0" unique_id=290106136]
+transform = Transform3D(1, -2.6822248e-22, -3.5527137e-15, 0, 1, -7.1054274e-15, -3.5527137e-15, 7.1054274e-15, 1, 2.0467621e-23, 1.1434492, -6.9043885e-08)
+
+[node name="Cube_001" parent="Armature/Skeleton3D" index="1" unique_id=1994701575]
+transform = Transform3D(1, -2.6822248e-22, -3.5527137e-15, 0, 1, -7.1054274e-15, -3.5527137e-15, 7.1054274e-15, 1, 3.6283714e-23, 1.0844828, -6.904388e-08)
+
+[node name="Cube_002" parent="Armature/Skeleton3D" index="2" unique_id=2137346958]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23433098, -1.4617212e-08)
