@@ -2,8 +2,15 @@ class_name GameManager
 extends Node
 
 @export var worldScene : PackedScene
-var distanceTraveled : float =0
-var externalScore : float = 0
+const DEFAULT_DIFFICULTY : float = 1
+const DEFAULT_NEXT_TARGET : float = 100
+const DEFAULT_DIFFICULTY_STEP : float = 0.1
+const DEFAULT_TRAVELED_DISTANCE: float = 0
+const DEFAULT_EXTERNAL_SCORE: float = 0
+const TREE_SEARCH_TIME_SC: float = 0.5
+
+var distanceTraveled : float
+var externalScore : float
 var gameHasStarted : bool = false
 var gameHasEnded : bool = false
 
@@ -15,9 +22,9 @@ var difficultyLabel : Label
 var worlManager : WorldManager
 var mainScene : Node3D
 var musicHanlder : musicHandler
-var difficulty : float = 1
-var nextTarget = 100
-var waiting = false
+var global_difficulty : float
+var nextTarget : float
+var waiting : bool = false
 
 func _ready() -> void:
 	player = $"../player"
@@ -28,11 +35,15 @@ func _ready() -> void:
 	difficultyLabel = $"../UI/Difficulty"
 	mainScene = $".."
 	musicHanlder = $"../Music"
+	distanceTraveled = DEFAULT_TRAVELED_DISTANCE
+	externalScore = DEFAULT_EXTERNAL_SCORE
+	global_difficulty = DEFAULT_DIFFICULTY
+	nextTarget = DEFAULT_NEXT_TARGET
 	hideIngameInfo(true)
 	
 func _process(delta: float) -> void:
 	if(!gameHasStarted):
-		distanceTraveled = 0.0
+		distanceTraveled = DEFAULT_TRAVELED_DISTANCE
 		if(getStartingInputs() and !waiting):
 			start()
 			hideIngameInfo(false)
@@ -40,15 +51,15 @@ func _process(delta: float) -> void:
 		if(Input.is_anything_pressed()):
 			waiting = true
 			restart()
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(TREE_SEARCH_TIME_SC).timeout
 			waiting = false
 	else:
-		distanceTraveled +=  difficulty 
+		distanceTraveled +=  global_difficulty 
 		updateScoreLabel()
 		updateDifficultyLabel()
 		if(updateDifficulty()):
 			player.speedUpRunning()
-		worlManager.difficulty = difficulty
+		worlManager.global_difficulty = global_difficulty
 
 func getStartingInputs()->bool:
 	if(
@@ -69,11 +80,11 @@ func preparePlayer()->void:
 
 func prepareWorld()->void:
 	worlManager.gameIsOngoing = true
-	worlManager.difficulty = difficulty
+	worlManager.global_difficulty = global_difficulty
 
 func resetWorld()->void:
 	worlManager.gameIsOngoing = false
-	worlManager.difficulty = 0
+	worlManager.global_difficulty = DEFAULT_DIFFICULTY
 
 func gameOver():
 	musicHanlder.inMenue = true
@@ -82,7 +93,7 @@ func gameOver():
 	resetWorld()
 	gameOverMenue.updateAndShow(distanceTraveled + externalScore)
 	hideIngameInfo()
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(TREE_SEARCH_TIME_SC).timeout
 	
 func hideIngameInfo(hide:bool =true):
 	if(hide):
@@ -96,30 +107,30 @@ func updateScoreLabel():
 	scoreLabel.text = "Score : "+str(int(distanceTraveled + externalScore))
 
 func updateDifficultyLabel():
-	difficultyLabel.text = "Difficulty : "+str(float(difficulty))
+	difficultyLabel.text = "Difficulty : "+str(float(global_difficulty))
 	
 func addToExternalScore(additionScore : float):
-	externalScore += additionScore * difficulty/2
+	externalScore += additionScore * global_difficulty/2
 
 func updateDifficulty() -> bool:
 	if(nextTarget<=distanceTraveled):
-		difficulty+=0.1
-		if(difficulty >= 15 ):
+		global_difficulty += DEFAULT_DIFFICULTY_STEP
+		if(global_difficulty >= 15 ):
 			return false
-		elif(difficulty>10):
-			nextTarget=nextTarget + 20000
-		elif(difficulty>6):
-			nextTarget=nextTarget + 10000
-		elif(difficulty>5):
-			nextTarget=nextTarget + 5000
-		elif(difficulty>4):
-			nextTarget=nextTarget + 2000
-		elif(difficulty>3):
-			nextTarget=nextTarget + 1000
-		elif(difficulty>2):
-			nextTarget=nextTarget + 500
+		elif(global_difficulty>10):
+			nextTarget += 20000
+		elif(global_difficulty>6):
+			nextTarget += 10000
+		elif(global_difficulty>5):
+			nextTarget += 5000
+		elif(global_difficulty>4):
+			nextTarget += 2000
+		elif(global_difficulty>3):
+			nextTarget += 1000
+		elif(global_difficulty>2):
+			nextTarget += 500
 		else:
-			nextTarget=nextTarget + 200
+			nextTarget += 200
 		return true
 	return true
 
@@ -128,8 +139,8 @@ func start():
 	prepareWorld()
 	preparePlayer()
 	menue.hide()
-	distanceTraveled = 0
-	externalScore = 0
+	distanceTraveled = DEFAULT_TRAVELED_DISTANCE
+	externalScore = DEFAULT_EXTERNAL_SCORE
 	musicHanlder.inMenue = false
 	
 func restart():
@@ -143,12 +154,12 @@ func restart():
 	updateDifficultyLabel()
 	
 func resetAttributes():
-	distanceTraveled = 0
-	externalScore = 0
+	distanceTraveled = DEFAULT_TRAVELED_DISTANCE
+	externalScore = DEFAULT_EXTERNAL_SCORE
 	gameHasStarted = false
-	difficulty = 1.0
+	global_difficulty = DEFAULT_DIFFICULTY
 	gameHasEnded= false
-	nextTarget = 100
+	nextTarget = DEFAULT_NEXT_TARGET
 
 func quite():
 	get_tree().quit()

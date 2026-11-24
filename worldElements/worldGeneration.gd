@@ -6,7 +6,7 @@ var tileSize : int
 var groundTiles : Array[MeshInstance3D]
 var strawberryList : Array[Bonus]
 
-var difficulty : float =0 #same as gameSpeed from WorldManager
+var global_difficulty : float =0 #same as gameSpeed from WorldManager
 @export var pregeneratedTileNumber : int = 20
 var imports : Imports
 @export var strawberrySpawnChance : int = 80
@@ -24,7 +24,7 @@ func _ready() -> void:
 	preGenerateTerraine()
 
 func generateNext(newdifficulty : int):
-	difficulty = newdifficulty+pregeneratedTileNumber/10
+	global_difficulty = newdifficulty+pregeneratedTileNumber/10
 	addGroundTile(pregeneratedTileNumber)
 	addObstacles(pregeneratedTileNumber)
 	addCollectibles(pregeneratedTileNumber)
@@ -35,7 +35,7 @@ func preGenerateTerraine():
 	addGroundTile(1)
 	addGroundTile(2)
 	for i in range(3,pregeneratedTileNumber+1):
-		difficulty = i/6
+		global_difficulty = i/6
 		if(i==pregeneratedTileNumber/3):
 			addSet(1,i)
 		elif(i==pregeneratedTileNumber/2 + pregeneratedTileNumber/3):
@@ -49,31 +49,31 @@ func preGenerateTerraine():
 			addObstacles(i)
 			addCollectibles(i)
 		
-	difficulty = 1
+	global_difficulty = 1
 
 func addObstacles(placement : int =0) ->void:
 	var limit : int
 	var numberOfDouble : int = 0 
 
-	if(difficulty<=2):
+	if(global_difficulty<=2):
 		limit=randi_range(0,1)
-	elif(difficulty<=3):
+	elif(global_difficulty<=3):
 		limit=randi_range(1,2)
 		numberOfDouble = randi_range(-5,1)
-	elif(difficulty<=4):
+	elif(global_difficulty<=4):
 		limit=randi_range(1,3)
 		numberOfDouble = randi_range(-3,1)
-	elif(difficulty<=5):
+	elif(global_difficulty<=5):
 		limit=randi_range(2,3)
 		numberOfDouble = randi_range(-3,2)
-	elif(difficulty<=6):
+	elif(global_difficulty<=6):
 		limit=randi_range(3,4)
 		numberOfDouble = randi_range(0,2)
 	else:
 		limit=randi_range(3,6)
 		numberOfDouble = randi_range(1,2)
 	for i in range(limit):
-		if(difficulty > 2 and randi_range(difficulty,25)>20):
+		if(global_difficulty > 2 and randi_range(global_difficulty,25)>20):
 			addSpikeBall(placement,i)
 		else:
 			if(numberOfDouble>0):
@@ -101,13 +101,13 @@ func addGroundTile(placement : int =0):
 	
 func addSpikeBall(placement : int =0, interiorPlacement : int =0):
 	var multiply : int
-	if(difficulty<2):
+	if(global_difficulty<2):
 		multiply = 0
-	elif(difficulty<3):
+	elif(global_difficulty<3):
 		multiply = randi_range(-1,1)
-	elif(difficulty<4):
+	elif(global_difficulty<4):
 		multiply = randi_range(0,1)
-	elif(difficulty<5):
+	elif(global_difficulty<5):
 		multiply = randi_range(0,2)
 	else:
 		multiply = randi_range(1,5)
@@ -122,15 +122,15 @@ func addSpikeBall(placement : int =0, interiorPlacement : int =0):
 		spike.global_position.x = limitX+randf_range(-5,5)
 	
 func addBoxes(placement : int =0,double : bool =false,  interiorPlacement : int =0):
-	var lowerLimit : int =difficulty-5
+	var lowerLimit : int =global_difficulty-5
 	var hasSpikes : bool = false
-	if(difficulty>5):
+	if(global_difficulty>5):
 		hasSpikes = randi_range(0,100)>=70	
-	elif(difficulty>4):
+	elif(global_difficulty>4):
 		hasSpikes = randi_range(0,100)>=80
-	elif(difficulty>3 and !double):
+	elif(global_difficulty>3 and !double):
 		hasSpikes = randi_range(0,100)>=90
-	elif(difficulty>2 and !double):
+	elif(global_difficulty>2 and !double):
 		hasSpikes = randi_range(0,100)>=95
 	var limitZ : float
 	var limitX : float
@@ -156,12 +156,12 @@ func addBoxes(placement : int =0,double : bool =false,  interiorPlacement : int 
 	box.global_position.x = limitX
 	
 func addCollectibles(placement : int =0):
-	var success : int = randi_range(difficulty,100)
+	var success : int = randi_range(global_difficulty,100)
 	var bonus : Bonus
 	var limitY : float
 	var limitX : float = randf_range(-14,14)
 	var limitZ : float = randf_range(-20,20)
-	if(success>=99 and difficulty>3):
+	if(success>=99 and global_difficulty>3):
 		bonus = imports.getTheo()
 		limitY = 0
 	elif(success>=strawberrySpawnChance):
