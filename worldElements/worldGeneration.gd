@@ -24,7 +24,7 @@ func _ready() -> void:
 	preGenerateTerraine()
 
 func generateNext(newdifficulty : int):
-	global_difficulty = newdifficulty+pregeneratedTileNumber/10
+	global_difficulty = newdifficulty + floor(pregeneratedTileNumber/10.0)
 	addGroundTile(pregeneratedTileNumber)
 	addObstacles(pregeneratedTileNumber)
 	addCollectibles(pregeneratedTileNumber)
@@ -35,10 +35,10 @@ func preGenerateTerraine():
 	addGroundTile(1)
 	addGroundTile(2)
 	for i in range(3,pregeneratedTileNumber+1):
-		global_difficulty = i/6
-		if(i==pregeneratedTileNumber/3):
+		global_difficulty = floor(i/6.0)
+		if(i==floor(pregeneratedTileNumber/3.0)):
 			addSet(1,i)
-		elif(i==pregeneratedTileNumber/2 + pregeneratedTileNumber/3):
+		elif(i==floor(pregeneratedTileNumber*(2.0/3.0))):
 			addSet(4,i)
 		elif(i==pregeneratedTileNumber-1):
 			addSet(2,i)
@@ -73,7 +73,7 @@ func addObstacles(placement : int =0) ->void:
 		limit=randi_range(3,6)
 		numberOfDouble = randi_range(1,2)
 	for i in range(limit):
-		if(global_difficulty > 2 and randi_range(global_difficulty,25)>20):
+		if(global_difficulty > 2.0 and randi_range(global_difficulty,25)>20):
 			addSpikeBall(placement,i)
 		else:
 			if(numberOfDouble>0):

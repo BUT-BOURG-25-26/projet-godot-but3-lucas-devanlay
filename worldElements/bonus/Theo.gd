@@ -3,7 +3,7 @@ extends Bonus
 
 func _ready() -> void:
 	super()
-	value = 1000
+	value = DEFAULT_VALUE * 2
 	animationToPlay = "Run"
 	audioPlayer = $AudioStreamPlayer3D
 
